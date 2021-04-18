@@ -1,29 +1,29 @@
 import React from "react";
 import "./InputComponent.scss";
 
-const InputComponent = (props) => {
+const InputComponent = ({size="auto", orientation="vertical", label, htmlFor, type, placeholder, getValue}) => {
 
   const getInputValue = (event) => {
     event.preventDefault();
-    props.getValue(event.target.value)
+    getValue(event.target.value)
   }
 
   return (
     <div
-      className={`inputComponent inputComponent--${props.size} inputComponent--${props.orientation}`}
+      className={`inputComponent inputComponent--${size} inputComponent--${orientation}`}
     >
-      {props.label && (
-        <label className="inputComponent__label" htmlFor={props.htmlFor}>
-          {props.label}
+      {label && (
+        <label className="inputComponent__label" htmlFor={htmlFor}>
+          {label}
         </label>
       )}
 
       <input
         onChange={getInputValue}
         className="inputComponent__input"
-        type={props.type}
-        id={props.htmlFor}
-        placeholder={props.placeholder}
+        type={type}
+        id={htmlFor}
+        placeholder={placeholder}
       />
     </div>
   );

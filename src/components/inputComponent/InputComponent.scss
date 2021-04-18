@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+$font-family: "Lato", sans-serif;
+$input-font-size: 1.2em;
+$label-font-size: 1.1em;
+$input-color: #555;
+$label-color: #353535;
+
+.inputComponent {
+  display: flex;
+
+  &__input {
+    width: 100%;
+    font-family: $font-family;
+    font-size: $input-font-size;
+    color: $input-color;
+    padding: 5px 0;
+    text-align: center;
+    border: none;
+  }
+
+  &__label {
+    font-size: $label-font-size;
+    color: $label-color;
+    margin-right: 10px;
+  }
+
+  &--small {
+    width: 300px;
+  }
+
+  &--auto {
+    width: 100%;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &--vertical &__label {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+}

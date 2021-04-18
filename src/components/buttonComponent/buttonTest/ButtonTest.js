@@ -16,7 +16,6 @@ const ButtonTest = () => {
         <div>Przycisk działa</div>
       )}
       <ButtonComponent
-        size="auto"
         name="Test2"
       />
     </div>

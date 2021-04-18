@@ -2,10 +2,10 @@ import React from 'react'
 import './ButtonComponent.scss'
 
 
-const ButtonComponent = (props) => {
+const ButtonComponent = ({click, size="auto", name}) => {
   return (
-    <button onClick={props.click} className={`buttonComponent buttonComponent--${props.size}`}>
-      {props.name}
+    <button onClick={click} className={`buttonComponent buttonComponent--${size}`}>
+      {name}
     </button>
   )
 }

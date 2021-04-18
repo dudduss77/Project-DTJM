@@ -11,6 +11,7 @@ $category-font-size: 1.1em;
   padding: 5px;
   border-radius: 5%;
   background: $background;
+  text-decoration: none;
 
   &__image {
     width: 90%;
@@ -22,6 +23,7 @@ $category-font-size: 1.1em;
 
     &__img {
       height: auto;
+      color: $text-color;
     }
   }
 
@@ -30,6 +32,7 @@ $category-font-size: 1.1em;
     text-align: center;
     font-size: $header-font-size;
     color: $text-color;
+    
   }
   
   &__category {
@@ -37,5 +40,9 @@ $category-font-size: 1.1em;
     text-align: center;
     font-size: $category-font-size;
     color: $text-color;
+  }
+
+  &:hover &__header {
+    text-decoration: underline;
   }
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import "./AdBlockComponent.scss";
 
-const AdBlockComponent = ({imgSrc, imgAlt, header, category}) => {
+import {Link} from "react-router-dom"
+
+const AdBlockComponent = ({path, imgSrc, imgAlt, header, category}) => {
   return (
-    <div className="adBlockComponent">
+    <Link to={path} className="adBlockComponent">
       <div className="adBlockComponent__image">
       <img
         className="adBlockComponent__image__img"
@@ -13,7 +15,7 @@ const AdBlockComponent = ({imgSrc, imgAlt, header, category}) => {
       </div>
       <div className="adBlockComponent__header">{header}</div>
       <div className="adBlockComponent__category">{category}</div>
-    </div>
+    </Link>
   );
 };
 

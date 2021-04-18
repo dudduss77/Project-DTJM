@@ -1,0 +1,41 @@
+$background: #fff;
+$text-color: #353535;
+$header-font-size: 1.5em;
+$category-font-size: 1.1em;
+
+.adBlockComponent {
+  width: 270px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5%;
+  background: $background;
+
+  &__image {
+    width: 90%;
+    height: 50%;
+    align-self: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    &__img {
+      height: auto;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    text-align: center;
+    font-size: $header-font-size;
+    color: $text-color;
+  }
+  
+  &__category {
+    width: 100%;
+    text-align: center;
+    font-size: $category-font-size;
+    color: $text-color;
+  }
+}

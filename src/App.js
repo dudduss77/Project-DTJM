@@ -8,13 +8,17 @@ import {
 import './App.css';
 
 import TestComponent from './components/testComponent/TestComponent'
+import GlobalProvider from './context/globalStore';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <TestComponent/>
-      </Router>
+      <GlobalProvider>
+        <Router>
+          <TestComponent/>
+        </Router>
+      </GlobalProvider>
+
       
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

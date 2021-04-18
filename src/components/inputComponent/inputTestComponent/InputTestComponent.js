@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./InputTestComponent.scss";
 
-import InputComponent from "../inputComponent/InputComponent";
+import InputComponent from "../InputComponent";
 
 const InputTestComponent = () => {
   const [inputTest, setInputTest] = useState('');
@@ -20,15 +20,12 @@ const InputTestComponent = () => {
 
       <InputComponent
         size="small"
-        orientation="vertical"
         label="Test"
         labelFor="test"
         type="text"
-        // placeholder="Test"
       />
 
       <InputComponent
-        size="auto"
         orientation="horizontal"
         label="Test"
         labelFor="test"
@@ -38,8 +35,6 @@ const InputTestComponent = () => {
 
       <InputComponent
         size="small"
-        orientation="vertical"
-        labelFor="test"
         type="text"
         placeholder="Test"
       />

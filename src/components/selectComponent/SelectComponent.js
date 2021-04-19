@@ -20,7 +20,7 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
   const handlerOnMouseLeave = (e) => setVisibility(false);
 
   const mappItems = (val = "") => {
-    let regex = new RegExp(val);
+    let regex = new RegExp(val, "i");
     return data.map(item => {
       if(regex.test(item))
         return (<div className="selectComponent__list__item" onClick={handlerOnClickItem} >{item}</div>)

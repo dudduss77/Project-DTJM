@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+$font-family: "Lato", sans-serif;
+$select-font-size: 1.2em;
+$label-font-size: 1.1em;
+$input-color: #555;
+$label-color: #353535;
+$background-color: white;
+
+
+
+.selectComponent {
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  &__input {
+    width: 100%;
+    font-family: $font-family;
+    font-size: $select-font-size;
+    color: $input-color;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: none;
+  }
+
+  &__list {
+    max-height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    overflow-y: scroll;
+    box-shadow: 0px 6px 6px 1px #666666;
+
+    &__item {
+      font-family: $font-family;
+      font-size: $select-font-size;
+      color: $input-color;
+      background-color: $background-color;
+      padding: 5px 5px;
+
+      
+
+
+      &:hover {
+        background-color: darken($background-color, 5%);
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 2px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #e1e1e1;
+      border: 16px none #ffffff;
+      border-radius: 55px;
+    }
+  }
+
+
+  &--small {
+    width: 300px;
+  }
+
+  &--auto {
+    width: 100%;
+  }
+
+
+}
+

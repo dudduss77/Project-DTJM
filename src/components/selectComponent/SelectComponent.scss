@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import './../../variables.scss';
 
-$font-family: "Lato", sans-serif;
+$font-family: $mainFontFamily1;
 $select-font-size: 1.2em;
 $label-font-size: 1.1em;
 $input-color: #555;
-$label-color: #353535;
-$background-color: white;
+$label-color: $mainColor4;
+$background-color: $mainColor1;
 
 
 

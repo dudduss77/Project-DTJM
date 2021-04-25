@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import './../../variables.scss';
 
-$font-family: "Lato", sans-serif;
+$font-family: $mainFontFamily1;
 $categoryTail-font-size: 16px;
 $background-color: white;
 

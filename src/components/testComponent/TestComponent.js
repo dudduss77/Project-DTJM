@@ -10,6 +10,7 @@ import SelectTestComponent from '../selectComponent/selectTestComponent/SelectTe
 import CategoryTailComponent from '../categoryTailComponent/categoryTailComponent'
 import CategoryTailTestComponent from '../categoryTailComponent/categoryTailTestComponent/categoryTailTestComponent'
 import CategoryChoiceTestComponent from '../categoryChoiceComponent/categoryChoiceTestComponent/CategoryChoiceTestComponent'
+import HeaderTest from '../headerComponent/headerTest/HeaderTest'
 
 const TestComponent = () => {
 
@@ -23,6 +24,7 @@ const TestComponent = () => {
       <SelectTestComponent/>
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>
+      <HeaderTest/>
     </div>
   )
 }

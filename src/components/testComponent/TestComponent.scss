@@ -1,8 +1,9 @@
 .testComponent {
   width: 100vw;
-  min-height: 400vh;
+  min-height: 100vh;
   background: #aaa;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-x: hidden;
 }

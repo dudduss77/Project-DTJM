@@ -7,6 +7,9 @@ import AdBlockTest from '../adBlockComponent/adBlockTest/AdBlockTest'
 import { globalContext } from '../../context/globalStore'
 import SelectComponent from '../selectComponent/SelectComponent'
 import SelectTestComponent from '../selectComponent/selectTestComponent/SelectTestComponent'
+import CategoryTailComponent from '../categoryTailComponent/categoryTailComponent'
+import CategoryTailTestComponent from '../categoryTailComponent/categoryTailTestComponent/categoryTailTestComponent'
+import CategoryChoiceTestComponent from '../categoryChoiceComponent/categoryChoiceTestComponent/CategoryChoiceTestComponent'
 
 const TestComponent = () => {
 
@@ -18,6 +21,7 @@ const TestComponent = () => {
       <ButtonTest/>
       <AdBlockTest/>
       <SelectTestComponent/>
+      <CategoryChoiceTestComponent/>
     </div>
   )
 }

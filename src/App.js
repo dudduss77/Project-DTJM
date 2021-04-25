@@ -7,8 +7,15 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faBaseballBall, faCheckSquare, faMusic, faPlug, faSwimmer } from '@fortawesome/free-solid-svg-icons'
+
 import TestComponent from './components/testComponent/TestComponent'
 import GlobalProvider from './context/globalStore';
+
+
+
 
 function App() {
   return (
@@ -20,22 +27,11 @@ function App() {
       </GlobalProvider>
 
       
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+
     </div>
   );
 }
+
+library.add(fab, faCheckSquare, faPlug, faMusic, faSwimmer, faBaseballBall)
 
 export default App;

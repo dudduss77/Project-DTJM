@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+$font-family: "Lato", sans-serif;
+$categoryTail-font-size: 16px;
+$background-color: white;
+
+
+
+.categoryTailComponent {
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 120px;
+  height: 100px;
+  border-radius: 10%;
+
+  &:hover {
+    background-color: darken($background-color, 10%);
+  }
+  &__title {
+    width: 100%;
+    font-family: $font-family;
+    font-size: $categoryTail-font-size;
+    border: none;
+  }
+
+  &__icon {
+    font-size: 50px;
+  }
+
+
+}
+

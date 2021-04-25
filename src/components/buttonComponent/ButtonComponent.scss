@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-$button-background: #5AA4A8;
-$button-background-hover: #4D9093;
+@import './../../variables.scss';
+
+$button-background: $mainColor2;
+$button-background-hover: darken($button-background, 3%);
 $button-font-size: 1.2em;
-$button-font-family: "Lato", sans-serif;
-$button-color: #fff;
+$button-font-family: $mainFontFamily1;
+$button-color: $mainColor1;
 
 .buttonComponent {
   border: none;

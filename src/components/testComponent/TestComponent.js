@@ -21,6 +21,7 @@ const TestComponent = () => {
       <ButtonTest/>
       <AdBlockTest/>
       <SelectTestComponent/>
+      <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>
     </div>
   )

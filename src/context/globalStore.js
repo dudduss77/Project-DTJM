@@ -1,6 +1,7 @@
 import { useReducer, createContext} from 'react';
 
 import categoryReducer from './reducers/categoryReducer';
+import userDataReducer from './reducers/userDataReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -136,11 +137,16 @@ const GlobalProvider = ({children}) => {
         
     ]);
 
+    const [userData, setUserData] = useReducer(userDataReducer, {
+        logged: true
+    })
     return (
         <globalContext.Provider value={
             {
                 category, 
-                setCategory
+                setCategory,
+                userData,
+                setUserData
             }
         }>
             {children}

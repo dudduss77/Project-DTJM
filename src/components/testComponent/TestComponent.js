@@ -11,6 +11,9 @@ import CategoryTailComponent from '../categoryTailComponent/categoryTailComponen
 import CategoryTailTestComponent from '../categoryTailComponent/categoryTailTestComponent/categoryTailTestComponent'
 import CategoryChoiceTestComponent from '../categoryChoiceComponent/categoryChoiceTestComponent/CategoryChoiceTestComponent'
 import HeaderTest from '../headerComponent/headerTest/HeaderTest'
+import ObsPanelComponent from '../obsPanelComponent/ObsPanelComponent'
+import ObsPanelTest from '../obsPanelComponent/obsPanelTest/ObsPanelTest'
+import PersonItemTest from '../personItemComponent/personItemTest/PersonItemTest'
 
 const TestComponent = () => {
 
@@ -25,6 +28,8 @@ const TestComponent = () => {
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>
       <HeaderTest/>
+      <ObsPanelTest/>
+      <PersonItemTest/>
     </div>
   )
 }

@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.userDataComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__icons {
+    font-size: 1.3em;
+    display: flex;
+    padding: 5px 0;
+    gap: 10px;
+  }
+
+  &__content {
+    &__item {
+      text-align: center;
+      padding: 1px 0;
+    }
+  }
+}

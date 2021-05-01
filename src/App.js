@@ -5,7 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import './App.css';
+import './fontLibrary'
+import './App.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'

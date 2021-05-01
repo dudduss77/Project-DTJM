@@ -138,7 +138,14 @@ const GlobalProvider = ({children}) => {
     ]);
 
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: true
+        logged: true,
+        avatarSrc: "/assets/profil.png",
+        avatarAlt: "Avatar",
+        name: "Jan Kowalski",
+        nick: "Kowal",
+        email: "jankowalski@gmail.com",
+        location: "Wałbrzych",
+        description: "Testowy opis"
     })
     return (
         <globalContext.Provider value={

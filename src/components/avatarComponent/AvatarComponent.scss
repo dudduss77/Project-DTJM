@@ -1,0 +1,11 @@
+.avatarComponent {
+  border-radius: 100%;
+
+  &--small {
+    width: 75px;
+  }
+
+  &--big {
+    width: 100px;
+  }
+}

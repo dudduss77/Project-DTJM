@@ -1,0 +1,9 @@
+@import '../variables.scss';
+
+.darkIcon {
+  color: $mainColor4;
+  &:hover {
+    color: $mainColor5;
+    cursor: pointer;
+  }
+}

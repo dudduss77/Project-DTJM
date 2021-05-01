@@ -1,4 +1,3 @@
-import { faComment, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router'
@@ -27,15 +26,15 @@ const HeaderComponent = () => {
       logged ? 
         <div className="headerComponent__menu">
           <div className="headerComponent__menu__item" onClick={handlerClickMessage}>
-            <FontAwesomeIcon icon={faComment}/>
+            <FontAwesomeIcon icon="comment"/>
           </div>
 
           <div className="headerComponent__menu__item" onClick={handlerClickUserProfile}>
-            <FontAwesomeIcon icon={faUser}/>
+            <FontAwesomeIcon icon="user" />
           </div>
 
           <div className="headerComponent__menu__item" onClick={handlerClickAdd}>
-            <FontAwesomeIcon icon={faPlus}/>
+            <FontAwesomeIcon icon="plus" />
           </div>
         </div>
 
@@ -43,7 +42,7 @@ const HeaderComponent = () => {
 
         <div className="headerComponent__menu">
           <div className="headerComponent__menu__item" onClick={handlerClickLogIn}>
-            <FontAwesomeIcon icon={faUser}/>
+            <FontAwesomeIcon icon="user" />
           </div>
         </div>
     

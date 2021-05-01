@@ -1,4 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faHeart, faComment, faBaseballBall, faCheckSquare, faMusic, faPlug, faSwimmer, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHeart, faComment)
+library.add(fab, faHeart, faComment, faBaseballBall, faCheckSquare, faMusic, faPlug, faSwimmer, faPlus, faUser)

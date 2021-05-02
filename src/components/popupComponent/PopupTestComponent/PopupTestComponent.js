@@ -4,7 +4,7 @@ import PopupComponent from '../PopupComponent'
 import ButtonComponent from '../../buttonComponent/ButtonComponent'
 
 const PopupTestComponent = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   return (
     <div style={{alignSelf: 'center'}}>
       {show && <PopupComponent close={() => setShow(!show)}/>}

@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.chooseButton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $mainColor1;
+  background: $mainColor3;
+  font-size: 1.1em;
+  cursor: pointer;
+
+  &--checked {
+    background: $backgroundColor;
+    color: $mainColor4;
+    cursor: auto;
+  }
+}

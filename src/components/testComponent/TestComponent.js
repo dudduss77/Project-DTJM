@@ -15,6 +15,7 @@ import ObsPanelComponent from '../obsPanelComponent/ObsPanelComponent'
 import ObsPanelTest from '../obsPanelComponent/obsPanelTest/ObsPanelTest'
 import PersonItemTest from '../personItemComponent/personItemTest/PersonItemTest'
 import UserInfoComponent from '../userInfoComponent/UserInfoTest/UserInfoTest'
+import PopupTestComponent from '../popupComponent/PopupTestComponent/PopupTestComponent'
 
 const TestComponent = () => {
 
@@ -32,6 +33,7 @@ const TestComponent = () => {
       <ObsPanelTest/>
       <PersonItemTest/>
       <UserInfoComponent/>
+      <PopupTestComponent/>
     </div>
   )
 }

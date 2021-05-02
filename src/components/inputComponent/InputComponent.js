@@ -1,12 +1,21 @@
 import React from "react";
 import "./InputComponent.scss";
 
-const InputComponent = ({size="auto", orientation="vertical", label, htmlFor, type, placeholder, getValue}) => {
-
+const InputComponent = ({
+  size = "auto",
+  orientation = "vertical",
+  label,
+  htmlFor,
+  type,
+  placeholder,
+  getValue,
+  isSubmitting
+}) => {
   const getInputValue = (event) => {
     event.preventDefault();
-    getValue(event.target.value)
-  }
+    getValue(event.target.value);
+    if(isSubmitting) isSubmitting();
+  };
 
   return (
     <div

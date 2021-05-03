@@ -37,3 +37,8 @@
   border: 16px none #ffffff;
   border-radius: 55px;
 }
+
+* {
+  scrollbar-color: #e1e1e1 $mainColor3 ;
+  scrollbar-width: thin;
+}

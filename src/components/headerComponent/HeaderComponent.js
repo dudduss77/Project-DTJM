@@ -7,7 +7,7 @@ import './HeaderComponent.scss'
 
 const HeaderComponent = () => {
   let history = useHistory();
-  const {userData : {logged}} = useContext(globalContext);
+  const {userData : {logged}, setAppData} = useContext(globalContext);
   
   const handlerClickMessage = () => history.push('/messages');
 
@@ -15,7 +15,9 @@ const HeaderComponent = () => {
 
   const handlerClickAdd = () => history.push('/add');
 
-  const handlerClickLogIn = () => history.push('/login');
+  const handlerClickLogIn = () =>{
+    setAppData({type: "SHOW_POPUP"})
+  };
   return (
     <div className="headerComponent">
       <div className="headerComponent__logo">

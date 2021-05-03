@@ -21,6 +21,7 @@ $background-color: $mainColor1;
     padding: 5px 5px;
     box-sizing: border-box;
     border: none;
+    text-align: center;
   }
 
   &__list {
@@ -46,16 +47,6 @@ $background-color: $mainColor1;
       }
     }
 
-    // &::-webkit-scrollbar {
-    //   width: 5px;
-    //   height: 2px;
-    // }
-    
-    // &::-webkit-scrollbar-thumb {
-    //   background: #e1e1e1;
-    //   border: 16px none #ffffff;
-    //   border-radius: 55px;
-    // }
   }
 
 
@@ -72,6 +63,17 @@ $background-color: $mainColor1;
   }
 
 
+
+
+}
+
+
+@media screen and (max-width: 800px) {
+  .selectComponent {
+    &--small {
+      width: 90%;
+    }
+  }
 }
 
 @media screen and (max-width: 950px){

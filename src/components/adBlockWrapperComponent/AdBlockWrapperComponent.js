@@ -22,7 +22,7 @@ const renderBlock = (start, end, data) => {
   />)
 };
 
-const AdBlockWrapperComponent = () => {
+const AdBlockWrapperComponent = ({header}) => {
   const {testAd} = useContext(globalContext)
 
   const { width } = useWindowSize();
@@ -39,7 +39,7 @@ const AdBlockWrapperComponent = () => {
   return (
     <div className="adBlockWrapperComponent">
       <h2 className="adBlockWrapperComponent__header">
-        Proponowane ogłoszenia
+        {header}
       </h2>
       <div className="adBlockWrapperComponent__wrapper">
         {renderBlock(0, numItems, testAd)}

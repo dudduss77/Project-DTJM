@@ -3,13 +3,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./UserDataComponent.scss";
 import "../../globalStyle/globalStyle.scss";
 
-const UserDataComponent = ({ avatar, name, nick, email, location }) => {
+const UserDataComponent = ({
+  avatar,
+  name,
+  nick,
+  email,
+  location,
+  editMode = false,
+}) => {
   return (
     <div className="userDataComponent">
       {avatar}
       <div className="userDataComponent__icons">
-        <FontAwesomeIcon className="darkIcon" icon="heart" />
-        <FontAwesomeIcon className="darkIcon" icon="comment" />
+        {!editMode && (
+          <>
+            <FontAwesomeIcon className="darkIcon" icon="heart" />
+            <FontAwesomeIcon className="darkIcon" icon="comment" />
+          </>
+        )}
+
+        {editMode && <FontAwesomeIcon className="darkIcon" icon="cog" />}
       </div>
       <div className="userDataComponent__content">
         <h5 className="userDataComponent__content__item">{name}</h5>

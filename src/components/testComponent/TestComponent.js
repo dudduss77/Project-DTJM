@@ -28,7 +28,7 @@ const TestComponent = () => {
       <InputTestComponent/>
       <ButtonTest/>
       {/* <AdBlockTest/> */}
-      <AdBlockWrapperComponent/>
+      <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
       <SelectTestComponent/>
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>

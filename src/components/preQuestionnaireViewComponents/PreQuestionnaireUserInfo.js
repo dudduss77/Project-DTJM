@@ -2,18 +2,18 @@ import React, { useState } from "react";
 
 import InputComponent from "../inputComponent/InputComponent";
 import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
-import SelectComponent from '../selectComponent/SelectComponent'
+import SelectComponent from "../selectComponent/SelectComponent";
 
-import city from '../../json/localizationPL.json'
+import city from "../../json/localizationPL.json";
 
 const mappCities = () => {
   let tempArr = [];
-   city.forEach(item => {
-    tempArr.push(...(item.cities.map(city => city.text_simple)))
-   });
+  city.forEach((item) => {
+    tempArr.push(...item.cities.map((city) => city.text_simple));
+  });
 
   return tempArr;
-}
+};
 
 const PreQuestionnaireUserInfo = () => {
   const [userName, setUserName] = useState("");
@@ -46,7 +46,12 @@ const PreQuestionnaireUserInfo = () => {
         getValue={setUserNick}
         // isSubmitting={() => setIsEmailLoginSubmitting(true)}
       />
-      <SelectComponent data={cities} Change={setUserLocation} placeholder="Lokalizacja..."/>
+      <SelectComponent
+        size="mid"
+        data={cities}
+        Change={setUserLocation}
+        placeholder="Lokalizacja..."
+      />
 
       <TextAreaComponent size="mid" placeholder="Opis" getValue={setUserDesc} />
     </>

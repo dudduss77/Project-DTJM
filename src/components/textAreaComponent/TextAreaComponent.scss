@@ -1,0 +1,27 @@
+@import '../../variables.scss';
+
+.textAreaComponent {
+  border: none;
+  resize: none;
+  margin: 0;
+  padding: 5px;
+  height: 100px;
+  font-size: 1.2em;
+  font-family: $mainFontFamily1;
+  color: $mainColor6;
+  &--mid {
+    width: calc(300px - 10px);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .textAreaComponent {
+    &--small {
+      width: calc(90%- 10px);
+    }
+  
+    &--mid {
+      width: calc(90% - 10px);
+    }
+  }
+}

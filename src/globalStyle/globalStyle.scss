@@ -13,3 +13,14 @@
     cursor: pointer;
   }
 }
+
+.emptyRwdDiv {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .emptyRwdDiv {
+    display: block;
+    flex: 1;
+  }
+}

@@ -19,3 +19,24 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .userDataComponent {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+
+    &__icons {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+    }
+
+    &__content {
+      &__item {
+        text-align: left;
+      }
+    }
+  }
+}

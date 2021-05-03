@@ -37,6 +37,7 @@ const PassResetComponent = () => {
         getValue={setEmailPassReset}
         isSubmitting={() => setIsEmailResetSubmitting(true)}
       />
+      <div className="emptyRwdDiv"></div>
       <ButtonComponent
         size="small"
         name="Resetuj"

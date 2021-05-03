@@ -52,3 +52,15 @@ $label-color: $mainColor4;
     align-items: center;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .inputComponent {
+    &--small {
+      width: 90%;
+    }
+  
+    &--mid {
+      width: 90%;
+    }
+  }
+}

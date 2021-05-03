@@ -17,6 +17,8 @@ import PersonItemTest from '../personItemComponent/personItemTest/PersonItemTest
 import UserInfoComponent from '../userInfoComponent/UserInfoTest/UserInfoTest'
 import PopupTestComponent from '../popupComponent/PopupTestComponent/PopupTestComponent'
 
+import AdBlockWrapperComponent from '../adBlockWrapperComponent/AdBlockWrapperComponent'
+
 const TestComponent = () => {
 
   const {category, setCategory } = useContext(globalContext);
@@ -25,7 +27,8 @@ const TestComponent = () => {
     <div className="testComponent">
       <InputTestComponent/>
       <ButtonTest/>
-      <AdBlockTest/>
+      {/* <AdBlockTest/> */}
+      <AdBlockWrapperComponent/>
       <SelectTestComponent/>
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>

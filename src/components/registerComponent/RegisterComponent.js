@@ -70,6 +70,7 @@ const RegisterComponent = () => {
         getValue={setReapetPasswordRegister}
         isSubmitting={() => setIsReapetPasswordSubmitting(true)}
       />
+      <div className="emptyRwdDiv"></div>
       <ButtonComponent size="small" name="Zarejestruj" click={() => submit()} />
     </>
   );

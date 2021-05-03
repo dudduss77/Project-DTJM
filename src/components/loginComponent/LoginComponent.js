@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import '../../globalStyle/globalStyle.scss';
+
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 import InputComponent from "../inputComponent/InputComponent";
 import ErrorComponent from "../errorComponent/ErrorComponent";
@@ -60,6 +62,7 @@ const LoginComponent = () => {
         getValue={setPasswordLogin}
         isSubmitting={() => setIsPasswordLoginSubmitting(true)}
       />
+      <div className="emptyRwdDiv"></div>
       <ButtonComponent
         size="small"
         name="Zaloguj"

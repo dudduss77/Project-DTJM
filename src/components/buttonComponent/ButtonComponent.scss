@@ -26,3 +26,12 @@ $button-color: $mainColor1;
     width: 100%;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .buttonComponent {
+    padding: 10px;
+    &--small {
+      width: 90%;
+    }
+  }
+}

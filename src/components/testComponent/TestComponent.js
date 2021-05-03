@@ -39,7 +39,7 @@ const TestComponent = () => {
 
      <UserInfoComponent/>
 
-      <UserInfoComponent/>
+      {/* <UserInfoComponent/> */}
       <PopupTestComponent/>
       <SearchMainPageTestComponent/>
     </div>

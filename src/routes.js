@@ -10,4 +10,8 @@ export const routes = [
     path: "/profil",
     component: UserProfileView
   },
+  {
+    path: "/profil/:id",
+    component: UserProfileView
+  },
 ]

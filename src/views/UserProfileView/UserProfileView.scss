@@ -18,3 +18,12 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .userProfileView {
+    &__listWrapper {
+      width: 90%;
+      grid-template-columns: 1fr;
+    }
+  }
+}

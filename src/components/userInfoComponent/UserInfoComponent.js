@@ -7,7 +7,7 @@ import UserDataComponent from "../userDataComponent/UserDataComponent";
 import DescriptionComponent from "../descriptionComponent/DescriptionComponent";
 import AvatarComponent from "../avatarComponent/AvatarComponent";
 
-const UserInfoComponent = () => {
+const UserInfoComponent = ({editMode}) => {
   const { userData } = useContext(globalContext);
   return (
     <div className="userInfoComponent">
@@ -23,6 +23,7 @@ const UserInfoComponent = () => {
         nick={userData.nick}
         email={userData.email}
         location={userData.location}
+        editMode={editMode}
       />
       <DescriptionComponent header="Opis" content={userData.description} />
     </div>

@@ -1,27 +1,27 @@
-import React from 'react'
-import './LayoutView.scss'
+import React from "react";
+import "./LayoutView.scss";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import {routes} from '../../routes'
+import { routes } from "../../routes";
 
-import HeaderComponent from '../../components/headerComponent/HeaderComponent'
+import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 
 const LayoutView = () => {
   return (
     <div className="layoutView">
       <Router>
-        <HeaderComponent/>
-        <Switch>
-          {routes.map((route, i) => <Route key={i} {...route}/>)}
-        </Switch>
+        <HeaderComponent />
+        <div className="layoutView__content">
+          <Switch>
+            {routes.map((route, i) => (
+              <Route exact key={i} {...route} />
+            ))}
+          </Switch>
+        </div>
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default LayoutView
+export default LayoutView;

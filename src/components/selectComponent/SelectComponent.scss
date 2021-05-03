@@ -68,7 +68,7 @@ $background-color: $mainColor1;
 }
 
 
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
   .selectComponent {
     &--small {
       width: 90%;

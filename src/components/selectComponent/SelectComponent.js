@@ -11,12 +11,11 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
 
 
   const handlerOnChange = (e) => {
-    Change(e.target.value);
     setVisibility(true);
     setInputTxt(e.target.value)
   }
   const handlerOnClickInput = (e) => setVisibility(true);
-  const handlerOnClickItem = (e) => {setInputTxt(e.target.innerText); setVisibility(false)}
+  const handlerOnClickItem = (e) => {setInputTxt(e.target.innerText); setVisibility(false); }
   const handlerOnMouseLeave = (e) => setVisibility(false);
 
   const mappItems = (val = "") => {
@@ -27,7 +26,11 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
     });
   }
   
-  useEffect(() => setMappedItems(mappItems(inputTxt)), [inputTxt])
+  useEffect(() => {
+    Change(inputTxt);
+    setMappedItems(mappItems(inputTxt)) 
+  
+  }, [inputTxt])
 
 
   const [mappedItems, setMappedItems] = useState(mappItems());

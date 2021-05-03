@@ -18,6 +18,7 @@ import UserInfoComponent from '../userInfoComponent/UserInfoTest/UserInfoTest'
 import PopupTestComponent from '../popupComponent/PopupTestComponent/PopupTestComponent'
 
 import AdBlockWrapperComponent from '../adBlockWrapperComponent/AdBlockWrapperComponent'
+import SearchMainPageTestComponent from '../searchMainPageComponent/searchMainPageTestComponent/SearchMainPageTestComponent'
 
 const TestComponent = () => {
 
@@ -27,16 +28,17 @@ const TestComponent = () => {
     <div className="testComponent">
       <InputTestComponent/>
       <ButtonTest/>
-      {/* <AdBlockTest/> */}
+       {/* <AdBlockTest/> */}
       <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
-      <SelectTestComponent/>
+      <SelectTestComponent/> */}
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>
       <HeaderTest/>
       <ObsPanelTest/>
       <PersonItemTest/>
-      <UserInfoComponent/>
+     <UserInfoComponent/>
       <PopupTestComponent/>
+      <SearchMainPageTestComponent/>
     </div>
   )
 }

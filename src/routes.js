@@ -15,4 +15,8 @@ export const routes = [
     path: "/test",
     component: TestComponent
   },
+  {
+    path: "/profil/:id",
+    component: UserProfileView
+  },
 ]

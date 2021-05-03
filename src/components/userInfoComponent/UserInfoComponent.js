@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./UserInfoComponent.scss";
-
-import { globalContext } from "../../context/globalStore";
 
 import UserDataComponent from "../userDataComponent/UserDataComponent";
 import DescriptionComponent from "../descriptionComponent/DescriptionComponent";
 import AvatarComponent from "../avatarComponent/AvatarComponent";
 
-const UserInfoComponent = ({editMode}) => {
-  const { userData } = useContext(globalContext);
+const UserInfoComponent = ({editMode, userData}) => {
   return (
     <div className="userInfoComponent">
       <UserDataComponent

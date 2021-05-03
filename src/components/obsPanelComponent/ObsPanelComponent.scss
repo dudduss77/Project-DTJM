@@ -16,7 +16,13 @@
   }
 
   &__people {
-    overflow: scroll;
+    overflow-y: auto;
     max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .obsPanelComponent {
+    width: 100%;
   }
 }

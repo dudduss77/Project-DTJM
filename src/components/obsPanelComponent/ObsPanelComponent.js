@@ -3,9 +3,9 @@ import PersonItemComponent from '../personItemComponent/PersonItemComponent'
 import './ObsPanelComponent.scss'
 
 
-const ObsPanelComponent = ({data}) => {
+const ObsPanelComponent = ({data = []}) => {
 
-  const mappPerson = () => data.map(item => <PersonItemComponent name={item.name} imgUrl={item.imgUrl}/>)
+  const mappPerson = () => data.map(item => <PersonItemComponent key={item.id} name={item.name} imgUrl={item.imgUrl}/>)
   const [mappedPerson, setMappedPerson] = useState(mappPerson())
 
 

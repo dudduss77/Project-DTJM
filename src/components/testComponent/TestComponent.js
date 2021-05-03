@@ -36,7 +36,10 @@ const TestComponent = () => {
       <HeaderTest/>
       <ObsPanelTest/>
       <PersonItemTest/>
+
      <UserInfoComponent/>
+
+      <UserInfoComponent/>
       <PopupTestComponent/>
       <SearchMainPageTestComponent/>
     </div>

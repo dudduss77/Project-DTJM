@@ -1,18 +1,17 @@
-import React from 'react'
-import './ListViewComponent.scss' 
+import React from "react";
+import "./ListViewComponent.scss";
 
-
-const ListViewComponent = ({header, list}) => {
-  
+const ListViewComponent = ({ header, list = [] }) => {
   return (
     <div className="listBox">
-      <h3>{header}</h3>
-      <hr></hr>
+      <h3 className="listBox__header">{header}</h3>
       <ul>
-      {list.map((each) => (<li key={each.id}>{each.text}</li>))}
+        {list.map((each) => (
+          <li key={each.id}>{each.name}</li>
+        ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default ListViewComponent
+export default ListViewComponent;

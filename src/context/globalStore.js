@@ -298,6 +298,66 @@ const GlobalProvider = ({children}) => {
                 id: 2,
                 name: "C++"
             },
+            {
+                id: 3,
+                name: "JS"
+            },
+            {
+                id: 4,
+                name: "C++"
+            },
+            {
+                id: 5,
+                name: "JS"
+            },
+            {
+                id: 6,
+                name: "C++"
+            },
+            {
+                id: 7,
+                name: "C++"
+            },
+            {
+                id: 8,
+                name: "JS"
+            },
+            {
+                id: 9,
+                name: "C++"
+            },
+            {
+                id: 10,
+                name: "C++"
+            },
+            {
+                id: 11,
+                name: "C++"
+            },
+            {
+                id: 12,
+                name: "JS"
+            },
+            {
+                id: 13,
+                name: "C++"
+            },
+            {
+                id: 14,
+                name: "C++"
+            },
+            {
+                id: 15,
+                name: "C++"
+            },
+            {
+                id: 16,
+                name: "JS"
+            },
+            {
+                id: 17,
+                name: "C++"
+            },
         ],
         category: [
             {

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import UserInfoComponent from "../../components/userInfoComponent/UserInfoComponent";
 import AdBlockWrapperComponent from "../../components/adBlockWrapperComponent/AdBlockWrapperComponent";
 import ObsPanelComponent from "../../components/obsPanelComponent/ObsPanelComponent";
+import ListViewComponent from '../../components/listViewComponent/ListViewComponent';
 
 import { globalContext } from "../../context/globalStore";
 
@@ -41,36 +42,15 @@ const UserProfileView = () => {
         editMode={!id ? true : false}
       />
       <div className="userProfileView__listWrapper">
-        <div className="userProfileView__listWrapper__list">
-          Skills
-          <ul>
-            {selectedUserData.skills
-              ? selectedUserData.skills.map((item) => (
-                  <li key={item.id}>{item.name}</li>
-                ))
-              : ""}
-          </ul>
-        </div>
-        <div className="userProfileView__listWrapper__list">
-          Kategorie
-          <ul>
-            {selectedUserData.category
-              ? selectedUserData.category.map((item) => (
-                  <li key={item.id}>{item.name}</li>
-                ))
-              : ""}
-          </ul>
-        </div>
-        <div className="userProfileView__listWrapper__list">
-          Linki
-          <ul>
-            {selectedUserData.links
-              ? selectedUserData.links.map((item) => (
-                  <li key={item.id}>{item.name}</li>
-                ))
-              : ""}
-          </ul>
-        </div>
+        {/* <div className="userProfileView__listWrapper__list"> */}
+          <ListViewComponent header="Skills" list={selectedUserData.skills}/>
+        {/* </div> */}
+        {/* <div className="userProfileView__listWrapper__list"> */}
+          <ListViewComponent header="Kategorie" list={selectedUserData.category}/>
+        {/* </div> */}
+        {/* <div className="userProfileView__listWrapper__list"> */}
+          <ListViewComponent header="Linki" list={selectedUserData.links}/>
+        {/* </div> */}
         <ObsPanelComponent data={selectedUserData.peopleObs} />
       </div>
       <AdBlockWrapperComponent

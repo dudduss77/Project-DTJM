@@ -1,0 +1,90 @@
+.preQuestionnaireView {
+  width: 100%;
+  height: calc(100% - 40px);
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-auto-rows: min-content;
+  grid-template-areas: 'headerTop headerTop headerTop'
+  'leftTop mid right'
+  'leftBottom mid right'
+  'bottom bottom bottom';
+  justify-content: center;
+  padding: 20px 0;
+  gap: 10px;
+
+  &__header {
+    grid-area: headerTop;
+    text-align: center;
+  }
+
+  &__leftTop {
+    grid-area: leftTop;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__mid {
+    grid-area: mid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__right{
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__leftBottom {
+    grid-area: leftBottom;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__bottom {
+    grid-area: bottom;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+//Usunąć później
+.testCategory {
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+.tempAvatar {
+  width: 100%;
+  height: 200px;
+  background: #444;
+}
+
+@media screen and (max-width: 950px) {
+  .preQuestionnaireView {
+    height: auto;
+    grid-template-columns: 300px;
+    grid-template-rows: auto auto 400px 400px auto;
+    grid-template-areas: 'headerTop'
+    'leftTop'
+    'mid'
+    'right'
+    'leftBottom'
+    'bottom';
+
+    &__bottom {
+      margin-bottom: 100px;
+    }
+  }
+  
+}

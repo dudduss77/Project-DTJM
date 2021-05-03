@@ -37,7 +37,7 @@ const TestComponent = () => {
       <ObsPanelTest/>
       <PersonItemTest/>
 
-     <UserInfoComponent/>
+     {/* <UserInfoComponent/> */}
 
       {/* <UserInfoComponent/> */}
       <PopupTestComponent/>

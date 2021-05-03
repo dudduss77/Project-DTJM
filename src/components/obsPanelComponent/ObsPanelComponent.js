@@ -13,9 +13,9 @@ const ObsPanelComponent = ({data = []}) => {
 
   return (
     <div className="obsPanelComponent">
-      <div className="obsPanelComponent__title">
+      <h3 className="obsPanelComponent__title">
         Obserwowani ludzie
-      </div>
+      </h3>
       <div className="obsPanelComponent__people">
         {mappedPerson} 
       </div>

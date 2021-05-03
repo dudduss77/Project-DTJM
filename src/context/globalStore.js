@@ -2,6 +2,7 @@ import { useReducer, createContext} from 'react';
 
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
+import appReducer from './reducers/appReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -316,6 +317,10 @@ const GlobalProvider = ({children}) => {
         ]
     })
 
+    const [appData, setAppData] = useReducer(appReducer, {
+        showPopup: false
+    })
+
     const testAd = [
         {
             path: "/tempPath",
@@ -424,6 +429,8 @@ const GlobalProvider = ({children}) => {
                 setCategory,
                 userData,
                 setUserData,
+                appData,
+                setAppData,
                 testAd
             }
         }>

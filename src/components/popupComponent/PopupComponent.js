@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./PopupComponent.scss";
 
 import LoginComponent from "../loginComponent/LoginComponent";
@@ -8,7 +8,11 @@ import PassResetComponent from "../passResetComponent/PassResetComponent";
 
 import { useWindowSize } from "../../hook/windowSize";
 
-const PopupComponent = ({ close }) => {
+import { globalContext } from "../../context/globalStore";
+
+const PopupComponent = () => {
+  const { setAppData } = useContext(globalContext);
+
   const windowSize = useWindowSize();
   const [mobile, setMobile] = useState(false);
   const [state, setState] = useState("login");
@@ -32,8 +36,12 @@ const PopupComponent = ({ close }) => {
     }
   };
 
+  const closePopup = () => {
+    setAppData({ type: "CLOSE_POPUP" });
+  };
+
   return (
-    <div onClick={() => close()} className="popupComponent">
+    <div onClick={() => closePopup()} className="popupComponent">
       <div
         onClick={(e) => e.stopPropagation()}
         className="popupComponent__wrapper"
@@ -56,7 +64,7 @@ const PopupComponent = ({ close }) => {
           />
           {mobile && (
             <ChooseButton
-              click={() => close()}
+              click={() => closePopup()}
               name="Zamknij"
               checked={false}
             />

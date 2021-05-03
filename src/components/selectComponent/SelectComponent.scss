@@ -60,6 +60,10 @@ $background-color: $mainColor1;
 
 
   &--small {
+    width: 250px;
+  }
+
+  &--mid {
     width: 300px;
   }
 
@@ -73,6 +77,10 @@ $background-color: $mainColor1;
 @media screen and (max-width: 950px){
   .selectComponent {
     &--small {
+      width: 90%;
+    }
+
+    &--mid {
       width: 90%;
     }
   

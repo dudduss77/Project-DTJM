@@ -14,6 +14,11 @@
     padding-bottom: 20px;
     margin-bottom: 20px;
   }
+
+  &__people {
+    overflow-y: auto;
+    max-height: 300px;
+  }
 }
 
 @media screen and (max-width: 800px) {

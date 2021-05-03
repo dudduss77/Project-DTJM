@@ -24,3 +24,16 @@
     flex: 1;
   }
 }
+
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+  background:$mainColor3;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 16px none #ffffff;
+  border-radius: 55px;
+}

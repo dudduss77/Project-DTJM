@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./UserDataComponent.scss";
 import "../../globalStyle/globalStyle.scss";
 
+import { useHistory } from "react-router";
+
 const UserDataComponent = ({
   avatar,
   name,
@@ -11,6 +13,7 @@ const UserDataComponent = ({
   location,
   editMode = false,
 }) => {
+  let history = useHistory();
   return (
     <div className="userDataComponent">
       {avatar}
@@ -22,7 +25,13 @@ const UserDataComponent = ({
           </>
         )}
 
-        {editMode && <FontAwesomeIcon className="darkIcon" icon="cog" />}
+        {editMode && (
+          <FontAwesomeIcon
+            onClick={() => history.push("user-settings")}
+            className="darkIcon"
+            icon="cog"
+          />
+        )}
       </div>
       <div className="userDataComponent__content">
         <h5 className="userDataComponent__content__item">{name}</h5>

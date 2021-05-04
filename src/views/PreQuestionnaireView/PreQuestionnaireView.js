@@ -1,25 +1,27 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./PreQuestionnaireView.scss";
 
-import PreQuestionnaireUserInfo from '../../components/preQuestionnaireViewComponents/PreQuestionnaireUserInfo'
+import UserFormComponent from "../../components/userFormComponent/UserFormComponent";
 
-import TemplateOne from '../../templatesComponents/TemplateOne/TemplateOne'
+import TemplateOne from "../../templatesComponents/TemplateOne/TemplateOne";
 
 const PreQuestionnaireView = () => {
   const [userData, setUserData] = useState(null);
   const [buttonClick, setButtonClick] = useState(false);
 
-  const preQuestionnaireUserInfo = <PreQuestionnaireUserInfo
-    getData={setUserData}
-    informToGetData={buttonClick}
-  />;
+  const preQuestionnaireUserInfo = (
+    <>
+      <h3>Dane Podstawowe</h3>
+      <UserFormComponent getData={setUserData} informToGetData={buttonClick} />
+    </>
+  );
 
   useEffect(() => {
-    console.log("Wysłane") //Walidacja
-  }, [buttonClick])
+    console.log("Wysłane"); //Walidacja
+  }, [buttonClick]);
 
   return (
-    <TemplateOne 
+    <TemplateOne
       header="Ankieta wstępna"
       leftTop={preQuestionnaireUserInfo}
       leftBottom={<div className="tempAvatar"></div>}

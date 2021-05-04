@@ -7,12 +7,12 @@ import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 const TemplateOne = ({ header, leftTop, leftBottom, mid, right, buttonClick }) => {
   return (
     <div className="templateOne">
-      <h3 className="preQuestionnaireView__header">{header}</h3>
-      <div className="preQuestionnaireView__leftTop">{leftTop}</div>
-      <div className="preQuestionnaireView__leftBottom">{leftBottom}</div>
-      <div className="preQuestionnaireView__mid">{mid}</div>
-      <div className="preQuestionnaireView__right">{right}</div>
-      <div className="preQuestionnaireView__bottom">
+      <h3 className="templateOne__header">{header}</h3>
+      <div className="templateOne__leftTop">{leftTop}</div>
+      <div className="templateOne__leftBottom">{leftBottom}</div>
+      <div className="templateOne__mid">{mid}</div>
+      <div className="templateOne__right">{right}</div>
+      <div className="templateOne__bottom">
         <ButtonComponent
           size="small"
           name="Zapisz"

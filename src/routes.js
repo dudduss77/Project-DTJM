@@ -3,6 +3,7 @@ import HomePageView from './views/homePageView/HomePageView'
 import UserProfileView from './views/UserProfileView/UserProfileView'
 import PreQuestionnaireView from './views/PreQuestionnaireView/PreQuestionnaireView'
 import AddAdView from './views/AddAdView/AddAdView'
+import UserSettingsView from './views/UserSettingsView/UserSettingsView'
 
 export const routes = [
   {
@@ -28,5 +29,9 @@ export const routes = [
   {
     path: "/add-ad",
     component: AddAdView
+  },
+  {
+    path: "/user-settings",
+    component: UserSettingsView
   },
 ]

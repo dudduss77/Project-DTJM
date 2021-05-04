@@ -8,7 +8,6 @@ $button-color: $mainColor1;
 
 .buttonComponent {
   border: none;
-  background: $button-background;
   font-size: $button-font-size;
   font-family: $button-font-family;
   color: $button-color;
@@ -22,15 +21,30 @@ $button-color: $mainColor1;
     width: 250px;
   }
 
+  &--mid {
+    width: 300px;
+  }
+
   &--auto {
     width: 100%;
   }
+
+  &--default {
+    background: $button-background;
+  }
+
+  &--red {
+    background: $buttonColor2;
+  }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   .buttonComponent {
     padding: 10px;
     &--small {
+      width: 90%;
+    }
+    &--mid {
       width: 90%;
     }
   }

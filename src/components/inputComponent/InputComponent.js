@@ -9,7 +9,8 @@ const InputComponent = ({
   type,
   placeholder,
   getValue,
-  isSubmitting
+  isSubmitting,
+  initialValue = ""
 }) => {
   const getInputValue = (event) => {
     event.preventDefault();
@@ -28,6 +29,7 @@ const InputComponent = ({
       )}
 
       <input
+        defaultValue={initialValue}
         onChange={getInputValue}
         className="inputComponent__input"
         type={type}

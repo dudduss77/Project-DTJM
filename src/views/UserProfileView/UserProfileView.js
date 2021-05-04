@@ -35,6 +35,8 @@ const UserProfileView = () => {
       }); //Call api to get user data witch id params
   }, [id, userData]);
 
+  console.log(selectedUserData.ad)
+
   return (
     <div className="userProfileView">
       <UserInfoComponent

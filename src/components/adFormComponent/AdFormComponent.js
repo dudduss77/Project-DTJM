@@ -25,7 +25,6 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
   const [adLocation, setAdLocation] = useState("");
   const [adDesc, setAdDesc] = useState("");
   const [cities, setCities] = useState(mappCities());
-  console.log(id);
 
   useEffect(() => {
     if(settings) {
@@ -40,7 +39,9 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
 
   useEffect(() => {
     if (informToGetData) {
+      console.log(adName, adLocation, adDesc)
       getData({
+        id,
         adName,
         adLocation,
         adDesc,

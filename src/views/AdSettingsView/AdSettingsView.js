@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import TemplateTwo from "../../templatesComponents/TemplateTwo/TemplateTwo";
 import AdFormComponent from "../../components/adFormComponent/AdFormComponent";
 import DeleteAd from '../../components/adSettingsViewComponent/DeleteAd'
 
+import { globalContext } from "../../context/globalStore";
+import { userActionType } from "../../context/reducers/userDataReducer";
+
 const AdSettingsView = () => {
+  const { userData, setUserData } = useContext(globalContext);
   const [adData, setAdData] = useState(null);
   const [buttonClick, setButtonClick] = useState(false);
 
@@ -25,6 +29,27 @@ const AdSettingsView = () => {
       <DeleteAd/>
     </>
   )
+
+  useEffect(() => {
+    submitEditTask();
+  }, [buttonClick, adData]);
+
+  const submitEditTask = () => {
+    if (adData) {
+      let ad = {
+        id: parseInt(adData.id),
+        imgSrc:
+          "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+        imgAlt: "Kiedyś może będzie",
+        header: adData.adName,
+        category: "Jest lecz nie wiadomo gdzie",
+        desc: adData.adDesc,
+        location: adData.adLocation,
+      };
+
+      setUserData({ type: userActionType.editAd, payload: {id: parseInt(adData.id), editAd: ad} });
+    }
+  }
 
   return (
     <TemplateTwo

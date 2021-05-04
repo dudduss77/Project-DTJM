@@ -28,8 +28,8 @@ const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
 
   useEffect(() => {
     if(settings) {
-      setUserName(userData.name.split(" "));
-      setUserSurname(userData.name);
+      setUserName(userData.name);
+      setUserSurname(userData.surname);
       setUserNick(userData.nick)
       setUserLocation(userData.location)
       setUserDesc(userData.description)

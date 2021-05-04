@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 const UserDataComponent = ({
   avatar,
   name,
+  surname,
   nick,
   email,
   location,
@@ -34,7 +35,7 @@ const UserDataComponent = ({
         )}
       </div>
       <div className="userDataComponent__content">
-        <h5 className="userDataComponent__content__item">{name}</h5>
+        <h5 className="userDataComponent__content__item">{name + " " + surname}</h5>
         <h5 className="userDataComponent__content__item">{nick}</h5>
         <h5 className="userDataComponent__content__item">{email}</h5>
         <h5 className="userDataComponent__content__item">{location}</h5>

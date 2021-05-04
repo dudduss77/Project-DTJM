@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import TemplateOne from "../../templatesComponents/TemplateOne/TemplateOne";
-import AdInfoComponent from "../../components/addAdViewComponents/AdInfoComponent";
+import AdFormComponent from '../../components/adFormComponent/AdFormComponent'
 
 const AddAdView = () => {
   const [adData, setAdData] = useState(null);
   const [buttonClick, setButtonClick] = useState(false);
 
   const adInfoComponent = (
-    <AdInfoComponent getData={setAdData} informToGetData={buttonClick} />
+    <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
   );
 
   return (

@@ -140,6 +140,7 @@ const GlobalProvider = ({children}) => {
 
     const [userData, setUserData] = useReducer(userDataReducer, {
         logged: true,
+        userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
         name: "Jan",
@@ -149,226 +150,27 @@ const GlobalProvider = ({children}) => {
         location: "Wałbrzych",
         description: "Testowy opis",
         ad: [
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
-            {
-                id: 1,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-                desc: "Coś tam sobie zrobię",
-                location: ""
-            },
-            {
-                id: 2,
-                path: "/ad-settings",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Szukam Tomka",
-                category: "Wpierdziel",
-                desc: "Tomek gdzie jesteś?",
-                location: ""
-            },
+            // {
+            //     id: 1,
+            //     path: "/ad-settings",
+            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+            //     imgAlt: "Testowe ogłoszenie",
+            //     header: "Testowe ogłoszenie",
+            //     category: "Test",
+            //     desc: "Coś tam sobie zrobię",
+            //     location: ""
+            // },
+            // {
+            //     id: 2,
+            //     path: "/ad-settings",
+            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+            //     imgAlt: "Testowe ogłoszenie",
+            //     header: "Szukam Tomka",
+            //     category: "Wpierdziel",
+            //     desc: "Tomek gdzie jesteś?",
+            //     location: ""
+            // },
+            
 
         ],
         peopleObs: [

@@ -2,6 +2,7 @@ import TestComponent from './components/testComponent/TestComponent'
 import HomePageView from './views/homePageView/HomePageView'
 import UserProfileView from './views/UserProfileView/UserProfileView'
 import PreQuestionnaireView from './views/PreQuestionnaireView/PreQuestionnaireView'
+import AddAdView from './views/AddAdView/AddAdView'
 
 export const routes = [
   {
@@ -23,5 +24,9 @@ export const routes = [
   {
     path: "/pre-questionnaire",
     component: PreQuestionnaireView
+  },
+  {
+    path: "/add-ad",
+    component: AddAdView
   },
 ]

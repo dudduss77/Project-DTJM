@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import InputComponent from "../inputComponent/InputComponent";
 import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
@@ -15,7 +15,7 @@ const mappCities = () => {
   return tempArr;
 };
 
-const PreQuestionnaireUserInfo = () => {
+const PreQuestionnaireUserInfo = ({ getData, informToGetData }) => {
   const [userName, setUserName] = useState("");
   const [userSurname, setUserSurname] = useState("");
   const [userNick, setUserNick] = useState("");
@@ -23,6 +23,17 @@ const PreQuestionnaireUserInfo = () => {
   const [userDesc, setUserDesc] = useState("");
   const [cities, setCities] = useState(mappCities());
 
+  useEffect(() => {
+    if (informToGetData) {
+      getData({
+        userName,
+        userSurname,
+        userNick,
+        userLocation,
+        userDesc,
+      });
+    }
+  }, [informToGetData]);
   return (
     <>
       <InputComponent
@@ -30,21 +41,18 @@ const PreQuestionnaireUserInfo = () => {
         type="text"
         placeholder="Imię"
         getValue={setUserName}
-        // isSubmitting={() => setIsEmailLoginSubmitting(true)}
       />
       <InputComponent
         size="mid"
         type="text"
         placeholder="Nazwisko"
         getValue={setUserSurname}
-        // isSubmitting={() => setIsEmailLoginSubmitting(true)}
       />
       <InputComponent
         size="mid"
         type="text"
         placeholder="Pseudonim"
         getValue={setUserNick}
-        // isSubmitting={() => setIsEmailLoginSubmitting(true)}
       />
       <SelectComponent
         size="mid"

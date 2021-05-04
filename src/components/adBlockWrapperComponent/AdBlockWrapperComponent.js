@@ -13,8 +13,8 @@ const renderBlock = (start, end, data) => {
 
   return temp.map((item) => (
     <AdBlockComponent
-      key={item.path}
-      path={item.path}
+      key={item.id}
+      path={item.path + `/${item.id}`}
       imgSrc={item.imgSrc}
       imgAlt={item.imgAlt}
       header={item.header}

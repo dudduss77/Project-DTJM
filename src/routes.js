@@ -4,6 +4,7 @@ import UserProfileView from './views/UserProfileView/UserProfileView'
 import PreQuestionnaireView from './views/PreQuestionnaireView/PreQuestionnaireView'
 import AddAdView from './views/AddAdView/AddAdView'
 import UserSettingsView from './views/UserSettingsView/UserSettingsView'
+import AdSettingsView from './views/AdSettingsView/AdSettingsView'
 
 export const routes = [
   {
@@ -33,5 +34,9 @@ export const routes = [
   {
     path: "/user-settings",
     component: UserSettingsView
+  },
+  {
+    path: "/ad-settings/:id",
+    component: AdSettingsView
   },
 ]

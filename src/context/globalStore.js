@@ -165,57 +165,209 @@ const GlobalProvider = ({children}) => {
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
                 header: "Szukam Tomka",
-                category: "Test",
+                category: "Wpierdziel",
                 desc: "Tomek gdzie jesteś?",
                 location: ""
             },
             {
-                id: 3,
+                id: 1,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
                 header: "Testowe ogłoszenie",
                 category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
             },
             {
-                id: 4,
+                id: 2,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
             },
             {
-                id: 5,
+                id: 1,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
                 header: "Testowe ogłoszenie",
                 category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
             },
             {
-                id: 6,
+                id: 2,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
             },
             {
-                id: 7,
+                id: 1,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
                 header: "Testowe ogłoszenie",
                 category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
             },
             {
-                id: 8,
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
                 path: "/ad-settings",
                 imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
                 imgAlt: "Testowe ogłoszenie",
                 header: "Testowe ogłoszenie",
                 category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
+            },
+            {
+                id: 1,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Testowe ogłoszenie",
+                category: "Test",
+                desc: "Coś tam sobie zrobię",
+                location: ""
+            },
+            {
+                id: 2,
+                path: "/ad-settings",
+                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+                imgAlt: "Testowe ogłoszenie",
+                header: "Szukam Tomka",
+                category: "Wpierdziel",
+                desc: "Tomek gdzie jesteś?",
+                location: ""
             },
 
         ],
@@ -326,103 +478,185 @@ const GlobalProvider = ({children}) => {
 
     const testAd = [
         {
+            id: 1,
             path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
+            id: 2,
             path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath2",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath3",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath4",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath5",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath6",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath7",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath8",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath9",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath10",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath11",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath12",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath13",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
-        },   
+            desc: "Jazda jazda",
+            location: ""
+        },
+        {
+            id: 1,
+            path: "/tempPath",
+            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            imgAlt: "Księżyc",
+            header: "Projekt księżyc",
+            category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
+        },
+        {
+            id: 2,
+            path: "/tempPath1",
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Party",
+            header: "Projekt X",
+            category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
+        },
+        {
+            id: 1,
+            path: "/tempPath",
+            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            imgAlt: "Księżyc",
+            header: "Projekt księżyc",
+            category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
+        },
+        {
+            id: 2,
+            path: "/tempPath1",
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Party",
+            header: "Projekt X",
+            category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
+        },
     ]
 
     return (

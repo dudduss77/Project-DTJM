@@ -8,13 +8,13 @@ import ButtonComponent from "../buttonComponent/ButtonComponent";
 
 import { globalContext } from "../../context/globalStore";
 
-const renderBlock = (start, end, data) => {
+const renderBlock = (start, end, data = [], userView) => {
   let temp = data.slice(start, end);
 
   return temp.map((item) => (
     <AdBlockComponent
       key={item.id}
-      path={item.path + `/${item.id}`}
+      path={userView ? `/my-ad/${item.id}` : `/ad/${item.id}`}
       imgSrc={item.imgSrc}
       imgAlt={item.imgAlt}
       header={item.header}
@@ -27,9 +27,15 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
   const { testAd } = useContext(globalContext);
   const { width } = useWindowSize();
 
+  const [selectedData, setSelectedData] = useState([]);
   const [numItems, setNumItems] = useState(8);
   const [colNumber, setColNumber] = useState(4);
   const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    if (userView) setSelectedData(data);
+    else setSelectedData(testAd);
+  }, [data, testAd]);
 
   //Sprawdzanie rozdzielczości i generowanie odpowiedniej ilość bloków
   useEffect(() => {
@@ -41,14 +47,14 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
 
   // Sprawdzanie jak dużo danych otrzymujemy i ustawianie odpowiedniej ilości kolumn
   useEffect(() => {
-    if (data) {
-      let dl = data.length;
+    if (selectedData) {
+      let dl = selectedData.length;
       if (dl >= 4) setColNumber(4);
       if (dl === 3) setColNumber(3);
       if (dl === 2) setColNumber(2);
       if (dl === 1) setColNumber(1);
     }
-  }, [data]);
+  }, [selectedData]);
 
   return (
     <div className="adBlockWrapperComponent">
@@ -56,7 +62,7 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
       <div
         className={`adBlockWrapperComponent__wrapper adBlockWrapperComponent__wrapper--col${colNumber}`}
       >
-        {renderBlock(0, numItems, data ? data : testAd)}
+        {renderBlock(0, numItems, selectedData, userView)}
       </div>
 
       {showMore && (
@@ -65,13 +71,14 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
         >
           {renderBlock(
             numItems,
-            userView ? data.length : numItems * 2,
-            data ? data : testAd
+            userView ? selectedData.length : numItems * 2,
+            selectedData,
+            userView
           )}
         </div>
       )}
 
-      {(data ? data.length > numItems : testAd.length > numItems) && (
+      {selectedData.length > numItems && (
         <ButtonComponent
           size="small"
           name={!showMore ? "Pokaż więcej" : "Ukryj"}

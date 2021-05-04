@@ -28,7 +28,7 @@ const AdSettingsView = () => {
 
   return (
     <TemplateTwo
-      header="Ustawienia użytkownika"
+      header="Edycja ogłoszenia"
       leftTop={adFormComponent}
       leftBottom={<div className="tempAvatar"></div>}
       midOne={<div className="testCategory"></div>}

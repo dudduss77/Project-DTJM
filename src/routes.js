@@ -5,6 +5,7 @@ import PreQuestionnaireView from './views/PreQuestionnaireView/PreQuestionnaireV
 import AddAdView from './views/AddAdView/AddAdView'
 import UserSettingsView from './views/UserSettingsView/UserSettingsView'
 import AdSettingsView from './views/AdSettingsView/AdSettingsView'
+import AdView from './views/AdView/AdView'
 
 export const routes = [
   {
@@ -38,5 +39,13 @@ export const routes = [
   {
     path: "/ad-settings/:id",
     component: AdSettingsView
+  },
+  {
+    path: "/ad/:id",
+    component: AdView
+  },
+  {
+    path: "/my-ad/:id",
+    component: () => <AdView userAd={true}/>
   },
 ]

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import InputComponent from "../inputComponent/InputComponent";
 import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
 import SelectComponent from "../selectComponent/SelectComponent";
+
+import {globalContext, golbalContext} from '../../context/globalStore'
 
 import city from "../../json/localizationPL.json";
 
@@ -15,13 +17,24 @@ const mappCities = () => {
   return tempArr;
 };
 
-const PreQuestionnaireUserInfo = ({ getData, informToGetData }) => {
+const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
+  const {userData} = useContext(globalContext)
   const [userName, setUserName] = useState("");
   const [userSurname, setUserSurname] = useState("");
   const [userNick, setUserNick] = useState("");
   const [userLocation, setUserLocation] = useState("");
   const [userDesc, setUserDesc] = useState("");
   const [cities, setCities] = useState(mappCities());
+
+  useEffect(() => {
+    if(settings) {
+      setUserName(userData.name.split(" "));
+      setUserSurname(userData.name);
+      setUserNick(userData.nick)
+      setUserLocation(userData.location)
+      setUserDesc(userData.description)
+    }
+  }, [])
 
   useEffect(() => {
     if (informToGetData) {
@@ -41,18 +54,21 @@ const PreQuestionnaireUserInfo = ({ getData, informToGetData }) => {
         type="text"
         placeholder="Imię"
         getValue={setUserName}
+        initialValue={userName}
       />
       <InputComponent
         size="mid"
         type="text"
         placeholder="Nazwisko"
         getValue={setUserSurname}
+        initialValue={userSurname}
       />
       <InputComponent
         size="mid"
         type="text"
         placeholder="Pseudonim"
         getValue={setUserNick}
+        initialValue={userNick}
       />
       <SelectComponent
         size="mid"
@@ -61,9 +77,14 @@ const PreQuestionnaireUserInfo = ({ getData, informToGetData }) => {
         placeholder="Lokalizacja..."
       />
 
-      <TextAreaComponent size="mid" placeholder="Opis" getValue={setUserDesc} />
+      <TextAreaComponent 
+        size="mid" 
+        placeholder="Opis" 
+        getValue={setUserDesc} 
+        initialValue={userDesc}
+      />
     </>
   );
 };
 
-export default PreQuestionnaireUserInfo;
+export default UserFormComponent;

@@ -78,7 +78,7 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
         </div>
       )}
 
-      {selectedData.length > numItems && (
+      {selectedData ? selectedData.length > numItems : numItems && (
         <ButtonComponent
           size="small"
           name={!showMore ? "Pokaż więcej" : "Ukryj"}

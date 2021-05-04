@@ -13,14 +13,14 @@ const HeaderComponent = () => {
 
   const handlerClickUserProfile = () => history.push('/profil');
 
-  const handlerClickAdd = () => history.push('/add');
+  const handlerClickAdd = () => history.push('/add-ad');
 
   const handlerClickLogIn = () =>{
     setAppData({type: "SHOW_POPUP"})
   };
   return (
     <div className="headerComponent">
-      <div className="headerComponent__logo">
+      <div onClick={() => history.push('/')} className="headerComponent__logo">
         DTJM
       </div>
 

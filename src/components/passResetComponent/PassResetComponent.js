@@ -1,47 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
-import InputComponent from "../inputComponent/InputComponent";
-import ErrorComponent from "../errorComponent/ErrorComponent";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 
-import { useEmailValidation } from "../../hook/emailValidator";
 
 const PassResetComponent = () => {
-  const [validateMessage, setValidateMessage] = useState("");
-  const [emailPassReset, setEmailPassReset] = useState("");
-  const [isEmailResetSubmitting, setIsEmailResetSubmitting] = useState(false);
-
-  const [emailValidMessage] = useEmailValidation({
-    email: emailPassReset,
-    isSubmitting: isEmailResetSubmitting,
+  const formik = useFormik({
+    initialValues: {
+      emailResetPass: "",
+    },
+    validationSchema: Yup.object().shape({
+      emailResetPass: Yup.string()
+        .email("Zły format email")
+        .required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+    },
   });
 
-  useEffect(() => {
-    setValidateMessage(emailValidMessage);
-  }, [emailValidMessage]);
-
-  const submitPassReset = () => {
-    if (emailValidMessage === "" && isEmailResetSubmitting) {
-      console.log(emailPassReset);
-    } else setValidateMessage("Sprawdź wszystkie pola");
-
-    //API ITD.
-  };
   return (
     <>
-      <ErrorComponent errorMsg={validateMessage} />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Email"
-        getValue={setEmailPassReset}
-        isSubmitting={() => setIsEmailResetSubmitting(true)}
+        name="emailResetPass"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.emailResetPass}
+        message={
+          formik.touched.emailResetPass && formik.errors.emailResetPass
+            ? formik.errors.emailResetPass
+            : null
+        }
       />
       <div className="emptyRwdDiv"></div>
       <ButtonComponent
         size="small"
         name="Resetuj"
-        click={() => submitPassReset()}
+        click={() => formik.handleSubmit()}
       />
     </>
   );

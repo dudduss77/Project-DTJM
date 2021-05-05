@@ -1,77 +1,87 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
-import InputComponent from "../inputComponent/InputComponent";
-import ErrorComponent from "../errorComponent/ErrorComponent";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 
-import { useEmailValidation } from "../../hook/emailValidator";
-import { usePasswordValidation } from "../../hook/passwordValidator";
+const passRegex = /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
 
 const RegisterComponent = () => {
-  const [validateMessage, setValidateMessage] = useState("");
-  const [emailRegister, setEmailRegister] = useState("");
-  const [isEmailSubmitting, setIsEmailSubmitting] = useState(false);
-
-  const [passwordRegister, setPasswordRegister] = useState("");
-  const [reapetPasswordRegister, setReapetPasswordRegister] = useState("");
-  const [isPasswordSubmitting, setIsPasswordSubmitting] = useState(false);
-  const [isReapetPasswordSubmitting, setIsReapetPasswordSubmitting] = useState(
-    false
-  );
-
-  const [emailValidMessage] = useEmailValidation({
-    email: emailRegister,
-    isSubmitting: isEmailSubmitting,
+  const formik = useFormik({
+    initialValues: {
+      emailRegister: "",
+      passwordRegister: "",
+      repPasswordRegister: "",
+    },
+    validationSchema: Yup.object().shape({
+      emailRegister: Yup.string()
+        .email("Zły format email")
+        .required("Pole wymagane"),
+      passwordRegister: Yup.string()
+        .matches(passRegex, "Słabe hasło")
+        .required("Pole wymagane"),
+      repPasswordRegister: Yup.string()
+        .oneOf([Yup.ref("passwordRegister"), null], "Różne hasła")
+        .required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+    },
   });
-
-  const [passwordValidationMessage] = usePasswordValidation({
-    passOne: passwordRegister,
-    passTwo: reapetPasswordRegister,
-    isSubmitting: isPasswordSubmitting,
-    isRepeatSubbmitting: isReapetPasswordSubmitting,
-  });
-
-  useEffect(() => {
-    setValidateMessage(passwordValidationMessage || emailValidMessage);
-  }, [passwordValidationMessage, emailValidMessage]);
-
-  const submit = () => {
-    if (
-      emailValidMessage === "" &&
-      passwordValidationMessage === "" &&
-      isPasswordSubmitting &&
-      isReapetPasswordSubmitting
-    ) {
-      console.log(emailRegister, passwordRegister, reapetPasswordRegister);
-    } else setValidateMessage("Sprawdź wszystkie pola");
-  };
 
   return (
     <>
-      <ErrorComponent errorMsg={validateMessage} />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Email"
-        getValue={setEmailRegister}
-        isSubmitting={() => setIsEmailSubmitting(true)}
+        name="emailRegister"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.emailRegister}
+        message={
+          formik.touched.emailRegister && formik.errors.emailRegister
+            ? formik.errors.emailRegister
+            : null
+        }
       />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Hasło"
-        getValue={setPasswordRegister}
-        isSubmitting={() => setIsPasswordSubmitting(true)}
+        name="passwordRegister"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.passwordRegister}
+        message={
+          formik.touched.passwordRegister && formik.errors.passwordRegister
+            ? formik.errors.passwordRegister
+            : null
+        }
       />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Powtórz hasło"
-        getValue={setReapetPasswordRegister}
-        isSubmitting={() => setIsReapetPasswordSubmitting(true)}
+        name="repPasswordRegister"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.repPasswordRegister}
+        message={
+          formik.touched.repPasswordRegister &&
+          formik.errors.repPasswordRegister
+            ? formik.errors.repPasswordRegister
+            : null
+        }
       />
       <div className="emptyRwdDiv"></div>
-      <ButtonComponent size="small" name="Zarejestruj" click={() => submit()} />
+      <ButtonComponent
+        size="small"
+        name="Zarejestruj"
+        click={() => formik.handleSubmit()}
+      />
     </>
   );
 };

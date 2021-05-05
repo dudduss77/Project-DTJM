@@ -13,7 +13,10 @@ const AddAdView = () => {
   const [buttonClick, setButtonClick] = useState(false);
 
   const adInfoComponent = (
-    <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
+    <>
+      <h3>Podstawowe Dane</h3>
+      <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
+    </>
   );
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const AddAdView = () => {
   }, [buttonClick, adData]);
 
   const submitNewAd = () => {
+    console.log(adData)
     if (adData) {
       let ad = {
         id: parseInt(userData.userId.toString() + moment.now().toString()),
@@ -34,7 +38,9 @@ const AddAdView = () => {
       };
 
       setUserData({ type: userActionType.addAd, payload: ad });
-    }
+      setButtonClick(false);
+      setAdData(null);
+    } else setButtonClick(false);
   };
 
   return (

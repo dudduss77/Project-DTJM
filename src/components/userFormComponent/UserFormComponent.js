@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
+import { globalContext } from "../../context/globalStore";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-import InputComponent from "../inputComponent/InputComponent";
-import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
+import NewTextAreaComponent from "../newTextAreaComponent/NewTextAreaComponent";
 import SelectComponent from "../selectComponent/SelectComponent";
-
-import {globalContext, golbalContext} from '../../context/globalStore'
 
 import city from "../../json/localizationPL.json";
 
@@ -18,70 +19,115 @@ const mappCities = () => {
 };
 
 const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
-  const {userData} = useContext(globalContext)
-  const [userName, setUserName] = useState("");
-  const [userSurname, setUserSurname] = useState("");
-  const [userNick, setUserNick] = useState("");
-  const [userLocation, setUserLocation] = useState("");
-  const [userDesc, setUserDesc] = useState("");
+  const { userData } = useContext(globalContext);
   const [cities, setCities] = useState(mappCities());
 
-  useEffect(() => {
-    if(settings) {
-      setUserName(userData.name);
-      setUserSurname(userData.surname);
-      setUserNick(userData.nick)
-      setUserLocation(userData.location)
-      setUserDesc(userData.description)
-    }
-  }, [])
+  const formik = useFormik({
+    initialValues: {
+      userName: "",
+      userSurname: "",
+      userNick: "",
+      userLocation: "",
+      userDesc: "",
+    },
+    validationSchema: Yup.object().shape({
+      userName: Yup.string().required("Pole wymagane"),
+      userSurname: Yup.string().required("Pole wymagane"),
+      userNick: Yup.string().required("Pole wymagane"),
+      userLocation: Yup.string().required("Pole wymagane"),
+      userDesc: Yup.string().required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+      getData({
+        userName: values.userName,
+        userSurname: values.userSurname,
+        userNick: values.userNick,
+        userLocation: values.userLocation,
+        userDesc: values.userDesc,
+      });
+    },
+  });
 
   useEffect(() => {
-    if (informToGetData) {
-      getData({
-        userName,
-        userSurname,
-        userNick,
-        userLocation,
-        userDesc,
+    if (settings) {
+      formik.setValues({
+        userName: userData.name,
+        userSurname: userData.surname,
+        userNick: userData.nick,
+        userLocation: userData.location,
+        userDesc: userData.description,
       });
     }
+  }, []);
+
+  useEffect(() => {
+    if (informToGetData) formik.handleSubmit();
   }, [informToGetData]);
   return (
     <>
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Imię"
-        getValue={setUserName}
-        initialValue={userName}
+        name="userName"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.userName}
+        message={
+          formik.touched.userName && formik.errors.userName
+            ? formik.errors.userName
+            : null
+        }
       />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Nazwisko"
-        getValue={setUserSurname}
-        initialValue={userSurname}
+        name="userSurname"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.userSurname}
+        message={
+          formik.touched.userSurname && formik.errors.userSurname
+            ? formik.errors.userSurname
+            : null
+        }
       />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
-        placeholder="Pseudonim"
-        getValue={setUserNick}
-        initialValue={userNick}
+        placeholder="Nazwa"
+        name="userNick"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.userNick}
+        message={
+          formik.touched.userNick && formik.errors.userNick
+            ? formik.errors.userNick
+            : null
+        }
       />
-      <SelectComponent
+
+      {/* <SelectComponent
         size="mid"
         data={cities}
         Change={setUserLocation}
         placeholder="Lokalizacja..."
-      />
+      /> */}
 
-      <TextAreaComponent 
-        size="mid" 
-        placeholder="Opis" 
-        getValue={setUserDesc} 
-        initialValue={userDesc}
+      <NewTextAreaComponent
+        size="mid"
+        placeholder="Opis"
+        name="userDesc"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.userDesc}
+        message={
+          formik.touched.userDesc && formik.errors.userDesc
+            ? formik.errors.userDesc
+            : null
+        }
       />
     </>
   );

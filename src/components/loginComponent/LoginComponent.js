@@ -1,72 +1,62 @@
-import React, { useEffect, useState } from "react";
-import '../../globalStyle/globalStyle.scss';
+import React, { useEffect } from "react";
+import "../../globalStyle/globalStyle.scss";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
-import InputComponent from "../inputComponent/InputComponent";
-import ErrorComponent from "../errorComponent/ErrorComponent";
-
-import { useEmailValidation } from "../../hook/emailValidator";
-import { useRequiredValidation } from "../../hook/requiredValidator";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 
 const LoginComponent = () => {
-  const [validateMessage, setValidateMessage] = useState("");
-  const [emailLogin, setEmailLogin] = useState("");
-  const [isEmailLoginSubmitting, setIsEmailLoginSubmitting] = useState(false);
-  const [passwordLogin, setPasswordLogin] = useState("");
-  const [isPasswordLoginSubmitting, setIsPasswordLoginSubmitting] = useState(
-    false
-  );
-
-  const [emailValidMessage] = useEmailValidation({
-    email: emailLogin,
-    isSubmitting: isEmailLoginSubmitting,
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email("Zły format email").required("Pole wymagane"),
+      password: Yup.string().required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+    },
   });
 
-  const [requiredValidationMessage] = useRequiredValidation({
-    value: passwordLogin,
-    isSubmitting: isPasswordLoginSubmitting,
-  });
-
-  useEffect(() => {
-    setValidateMessage(emailValidMessage || requiredValidationMessage);
-  }, [emailValidMessage, requiredValidationMessage]);
-
-  const submitLogin = () => {
-    if (
-      emailValidMessage === "" &&
-      requiredValidationMessage === "" &&
-      isEmailLoginSubmitting &&
-      isPasswordLoginSubmitting
-    ) {
-      console.log(emailLogin, passwordLogin);
-    } else {
-      setValidateMessage("Sprawdź wszystkie pola");
-    }
-
-    //API ITD.
-  };
   return (
     <>
-      <ErrorComponent errorMsg={validateMessage} />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Email"
-        getValue={setEmailLogin}
-        isSubmitting={() => setIsEmailLoginSubmitting(true)}
+        name="email"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.email}
+        message={
+          formik.touched.email && formik.errors.email
+            ? formik.errors.email
+            : null
+        }
       />
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Hasło"
-        getValue={setPasswordLogin}
-        isSubmitting={() => setIsPasswordLoginSubmitting(true)}
+        name="password"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.password}
+        message={
+          formik.touched.password && formik.errors.password
+            ? formik.errors.password
+            : null
+        }
       />
       <div className="emptyRwdDiv"></div>
       <ButtonComponent
         size="small"
         name="Zaloguj"
-        click={() => submitLogin()}
+        click={() => formik.handleSubmit()}
       />
     </>
   );

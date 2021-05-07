@@ -1,21 +1,42 @@
 import {useEffect, useState} from "react";
 import "./SelectComponent.scss";
 
-const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor, className}) => {
+const SelectComponent = ({
+  data = [], 
+  Change, 
+  size="small", 
+  placeholder = "Select Option", 
+  htmlFor, 
+  className, 
+  formik, 
+  value = "", 
+  name
+}) => {
 
 
 
 
   const [visibility, setVisibility] = useState(false);
-  const [inputTxt, setInputTxt] = useState("");
+  const [inputTxt, setInputTxt] = useState(formik ? formik.values[name] : value);
 
 
   const handlerOnChange = (e) => {
-    setVisibility(true);
-    setInputTxt(e.target.value)
+
+    if(formik) formik.handleChange(e);
+      setVisibility(true);
+      setInputTxt(e.target.value)
+    
+
   }
+
+
   const handlerOnClickInput = (e) => setVisibility(true);
-  const handlerOnClickItem = (e) => {setInputTxt(e.target.innerText); setVisibility(false); }
+  const handlerOnClickItem = (e) => {
+    if(formik) formik.setValues({ [name]: e.target.innerText }); 
+
+    setInputTxt(e.target.innerText); setVisibility(false); 
+
+  }
   const handlerOnMouseLeave = (e) => setVisibility(false);
 
   const mappItems = (val = "") => {
@@ -27,7 +48,8 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
   }
   
   useEffect(() => {
-    Change(inputTxt);
+    if(!formik) 
+      Change(inputTxt);
     setMappedItems(mappItems(inputTxt)) 
   
   }, [inputTxt])
@@ -44,10 +66,13 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
       <input
         onChange={handlerOnChange}
         onClick={handlerOnClickInput}
-        value={inputTxt}
+        onBlur={formik ? formik.handleBlur : ''}
+        value={formik ? formik.values[name] : inputTxt}
         className="selectComponent__input"
+        name={name}
         id={htmlFor}
         placeholder={placeholder}
+        autoComplete="off"
       />
 
       {visibility && (<div className="selectComponent__list">

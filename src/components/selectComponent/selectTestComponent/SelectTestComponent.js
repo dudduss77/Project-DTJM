@@ -1,10 +1,16 @@
 import React, {useContext, useState} from "react";
 import { globalContext } from "../../../context/globalStore";
-import SelectComponent from "../SelectComponent";
 import "./SelectTestComponent.scss";
-
 import city from './../../../json/localizationPL.json'
+import SelectComponent from "../SelectComponent";
+import { useFormik } from "formik";
+import * as YUP from "yup";
 
+
+
+const validationSchema = () => YUP.object().shape({
+  testSelect: YUP.string().required("To pole jest wymagane").min(3, "To pole musi zawierać minimum 3")
+})
 const SelectTestComponent = () => {
   const {category} = useContext(globalContext);
 
@@ -24,11 +30,54 @@ const SelectTestComponent = () => {
   const [mappedCategory, setMappedCategory] = useState(mappCategory());
 
   const [inputText, setInputText] = useState("");
+
+
+
+  const Formik = useFormik({
+    initialValues: {
+      testSelect: "p",
+    }, 
+    validationSchema,
+    onSubmit: values => alert(JSON.stringify(values))
+  });
+
+
   return (
     <div className="selectTestComponent">
-      <SelectComponent data={cities} Change={setInputText} placeholder="Lokalizacja..."/>
-      <SelectComponent data={mappedCategory} Change={setInputText} placeholder="Wybierz Kategorie"/>
-      <SelectComponent size="auto" data={mappedCategory} Change={setInputText}/>
+
+
+      <h1>SelectTestComponent with formik</h1>
+      <form onSubmit={Formik.handleSubmit}>
+        <SelectComponent 
+          data={cities} 
+          placeholder="Lokalizacja..."
+          formik={Formik}
+          name="testSelect"
+        />
+
+
+        {Formik.errors.testSelect}
+        <button type="submit">Submit</button>
+      </form>
+
+      <h1>SelectTestComponent without formik</h1>
+      <form 
+        onSubmit={e => { alert(inputText); e.preventDefault();}}
+      >
+      <SelectComponent 
+        data={mappedCategory} 
+        Change={setInputText} 
+        placeholder="Wybierz Kategorie"/>
+
+
+        <button type="submit">Submit without formik</button>
+      </form>
+
+
+
+
+
+
     </div>
   );
 };

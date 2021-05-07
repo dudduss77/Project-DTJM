@@ -20,6 +20,7 @@ import PopupTestComponent from '../popupComponent/PopupTestComponent/PopupTestCo
 import AdBlockWrapperComponent from '../adBlockWrapperComponent/AdBlockWrapperComponent'
 import SearchMainPageTestComponent from '../searchMainPageComponent/searchMainPageTestComponent/SearchMainPageTestComponent'
 
+
 const TestComponent = () => {
 
   const {category, setCategory } = useContext(globalContext);
@@ -30,7 +31,6 @@ const TestComponent = () => {
       <ButtonTest/>
        {/* <AdBlockTest/> */}
       <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
-      <SelectTestComponent/> */}
       <CategoryTailTestComponent />
       <CategoryChoiceTestComponent/>
       <HeaderTest/>
@@ -42,6 +42,7 @@ const TestComponent = () => {
       {/* <UserInfoComponent/> */}
       <PopupTestComponent/>
       <SearchMainPageTestComponent/>
+      <SelectTestComponent/>
     </div>
   )
 }

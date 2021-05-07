@@ -1,0 +1,93 @@
+@import './../../variables.scss';
+
+$font-family: $mainFontFamily1;
+$select-font-size: 1.2em;
+$label-font-size: 1.1em;
+$input-color: #555;
+$label-color: $mainColor4;
+$background-color: $mainColor1;
+
+
+
+.selectComponent {
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  &__input {
+    width: 100%;
+    font-family: $font-family;
+    font-size: $select-font-size;
+    color: $input-color;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: none;
+    text-align: center;
+  }
+
+  &__list {
+    max-height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    overflow-y: scroll;
+    box-shadow: 0px 6px 6px 1px #666666;
+
+    &__item {
+      font-family: $font-family;
+      font-size: $select-font-size;
+      color: $input-color;
+      background-color: $background-color;
+      padding: 5px 5px;
+
+      
+
+
+      &:hover {
+        background-color: darken($background-color, 5%);
+      }
+    }
+
+  }
+
+
+  &--small {
+    width: 250px;
+  }
+
+  &--mid {
+    width: 300px;
+  }
+
+  &--auto {
+    width: 100%;
+  }
+
+
+
+
+}
+
+
+@media (max-width: 800px) {
+  .selectComponent {
+    &--small {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 950px){
+  .selectComponent {
+    &--small {
+      width: 90%;
+    }
+
+    &--mid {
+      width: 90%;
+    }
+  
+    &--auto {
+      width: 90%;
+    }
+  }
+}

@@ -1,8 +1,10 @@
-import { useReducer, createContext} from 'react';
+import { useReducer, createContext, useState} from 'react';
 
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
 import appReducer from './reducers/appReducer';
+import LoginComponent from '../components/loginComponent/LoginComponent';
+import messageReducer from './reducers/messageReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -274,6 +276,80 @@ const GlobalProvider = ({children}) => {
         ]
     })
 
+    const [messages, setMessages] = useReducer(messageReducer, [
+        {
+            id: 2,
+            name: "Tomasz Żukwowski",
+            avatarSrc: "/assets/profil.png",
+            messages: [
+                {
+                    fromYou: false,
+                    value: "Cześć co u ciebie słychać?",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: true,
+                    value: "A nic, testuje sobie chat",
+                    time: 1620404555793
+                }, 
+                {
+                    fromYou: false,
+                    value: "Robisz chat ? Fajnie.",
+                    time: 1620404665220
+                }, 
+                {
+                    fromYou: false,
+                    value: "Ma jakieś ciekawe funkcje?",
+                    time: 1620404665221
+                }, 
+                {
+                    fromYou: true,
+                    value: "Nie interesuj się",
+                    time: 1620404348271
+                }, 
+
+                {
+                    fromYou: true,
+                    value: "To tajne",
+                    time: 1620404348271
+                }, 
+
+            ]
+        },
+
+        {
+            id: 3,
+            name: "Amciek Destroyer",
+            avatarSrc: "/assets/profil.png",
+            messages: [
+                {
+                    fromYou: false,
+                    value: "Cześć, masz może pożyczyć kłodę?",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: true,
+                    value: "co ty ćpiesz?",
+                    time: 1620404555793
+                }, 
+                {
+                    fromYou: false,
+                    value: "nie to nie",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: false,
+                    value: "...",
+                    time: 1620404348271
+                }, 
+
+            ]
+        },
+
+    ])
+
+    const [chatVisibility, setChatVisibility] = useState(true);
+
     const [appData, setAppData] = useReducer(appReducer, {
         showPopup: false
     })
@@ -470,7 +546,11 @@ const GlobalProvider = ({children}) => {
                 setUserData,
                 appData,
                 setAppData,
-                testAd
+                testAd,
+                messages,
+                setMessages,
+                chatVisibility, 
+                setChatVisibility
             }
         }>
             {children}

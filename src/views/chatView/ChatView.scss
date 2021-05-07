@@ -1,0 +1,125 @@
+@import '../../variables.scss';
+
+.chatView {
+  position: absolute;
+  box-sizing: border-box;
+  right: 40px;
+  bottom: 0px;
+  width: 350px;
+  height: 500px;
+  background-color: $mainColor1;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.45);
+  animation: messageSlide 0.5s;
+  overflow: hidden;
+  &__header {
+      font-size: 26px;
+      width: 100%;
+      height: 60px;
+      background-color: $mainColor3;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      span {
+          margin: 0px 15px;
+          
+      }
+
+      &--exit:hover {
+        :hover {
+            cursor: pointer;
+            color: darken(white, 10%);   
+        }
+          
+      }
+
+      
+      
+  }
+  &__wrapper {
+
+    width: 700px;
+    position: relative;
+    transition: 0.5s;
+    left: 0px;
+    display: flex;
+    &__list {
+        width: 350px;
+        &__item {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         flex-wrap: wrap;
+             &--img {
+                 display: flex;
+                 justify-content: center;
+                 img {
+                     width: 50px;
+                     height: 50px;
+                     margin: 0px 15px;
+                     border-radius: 50%;
+ 
+                 }
+             }
+ 
+             &--body {
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: center;
+                 height: 60px;
+ 
+                 span {
+                     display: flex;
+                     align-items: center;
+                     justify-content: space-between;
+ 
+                     h5 {
+                         font-size: 0.8rem;
+                         margin-left: 5px;
+                     }
+                 }
+ 
+                 p {
+                     font-size: 0.7rem;
+                 }
+             }
+ 
+             hr {
+                 width: 90%;
+                 
+             }
+ 
+             &:hover {
+                 background-color: darken($mainColor1, 10%);
+                 cursor: pointer;
+             }
+         } 
+
+
+
+  }
+  &.active {
+    left: -350px;
+ }
+
+
+
+  
+  }
+
+
+
+
+  @keyframes messageSlide {
+    from {
+        bottom: -450px;
+    }
+
+    to {
+        bottom: 0px;
+    }
+}
+
+}
+

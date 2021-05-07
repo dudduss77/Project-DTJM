@@ -12,6 +12,28 @@ const wrapperRef = useRef();
 
 const handlerExit = () => setChatVisibility(false);
 const handlerShowMessage = () => wrapperRef.current.classList.add('active');
+
+
+const mappMess = () => messages.map(item =>(
+<div 
+              className="chatView__wrapper__list__item"
+              onClick={handlerShowMessage}
+          >
+            <div className="chatView__wrapper__list__item--img">
+              <img src="/assets/profil.png" />
+            </div>
+
+            <div className="chatView__wrapper__list__item--body">
+              <span>{item.name} <h5> 09.04.2021</h5></span>
+              <p>{item.messages[item.messages.length-1].value}</p>
+            </div>
+            <hr/>
+
+
+          </div>
+
+))
+const [mappedMessages, setMappedMessages] = useState(mappMess());
 console.log(messages)
   return (
     <div className="chatView">
@@ -29,23 +51,8 @@ console.log(messages)
       </div>
       <div className="chatView__wrapper" ref={wrapperRef}>
         <div className="chatView__wrapper__list">
-          <div 
-              className="chatView__wrapper__list__item"
-              onClick={handlerShowMessage}
-          >
-            <div className="chatView__wrapper__list__item--img">
-              <img src="/assets/profil.png" />
-            </div>
-
-            <div className="chatView__wrapper__list__item--body">
-              <span>Tomasz Żukwowski <h5> 09.04.2021</h5></span>
-              <p>Czy ogłoszenie nadal aktualn...</p>
-            </div>
-            <hr/>
-
-
-          </div>
-
+          
+        {mappedMessages}
         </div>
 
 

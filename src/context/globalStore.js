@@ -281,7 +281,7 @@ const GlobalProvider = ({children}) => {
             id: 2,
             name: "Tomasz Żukwowski",
             avatarSrc: "/assets/profil.png",
-            messages: [
+            content: [
                 {
                     fromYou: false,
                     value: "Cześć co u ciebie słychać?",
@@ -321,7 +321,7 @@ const GlobalProvider = ({children}) => {
             id: 3,
             name: "Amciek Destroyer",
             avatarSrc: "/assets/profil.png",
-            messages: [
+            content: [
                 {
                     fromYou: false,
                     value: "Cześć, masz może pożyczyć kłodę?",

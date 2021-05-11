@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./InputComponent.scss";
 
 const InputComponent = ({
@@ -10,14 +10,21 @@ const InputComponent = ({
   placeholder,
   getValue,
   isSubmitting,
-  initialValue = ""
+  initialValue = "",
+  onKeyDown, 
+  reset = 0
 }) => {
   const getInputValue = (event) => {
     event.preventDefault();
     getValue(event.target.value);
     if(isSubmitting) isSubmitting();
   };
+  const input = useRef();
 
+  useEffect(() => {
+    input.current.value = "";
+  }, [reset])
+  
   return (
     <div
       className={`inputComponent inputComponent--${size} inputComponent--${orientation}`}
@@ -35,6 +42,8 @@ const InputComponent = ({
         type={type}
         id={htmlFor}
         placeholder={placeholder}
+        onKeyDown={onKeyDown}
+        ref={input}
       />
     </div>
   );

@@ -1,8 +1,11 @@
 const messageReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_MESS":
-      //todo
-      return true
+    case "SEND":
+      // console.log(action)
+      state[action.id].content.push(action.payload);
+      console.log(state);
+
+      return state;
 
     default:
       throw new Error("Please type a valid action type");

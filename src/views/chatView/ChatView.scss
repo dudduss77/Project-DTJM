@@ -98,7 +98,94 @@
 
 
 
-  }
+    }
+
+    &__content {
+        width: 350px;
+
+        &__header {
+            display: flex;
+            justify-content: start;
+            line-height: 50px;
+            font-weight: bold;
+            margin: 5px 15px 5px 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid grey;
+            img {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+                border-radius: 50%;
+
+            }
+        }
+
+        &__messageBox {
+            height: 330px;
+            overflow-y: auto;
+
+            &__values {
+                display: flex;
+                justify-content: end;
+                align-items: end;
+                font-weight: bold;
+                margin: 20px 15px 5px 15px;
+                padding-bottom: 5px;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    border-radius: 50%;
+    
+                }
+    
+                &__mess {
+                    background-color: darken($mainColor1, 5%);
+                    border-radius: 18px;
+                    padding: 5px 10px 5px 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.45);
+                    min-height: 30px;
+                }
+    
+    
+    
+                &--you &__mess {
+                        background-color: darkorchid;
+                        background-color: darken($mainColor1, 25%);
+                }
+
+                &--you {
+                    justify-content: flex-end;
+                    
+                }
+            }
+            
+        }
+
+        &__input {
+            display: flex;
+            align-items: center;
+
+            :first-child { //input
+
+            }
+
+            :nth-child(2) { //icon
+                padding: 10px;
+                cursor: pointer;
+            }
+        }
+
+
+
+
+    }
+
+
+    
   &.active {
     left: -350px;
  }
@@ -122,4 +209,5 @@
 }
 
 }
+
 

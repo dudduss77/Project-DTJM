@@ -1,43 +1,21 @@
 import {useEffect, useState} from "react";
 import "./SelectComponent.scss";
 
-const SelectComponent = ({
-  data = [], 
-  Change, 
-  size="small", 
-  placeholder = "Select Option", 
-  htmlFor, 
-  className, 
-  formik, 
-  value = "", 
-  name,
-  message = ""
-}) => {
+const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor, className}) => {
 
 
 
 
   const [visibility, setVisibility] = useState(false);
-  const [inputTxt, setInputTxt] = useState(formik ? formik.values[name] : value);
+  const [inputTxt, setInputTxt] = useState("");
 
 
   const handlerOnChange = (e) => {
-
-    if(formik) formik.handleChange(e);
-      setVisibility(true);
-      setInputTxt(e.target.value)
-    
-
+    setVisibility(true);
+    setInputTxt(e.target.value)
   }
-
-
   const handlerOnClickInput = (e) => setVisibility(true);
-  const handlerOnClickItem = (e) => {
-    if(formik) formik.setValues(prevValues => ({ ...prevValues, [name]: e.target.innerText })); 
-
-    setInputTxt(e.target.innerText); setVisibility(false); 
-
-  }
+  const handlerOnClickItem = (e) => {setInputTxt(e.target.innerText); setVisibility(false); }
   const handlerOnMouseLeave = (e) => setVisibility(false);
 
   const mappItems = (val = "") => {
@@ -49,8 +27,7 @@ const SelectComponent = ({
   }
   
   useEffect(() => {
-    if(!formik) 
-      Change(inputTxt);
+    Change(inputTxt);
     setMappedItems(mappItems(inputTxt)) 
   
   }, [inputTxt])
@@ -67,20 +44,15 @@ const SelectComponent = ({
       <input
         onChange={handlerOnChange}
         onClick={handlerOnClickInput}
-        onBlur={formik ? formik.handleBlur : ''}
-        value={formik ? formik.values[name] : inputTxt}
+        value={inputTxt}
         className="selectComponent__input"
-        name={name}
         id={htmlFor}
         placeholder={placeholder}
-        autoComplete="off"
       />
-      
 
       {visibility && (<div className="selectComponent__list">
         {mappedItems}
       </div>)}
-      <p className="selectComponent__message">{message}</p>
     </div>
   );
 };

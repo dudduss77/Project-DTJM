@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { globalContext } from "../../context/globalStore";
 
-import InputComponent from "../inputComponent/InputComponent";
-import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
 import SelectComponent from "../selectComponent/SelectComponent";
 
-import { globalContext } from "../../context/globalStore";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
+import NewTextAreaComponent from "../newTextAreaComponent/NewTextAreaComponent";
 
 import city from "../../json/localizationPL.json";
 
@@ -21,50 +23,90 @@ const mappCities = () => {
 const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
   const { userData } = useContext(globalContext);
   let { id } = useParams();
-  const [adName, setAdName] = useState("");
-  const [adLocation, setAdLocation] = useState("");
-  const [adDesc, setAdDesc] = useState("");
   const [cities, setCities] = useState(mappCities());
 
-  useEffect(() => {
-    if(settings) {
-      console.log(userData.ad)
-      let [{header, desc, location}] = userData.ad.filter(item => item.id === parseInt(id));
-      console.log(header)
-      setAdName(header);
-      setAdLocation(location);
-      setAdDesc(desc);
-    }
-  }, [])
+  const formik = useFormik({
+    initialValues: {
+      adname: "",
+      adLocation: "",
+      adDesc: "",
+    },
+    validationSchema: Yup.object().shape({
+      adname: Yup.string().required("Pole wymagane"),
+      adLocation: Yup.string().required("Pole wymagane"),
+      adDesc: Yup.string().required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+      getData({
+        id: parseInt(id),
+        adName: values.adname,
+        adLocation: values.adLocation,
+        adDesc: values.adDesc,
+      });
+    },
+  });
 
   useEffect(() => {
-    if (informToGetData) {
-      console.log(adName, adLocation, adDesc)
-      getData({
-        id,
-        adName,
-        adLocation,
-        adDesc,
-      });
+    if (settings && userData) {
+      console.log(userData.ad);
+      let [{ header, desc, location }] = userData.ad.filter(
+        (item) => item.id === parseInt(id)
+      );
+      console.log(header);
+      formik.setValues({ adname: header, adLocation: location, adDesc: desc });
     }
-  }, [informToGetData]);
+  }, []);
+
+  useEffect(() => {
+    if (informToGetData) formik.handleSubmit();
+  }, [informToGetData, formik]);
+
+  console.log(formik.values);
 
   return (
     <>
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Nazwa"
-        getValue={setAdName}
-        initialValue={adName}
+        name="adname"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.adname}
+        message={
+          formik.touched.adname && formik.errors.adname
+            ? formik.errors.adname
+            : null
+        }
       />
+
       <SelectComponent
         size="mid"
         data={cities}
-        Change={setAdLocation}
+        formik={formik}
+        name="adLocation"
         placeholder="Lokalizacja..."
+        message={
+          formik.touched.adLocation && formik.errors.adLocation
+            ? formik.errors.adLocation
+            : null
+        }
       />
-      <TextAreaComponent size="mid" placeholder="Opis" getValue={setAdDesc} initialValue={adDesc}/>
+
+      <NewTextAreaComponent
+        size="mid"
+        placeholder="Opis"
+        name="adDesc"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.adDesc}
+        message={
+          formik.touched.adDesc && formik.errors.adDesc
+            ? formik.errors.adDesc
+            : null
+        }
+      />
     </>
   );
 };

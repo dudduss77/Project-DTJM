@@ -12,8 +12,11 @@ const AddAdView = () => {
   const [adData, setAdData] = useState(null);
   const [buttonClick, setButtonClick] = useState(false);
 
-  const adInfoComponent = (
-    <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
+  const adFormComponent = (
+    <>
+      <h3>Podstawowe Dane</h3>
+      <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
+    </>
   );
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const AddAdView = () => {
   }, [buttonClick, adData]);
 
   const submitNewAd = () => {
+    console.log(adData)
     if (adData) {
       let ad = {
         id: parseInt(userData.userId.toString() + moment.now().toString()),
@@ -34,13 +38,15 @@ const AddAdView = () => {
       };
 
       setUserData({ type: userActionType.addAd, payload: ad });
-    }
+      setButtonClick(false);
+      setAdData(null);
+    } else setButtonClick(false);
   };
 
   return (
     <TemplateOne
       header="Dodawanie ogłoszenia"
-      leftTop={adInfoComponent}
+      leftTop={adFormComponent}
       leftBottom={<div className="tempAvatar"></div>}
       mid={<div className="testCategory"></div>}
       right={<div className="testCategory"></div>}

@@ -6,7 +6,7 @@ $label-font-size: 1.1em;
 $input-color: #555;
 $label-color: $mainColor4;
 
-.inputComponent {
+.newInputComponent {
   display: flex;
 
   &__input {
@@ -23,6 +23,13 @@ $label-color: $mainColor4;
     font-size: $label-font-size;
     color: $label-color;
     margin-right: 10px;
+  }
+
+  &__message {
+    margin: 2px 0;
+    font-size: 0.8em;
+    color: $errorColor;
+    width: 100%;
   }
 
   &--small {
@@ -54,7 +61,7 @@ $label-color: $mainColor4;
 }
 
 @media screen and (max-width: 950px) {
-  .inputComponent {
+  .newInputComponent {
     &--small {
       width: 90%;
     }

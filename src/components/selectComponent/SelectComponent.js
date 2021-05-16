@@ -10,7 +10,8 @@ const SelectComponent = ({
   className, 
   formik, 
   value = "", 
-  name
+  name,
+  message = ""
 }) => {
 
 
@@ -32,7 +33,7 @@ const SelectComponent = ({
 
   const handlerOnClickInput = (e) => setVisibility(true);
   const handlerOnClickItem = (e) => {
-    if(formik) formik.setValues({ [name]: e.target.innerText }); 
+    if(formik) formik.setValues(prevValues => ({ ...prevValues, [name]: e.target.innerText })); 
 
     setInputTxt(e.target.innerText); setVisibility(false); 
 
@@ -74,10 +75,12 @@ const SelectComponent = ({
         placeholder={placeholder}
         autoComplete="off"
       />
+      
 
       {visibility && (<div className="selectComponent__list">
         {mappedItems}
       </div>)}
+      <p className="selectComponent__message">{message}</p>
     </div>
   );
 };

@@ -4,8 +4,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { globalContext } from "../../context/globalStore";
 
-import InputComponent from "../inputComponent/InputComponent";
-import TextAreaComponent from "../textAreaComponent/TextAreaComponent";
 import SelectComponent from "../selectComponent/SelectComponent";
 
 import NewInputComponent from "../newInputComponent/NewInputComponent";
@@ -35,6 +33,7 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
     },
     validationSchema: Yup.object().shape({
       adname: Yup.string().required("Pole wymagane"),
+      adLocation: Yup.string().required("Pole wymagane"),
       adDesc: Yup.string().required("Pole wymagane"),
     }),
     onSubmit: (values) => {
@@ -63,6 +62,8 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
     if (informToGetData) formik.handleSubmit();
   }, [informToGetData, formik]);
 
+  console.log(formik.values);
+
   return (
     <>
       <NewInputComponent
@@ -80,12 +81,18 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
         }
       />
 
-      {/* <SelectComponent
+      <SelectComponent
         size="mid"
         data={cities}
-        Change={setAdLocation}
+        formik={formik}
+        name="adLocation"
         placeholder="Lokalizacja..."
-      /> */}
+        message={
+          formik.touched.adLocation && formik.errors.adLocation
+            ? formik.errors.adLocation
+            : null
+        }
+      />
 
       <NewTextAreaComponent
         size="mid"

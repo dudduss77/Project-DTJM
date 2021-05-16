@@ -12,7 +12,7 @@ const AddAdView = () => {
   const [adData, setAdData] = useState(null);
   const [buttonClick, setButtonClick] = useState(false);
 
-  const adInfoComponent = (
+  const adFormComponent = (
     <>
       <h3>Podstawowe Dane</h3>
       <AdFormComponent getData={setAdData} informToGetData={buttonClick} />
@@ -46,7 +46,7 @@ const AddAdView = () => {
   return (
     <TemplateOne
       header="Dodawanie ogłoszenia"
-      leftTop={adInfoComponent}
+      leftTop={adFormComponent}
       leftBottom={<div className="tempAvatar"></div>}
       mid={<div className="testCategory"></div>}
       right={<div className="testCategory"></div>}

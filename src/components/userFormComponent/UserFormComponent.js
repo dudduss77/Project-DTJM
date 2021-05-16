@@ -109,12 +109,18 @@ const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
         }
       />
 
-      {/* <SelectComponent
+      <SelectComponent
         size="mid"
         data={cities}
-        Change={setUserLocation}
+        formik={formik}
+        name="userLocation"
         placeholder="Lokalizacja..."
-      /> */}
+        message={
+          formik.touched.userLocation && formik.errors.userLocation
+            ? formik.errors.userLocation
+            : null
+        }
+      />
 
       <NewTextAreaComponent
         size="mid"

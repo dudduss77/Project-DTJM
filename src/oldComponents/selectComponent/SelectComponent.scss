@@ -22,20 +22,11 @@ $background-color: $mainColor1;
     box-sizing: border-box;
     border: none;
     text-align: center;
-    position: relative;
-  }
-
-  &__message {
-    margin: 2px 0;
-    font-size: 0.8em;
-    color: $errorColor;
-    width: 100%;
   }
 
   &__list {
     max-height: 100px;
     position: absolute;
-
     width: 100%;
     z-index: 99;
     overflow-y: scroll;

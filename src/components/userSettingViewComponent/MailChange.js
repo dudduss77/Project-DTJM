@@ -1,27 +1,44 @@
-import React, {useState} from "react";
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-import InputComponent from "../inputComponent/InputComponent";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 
 const MailChange = () => {
-  const [newMail, setNewMail] = useState("");
 
-  const submitNewMail = () => {
-
-  }
+  const formik = useFormik({
+    initialValues: {
+      newMail: ""
+    },
+    validationSchema: Yup.object().shape({
+      newMail: Yup.string().email("Zły format email").required("Pole wymagane")
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+    },
+  });
 
   return (
     <>
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="text"
         placeholder="Nowy adres email"
-        getValue={setNewMail}
+        name="newMail"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.newMail}
+        message={
+          formik.touched.newMail && formik.errors.newMail
+            ? formik.errors.newMail
+            : null
+        }
       />
       <ButtonComponent
         size="mid"
         name="Zmień"
-        click={() => submitNewMail()}
+        click={() => formik.handleSubmit()}
       />
     </>
   );

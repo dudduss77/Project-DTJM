@@ -1,0 +1,39 @@
+@import "../../variables.scss";
+
+.newTextAreaComponent {
+  display: flex;
+  flex-direction: column;
+  &--mid {
+    width: 300px;
+  }
+
+  &__textarea {
+    border: none;
+    resize: none;
+    margin: 0;
+    padding: 5px;
+    height: 100px;
+    font-size: 1.2em;
+    font-family: $mainFontFamily1;
+    color: $mainColor7;
+  }
+
+  &__message {
+    margin: 2px 0;
+    font-size: 0.8em;
+    color: $errorColor;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .newTextAreaComponent {
+    &--small {
+      width: 90%;
+    }
+
+    &--mid {
+      width: 90%;
+    }
+  }
+}

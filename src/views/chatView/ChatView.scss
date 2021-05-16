@@ -26,6 +26,12 @@
           
       }
 
+      &__backArrow {
+        display: inline;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
       &--exit:hover {
         :hover {
             cursor: pointer;
@@ -126,6 +132,7 @@
 
             &__values {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: end;
                 align-items: end;
                 font-weight: bold;
@@ -188,11 +195,7 @@
     
   &.active {
     left: -350px;
- }
-
-
-
-  
+    }
   }
 
 
@@ -208,6 +211,59 @@
     }
 }
 
+}
+
+
+
+
+
+@media (max-width: 960px) {
+    .chatView {
+        width: 100vw;
+        left: 0px;
+        top: 0px;
+        height: 100vh;
+
+        &__header {
+            position: fixed;
+            z-index: 999;
+        }
+        &__wrapper {
+            margin-top: 60px;
+            width: 200vw;
+
+            &.active {
+                left: -100vw;
+            }
+            &__list {
+                width: 100vw;
+            }
+
+            &__content {
+                display: flex;
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh;
+                &__messageBox {
+                    height: 100vh;
+                    margin-bottom: 100px;
+
+                }
+                &__input {
+                    position: fixed;
+                    bottom: 0px;
+                    right: 0px;
+                    width: 100vw;
+                    margin-bottom: 10px;
+                    background-color: $mainColor1;
+                }
+            }
+    }
+}
+
+
+
+    
 }
 
 

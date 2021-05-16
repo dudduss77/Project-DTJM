@@ -11,12 +11,19 @@ const {setChatVisibility, messages, setMessages} = useContext(globalContext);
 
 const wrapperRef = useRef();
 const refMessageBox = useRef();
+const refBackArrow = useRef();
 
 const handlerExit = () => setChatVisibility(false);
 
 const handlerShowMessage = (e, index) => {
   wrapperRef.current.classList.add('active');
+  refBackArrow.current.classList.remove('none-display');
   setActualIndex(index);
+}
+
+const handlerBack = () => {
+  wrapperRef.current.classList.remove('active');
+  refBackArrow.current.classList.add('none-display');
 }
 
 
@@ -70,25 +77,28 @@ const [resetInput, setResetInput] = useState(true);
 const handlerGetValue = (val) => setInputMessage(val);
 
 const handlerSend = () => {
-  const payload = {
-    value: inputMessage,
-    fromYou: true,
-    time: 1
 
+  if(inputMessage != "") {
+    const payload = {
+      value: inputMessage,
+      fromYou: true,
+      time: 1
+  
+    }
+  
+    setMessages({type: "SEND", id: actualIndex,  payload});
+  
+    setInputMessage("")
+    setResetInput(prev => !prev);
   }
 
-  setMessages({type: "SEND", id: actualIndex,  payload});
-
-  setInputMessage("")
-  setResetInput(prev => !prev);
 }
 const handlerEnterDown = ({code}) => (code=="Enter") ? handlerSend() : "";
 
 useEffect(() => {
-  console.log("object")
   setMappedContent(mappContent(actualIndex));
   
-}, [resetInput])
+}, [resetInput, actualIndex])
 
 useEffect(() => {
   refMessageBox.current.scrollTop = refMessageBox.current.scrollHeight
@@ -97,9 +107,16 @@ useEffect(() => {
 
   return (
     <div className="chatView">
-      <div className="chatView__header">
+      <div className="chatView__header ">
         <span>
-          Wiadomości
+            <p
+              className="chatView__header__backArrow none-display"
+              ref={refBackArrow}
+              onClick={handlerBack}
+            >
+            <FontAwesomeIcon icon='chevron-left'/>
+            </p>
+            Wiadomości
         </span>
 
         <span 
@@ -126,7 +143,6 @@ useEffect(() => {
             ref={refMessageBox} 
           >
           {mappedContnent}
-          {/* <p ref={refMessageBox} ></p> */}
           </div>
 
           <div className="chatView__wrapper__content__input">
@@ -135,6 +151,7 @@ useEffect(() => {
               getValue={handlerGetValue}
               onKeyDown={handlerEnterDown}
               reset={resetInput}
+              type="text"
             />
 
             <FontAwesomeIcon 

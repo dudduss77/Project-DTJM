@@ -10,7 +10,10 @@ import {
   faSwimmer,
   faPlus,
   faUser,
-  faCog
+  faCog,
+  faTimes,
+  faPaperPlane,
+  faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -24,5 +27,8 @@ library.add(
   faSwimmer,
   faPlus,
   faUser,
-  faCog
+  faCog,
+  faTimes,
+  faPaperPlane, 
+  faChevronLeft
 );

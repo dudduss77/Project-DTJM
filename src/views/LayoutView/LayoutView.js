@@ -9,9 +9,10 @@ import {globalContext} from '../../context/globalStore'
 
 import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 import PopupComponent from '../../components/popupComponent/PopupComponent'
+import ChatView from "../chatView/ChatView";
 
 const LayoutView = () => {
-  const {appData} = useContext(globalContext)
+  const {appData, chatVisibility} = useContext(globalContext)
   return (
     <div className="layoutView">
       <Router>
@@ -25,6 +26,7 @@ const LayoutView = () => {
         </div>
       </Router>
       {appData.showPopup && (<PopupComponent/>)}
+      {chatVisibility && (<ChatView/>)}
     </div>
   );
 };

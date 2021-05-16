@@ -7,9 +7,9 @@ import './HeaderComponent.scss'
 
 const HeaderComponent = () => {
   let history = useHistory();
-  const {userData : {logged}, setAppData} = useContext(globalContext);
+  const {userData : {logged}, setAppData, setChatVisibility} = useContext(globalContext);
   
-  const handlerClickMessage = () => history.push('/messages');
+  const handlerClickMessage = () => setChatVisibility(true);
 
   const handlerClickUserProfile = () => history.push('/profil');
 

@@ -1,44 +1,87 @@
-import React, {useState} from 'react'
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-import InputComponent from "../inputComponent/InputComponent";
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 
-const PasswordChange = () => {
-  const [oldPass, setOldPass] = useState("");
-  const [newPass, setNewPass] = useState("");
-  const [repeatPass, setRepeatPass] = useState("");
+const passRegex =
+  /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
 
-  const submitNewPass = () => {
-    
-  }
+const PasswordChange = () => {
+  const formik = useFormik({
+    initialValues: {
+      oldPass: "",
+      newPass: "",
+      repeatPass: "",
+    },
+    validationSchema: Yup.object().shape({
+      oldPass: Yup.string().required("Pole wymagane"),
+      newPass: Yup.string()
+        .matches(passRegex, "Słabe hasło")
+        .required("Pole wymagane"),
+      repeatPass: Yup.string()
+        .oneOf([Yup.ref("passwordRegister"), null], "Różne hasła")
+        .required("Pole wymagane"),
+    }),
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+    },
+  });
 
   return (
     <>
-      <InputComponent
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Stare Hasło"
-        getValue={setOldPass}
+        name="oldPass"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.oldPass}
+        message={
+          formik.touched.oldPass && formik.errors.oldPass
+            ? formik.errors.oldPass
+            : null
+        }
       />
-      <InputComponent
+
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Nowe Hasło"
-        getValue={setNewPass}
+        name="newPass"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.newPass}
+        message={
+          formik.touched.newPass && formik.errors.newPass
+            ? formik.errors.newPass
+            : null
+        }
       />
-      <InputComponent
+
+      <NewInputComponent
         size="mid"
         type="password"
         placeholder="Powtórz hasło"
-        getValue={setRepeatPass}
+        name="repeatPass"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.repeatPass}
+        message={
+          formik.touched.repeatPass && formik.errors.repeatPass
+            ? formik.errors.repeatPass
+            : null
+        }
       />
       <ButtonComponent
         size="mid"
         name="Zmień"
-        click={() => submitNewPass()}
+        click={() => formik.handleSubmit()}
       />
     </>
-  )
-}
+  );
+};
 
-export default PasswordChange
+export default PasswordChange;

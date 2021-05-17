@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 
 import TemplateTwo from "../../templatesComponents/TemplateTwo/TemplateTwo";
 import AdFormComponent from "../../components/adFormComponent/AdFormComponent";
-import DeleteAd from '../../components/adSettingsViewComponent/DeleteAd'
+import DeleteAd from "../../components/adSettingsViewComponent/DeleteAd";
 
 import { globalContext } from "../../context/globalStore";
 import { userActionType } from "../../context/reducers/userDataReducer";
@@ -26,15 +26,16 @@ const AdSettingsView = () => {
   const right = (
     <>
       <h3>Usuwanie ogłoszenia</h3>
-      <DeleteAd/>
+      <DeleteAd />
     </>
-  )
+  );
 
   useEffect(() => {
     submitEditTask();
   }, [buttonClick, adData]);
 
   const submitEditTask = () => {
+    console.log('edit', adData)
     if (adData) {
       let ad = {
         id: parseInt(adData.id),
@@ -47,9 +48,14 @@ const AdSettingsView = () => {
         location: adData.adLocation,
       };
 
-      setUserData({ type: userActionType.editAd, payload: {id: parseInt(adData.id), editAd: ad} });
-    }
-  }
+      setUserData({
+        type: userActionType.editAd,
+        payload: { id: parseInt(adData.id), editAd: ad },
+      });
+      setButtonClick(false);
+      setAdData(null);
+    } else setButtonClick(false);
+  };
 
   return (
     <TemplateTwo

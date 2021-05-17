@@ -1,7 +1,6 @@
 import {useContext} from 'react'
 import './TestComponent.scss'
 
-import InputTestComponent from '../inputComponent/inputTestComponent/InputTestComponent'
 import ButtonTest from '../buttonComponent/buttonTest/ButtonTest'
 import AdBlockTest from '../adBlockComponent/adBlockTest/AdBlockTest'
 import { globalContext } from '../../context/globalStore'
@@ -23,6 +22,7 @@ import SearchMainPageTestComponent from '../searchMainPageComponent/searchMainPa
 import WraperBlock from '../wraperBlock/WraperBlock'
 
 
+
 const TestComponent = () => {
 
   const {category, setCategory } = useContext(globalContext);
@@ -32,6 +32,21 @@ const TestComponent = () => {
     <div className="testComponent">
     
      <WraperBlock />
+      <ButtonTest/>
+       {/* <AdBlockTest/> */}
+      <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
+      <CategoryTailTestComponent />
+      <CategoryChoiceTestComponent/>
+      <HeaderTest/>
+      <ObsPanelTest/>
+      <PersonItemTest/>
+
+     {/* <UserInfoComponent/> */}
+
+      {/* <UserInfoComponent/> */}
+      <PopupTestComponent/>
+      <SearchMainPageTestComponent/>
+      <SelectTestComponent/>
     </div>
   )
 }

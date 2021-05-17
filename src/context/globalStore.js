@@ -141,7 +141,7 @@ const GlobalProvider = ({children}) => {
     ]);
 
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: true,
+        logged: false,
         userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",

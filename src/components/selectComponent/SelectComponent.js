@@ -1,8 +1,8 @@
+import { getDefaultNormalizer } from "@testing-library/dom";
 import {useEffect, useState} from "react";
 import "./SelectComponent.scss";
 
-const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor, className}) => {
-
+const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor, className, onKeyDown}) => {
 
 
 
@@ -48,6 +48,7 @@ const SelectComponent = ({data = [], Change, size="small", placeholder, htmlFor,
         className="selectComponent__input"
         id={htmlFor}
         placeholder={placeholder}
+        onKeyDown = {onKeyDown}
       />
 
       {visibility && (<div className="selectComponent__list">

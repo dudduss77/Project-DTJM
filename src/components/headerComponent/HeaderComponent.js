@@ -7,20 +7,20 @@ import './HeaderComponent.scss'
 
 const HeaderComponent = () => {
   let history = useHistory();
-  const {userData : {logged}, setAppData} = useContext(globalContext);
+  const {userData : {logged}, setAppData, setChatVisibility} = useContext(globalContext);
   
-  const handlerClickMessage = () => history.push('/messages');
+  const handlerClickMessage = () => setChatVisibility(true);
 
   const handlerClickUserProfile = () => history.push('/profil');
 
-  const handlerClickAdd = () => history.push('/add');
+  const handlerClickAdd = () => history.push('/add-ad');
 
   const handlerClickLogIn = () =>{
     setAppData({type: "SHOW_POPUP"})
   };
   return (
     <div className="headerComponent">
-      <div className="headerComponent__logo">
+      <div onClick={() => history.push('/')} className="headerComponent__logo">
         DTJM
       </div>
 

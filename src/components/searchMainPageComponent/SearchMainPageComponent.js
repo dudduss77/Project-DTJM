@@ -1,75 +1,84 @@
-import './SearchMainPageComponent.scss'
+import "./SearchMainPageComponent.scss";
+import { useFormik, Form } from "formik";
+import * as Yup from "yup";
 
-import ButtonComponent from '../../components/buttonComponent/ButtonComponent'
-import InputComponent from '../../components/inputComponent/InputComponent'
-import SelectComponent from '../../components/selectComponent/SelectComponent'
+import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
+import SelectComponent from "../../components/selectComponent/SelectComponent";
 
+import NewInputComponent from "../newInputComponent/NewInputComponent";
 
-import city from './../../json/localizationPL.json'
-import { globalContext } from '../../context/globalStore'
-import { useContext, useState } from 'react'
-import { useHistory } from 'react-router'
+import city from "./../../json/localizationPL.json";
+import { globalContext } from "../../context/globalStore";
+import { useContext, useState } from "react";
+import { useHistory } from "react-router";
 
-const SearchMainPageComponent = ({name, imgUrl}) => {
-
-  const {category} = useContext(globalContext);
+const SearchMainPageComponent = ({ name, imgUrl }) => {
+  const { category } = useContext(globalContext);
 
   const mappCities = () => {
     let tempArr = [];
-     city.forEach(item => {
-      tempArr.push(...(item.cities.map(city => city.text_simple)))
-     });
+    city.forEach((item) => {
+      tempArr.push(...item.cities.map((city) => city.text_simple));
+    });
 
     return tempArr;
-  }
+  };
   const [cities, setCities] = useState(mappCities());
 
-
-
-  const mappCategory = () => category.map(item => item.name);
+  const mappCategory = () => category.map((item) => item.name);
   const [mappedCategory, setMappedCategory] = useState(mappCategory());
-
-  const [inputText, setInputText] = useState("");
-  const [categoryText, setCategoryText] = useState("");
-  const [citiesText, setCitiesText] = useState("");
 
   const history = useHistory();
 
-  const handlerClick = () => history.push("/search", {value: inputText, category: categoryText, location: citiesText});
-  const handlerInputChange = (val) => setInputText(val);
-  const handlerCitiesChange = (val) => setCategoryText(val);
-  const handlerCategoryChange = (val) => setCitiesText(val);
-
+  const formik = useFormik({
+    initialValues: {
+      searchValue: "",
+      searchCategory: "",
+      searchLocation: "",
+    },
+    onSubmit: (values) => {
+      console.log("Czy idzie submit");
+      history.push("/search", {
+        value: values.searchValue,
+        category: values.searchCategory,
+        location: values.searchLocation,
+      });
+    },
+  });
 
   return (
     <div className="searchMainPageComponent">
-
-      <InputComponent 
-        size="small" 
-        placeholder="Znajdź coś dla siebie"
+      <NewInputComponent
         size="small"
-        getValue={handlerInputChange}
+        type="text"
+        placeholder="Znajdź coś dla siebie"
+        name="searchValue"
+        formikHandlChange={formik.handleChange}
+        formikOnBlur={formik.handleBlur}
+        initialValue={formik.values.searchValue}
       />
 
-      <SelectComponent 
-        data={mappedCategory} 
-        Change={handlerCitiesChange} 
+      <SelectComponent
+        data={mappedCategory}
+        formik={formik}
+        name="searchCategory"
         placeholder="Kategoria"
       />
 
-      <SelectComponent 
+      <SelectComponent
         placeholder="Lokalizacja"
         data={cities}
-        Change={handlerCategoryChange}
+        formik={formik}
+        name="searchLocation"
       />
 
       <ButtonComponent
         name="Szukaj"
         size="small"
-        click={handlerClick}
+        click={() => formik.handleSubmit()}
       />
     </div>
-  )
-}
+  );
+};
 
-export default SearchMainPageComponent
+export default SearchMainPageComponent;

@@ -11,7 +11,10 @@ import {
   faPlus,
   faUser,
   faCog,
-  faImage
+  faImage,
+  faTimes,
+  faPaperPlane,
+  faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -26,5 +29,8 @@ library.add(
   faPlus,
   faUser,
   faCog,
-  faImage
+  faImage,
+  faTimes,
+  faPaperPlane, 
+  faChevronLeft
 );

@@ -17,6 +17,7 @@ const UserInfoComponent = ({editMode, userData}) => {
           />
         }
         name={userData.name}
+        surname={userData.surname}
         nick={userData.nick}
         email={userData.email}
         location={userData.location}

@@ -1,8 +1,10 @@
-import { useReducer, createContext} from 'react';
+import { useReducer, createContext, useState} from 'react';
 
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
 import appReducer from './reducers/appReducer';
+import LoginComponent from '../components/loginComponent/LoginComponent';
+import messageReducer from './reducers/messageReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -139,141 +141,38 @@ const GlobalProvider = ({children}) => {
     ]);
 
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: true,
+        logged: false,
+        userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
-        name: "Jan Kowalski",
+        name: "Jan",
+        surname: "Kowalski",
         nick: "Kowal",
         email: "jankowalski@gmail.com",
         location: "Wałbrzych",
         description: "Testowy opis",
         ad: [
-            {
-                path: "/tempPath1",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath2",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath3",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath4",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath5",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath6",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath7",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath8",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath9",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath10",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath11",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath12",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath13",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath14",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath15",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath16",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath17",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
-            {
-                path: "/tempPath18",
-                imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                imgAlt: "Testowe ogłoszenie",
-                header: "Testowe ogłoszenie",
-                category: "Test",
-            },
+            // {
+            //     id: 1,
+            //     path: "/ad-settings",
+            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+            //     imgAlt: "Testowe ogłoszenie",
+            //     header: "Testowe ogłoszenie",
+            //     category: "Test",
+            //     desc: "Coś tam sobie zrobię",
+            //     location: ""
+            // },
+            // {
+            //     id: 2,
+            //     path: "/ad-settings",
+            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+            //     imgAlt: "Testowe ogłoszenie",
+            //     header: "Szukam Tomka",
+            //     category: "Wpierdziel",
+            //     desc: "Tomek gdzie jesteś?",
+            //     location: ""
+            // },
+            
 
         ],
         peopleObs: [
@@ -298,6 +197,66 @@ const GlobalProvider = ({children}) => {
                 id: 2,
                 name: "C++"
             },
+            {
+                id: 3,
+                name: "JS"
+            },
+            {
+                id: 4,
+                name: "C++"
+            },
+            {
+                id: 5,
+                name: "JS"
+            },
+            {
+                id: 6,
+                name: "C++"
+            },
+            {
+                id: 7,
+                name: "C++"
+            },
+            {
+                id: 8,
+                name: "JS"
+            },
+            {
+                id: 9,
+                name: "C++"
+            },
+            {
+                id: 10,
+                name: "C++"
+            },
+            {
+                id: 11,
+                name: "C++"
+            },
+            {
+                id: 12,
+                name: "JS"
+            },
+            {
+                id: 13,
+                name: "C++"
+            },
+            {
+                id: 14,
+                name: "C++"
+            },
+            {
+                id: 15,
+                name: "C++"
+            },
+            {
+                id: 16,
+                name: "JS"
+            },
+            {
+                id: 17,
+                name: "C++"
+            },
         ],
         category: [
             {
@@ -317,109 +276,265 @@ const GlobalProvider = ({children}) => {
         ]
     })
 
+    const [messages, setMessages] = useReducer(messageReducer, [
+        {
+            id: 2,
+            name: "Tomasz Żukwowski",
+            avatarSrc: "/assets/profil.png",
+            content: [
+                {
+                    fromYou: false,
+                    value: "Cześć co u ciebie słychać?",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: true,
+                    value: "A nic, testuje sobie chat",
+                    time: 1620404555793
+                }, 
+                {
+                    fromYou: false,
+                    value: "Robisz chat ? Fajnie.",
+                    time: 1620404665220
+                }, 
+                {
+                    fromYou: false,
+                    value: "Ma jakieś ciekawe funkcje?",
+                    time: 1620404665221
+                }, 
+                {
+                    fromYou: true,
+                    value: "Nie interesuj się",
+                    time: 1620404348271
+                }, 
+
+                {
+                    fromYou: true,
+                    value: "To tajne",
+                    time: 1620404348271
+                }, 
+
+            ]
+        },
+
+        {
+            id: 3,
+            name: "Amciek Destroyer",
+            avatarSrc: "/assets/profil.png",
+            content: [
+                {
+                    fromYou: false,
+                    value: "Cześć, masz może pożyczyć kłodę?",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: true,
+                    value: "co ty ćpiesz?",
+                    time: 1620404555793
+                }, 
+                {
+                    fromYou: false,
+                    value: "nie to nie",
+                    time: 1620404348271
+                }, 
+                {
+                    fromYou: false,
+                    value: "...",
+                    time: 1620404348271
+                }, 
+
+            ]
+        },
+
+    ])
+
+    const [chatVisibility, setChatVisibility] = useState(true);
+
     const [appData, setAppData] = useReducer(appReducer, {
         showPopup: false
     })
 
     const testAd = [
         {
+            id: 1,
             path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
+            id: 2,
             path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath2",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath3",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath4",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath5",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath6",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath7",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath8",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath9",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath10",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath11",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
         },
         {
-            path: "/tempPath12",
+            id: 1,
+            path: "/tempPath",
             imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
             imgAlt: "Księżyc",
             header: "Projekt księżyc",
             category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
         },
         {
-            path: "/tempPath13",
+            id: 2,
+            path: "/tempPath1",
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             imgAlt: "Party",
             header: "Projekt X",
             category: "Impreza",
-        },   
+            desc: "Jazda jazda",
+            location: ""
+        },
+        {
+            id: 1,
+            path: "/tempPath",
+            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            imgAlt: "Księżyc",
+            header: "Projekt księżyc",
+            category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
+        },
+        {
+            id: 2,
+            path: "/tempPath1",
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Party",
+            header: "Projekt X",
+            category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
+        },
+        {
+            id: 1,
+            path: "/tempPath",
+            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            imgAlt: "Księżyc",
+            header: "Projekt księżyc",
+            category: "Kosmos",
+            desc: "Lecimy w kosmos",
+            location: ""
+        },
+        {
+            id: 2,
+            path: "/tempPath1",
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Party",
+            header: "Projekt X",
+            category: "Impreza",
+            desc: "Jazda jazda",
+            location: ""
+        },
     ]
 
     return (
@@ -431,7 +546,11 @@ const GlobalProvider = ({children}) => {
                 setUserData,
                 appData,
                 setAppData,
-                testAd
+                testAd,
+                messages,
+                setMessages,
+                chatVisibility, 
+                setChatVisibility
             }
         }>
             {children}

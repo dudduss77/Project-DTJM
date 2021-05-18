@@ -25,6 +25,13 @@ $label-color: $mainColor4;
     margin-right: 10px;
   }
 
+  &__message {
+    margin: 2px 0;
+    font-size: 0.8em;
+    color: $errorColor;
+    width: 100%;
+  }
+
   &--small {
     width: 250px;
   }
@@ -53,8 +60,8 @@ $label-color: $mainColor4;
   }
 }
 
-@media screen and (max-width: 800px) {
-  .inputComponent {
+@media screen and (max-width: 950px) {
+  .newInputComponent {
     &--small {
       width: 90%;
     }

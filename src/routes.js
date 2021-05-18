@@ -2,6 +2,10 @@ import TestComponent from './components/testComponent/TestComponent'
 import HomePageView from './views/homePageView/HomePageView'
 import UserProfileView from './views/UserProfileView/UserProfileView'
 import PreQuestionnaireView from './views/PreQuestionnaireView/PreQuestionnaireView'
+import AddAdView from './views/AddAdView/AddAdView'
+import UserSettingsView from './views/UserSettingsView/UserSettingsView'
+import AdSettingsView from './views/AdSettingsView/AdSettingsView'
+import AdView from './views/AdView/AdView'
 
 export const routes = [
   {
@@ -23,5 +27,25 @@ export const routes = [
   {
     path: "/pre-questionnaire",
     component: PreQuestionnaireView
+  },
+  {
+    path: "/add-ad",
+    component: AddAdView
+  },
+  {
+    path: "/user-settings",
+    component: UserSettingsView
+  },
+  {
+    path: "/ad-settings/:id",
+    component: AdSettingsView
+  },
+  {
+    path: "/ad/:id",
+    component: AdView
+  },
+  {
+    path: "/my-ad/:id",
+    component: () => <AdView userAd={true}/>
   },
 ]

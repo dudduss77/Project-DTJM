@@ -1,36 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PreQuestionnaireView.scss";
 
-import PreQuestionnaireUserInfo from '../../components/preQuestionnaireViewComponents/PreQuestionnaireUserInfo'
-import ButtonComponent from '../../components/buttonComponent/ButtonComponent'
+import UserFormComponent from "../../components/userFormComponent/UserFormComponent";
+
+import TemplateOne from "../../templatesComponents/TemplateOne/TemplateOne";
 
 const PreQuestionnaireView = () => {
+  const [userData, setUserData] = useState(null);
+  const [buttonClick, setButtonClick] = useState(false);
+
+  const preQuestionnaireUserInfo = (
+    <>
+      <h3>Dane Podstawowe</h3>
+      <UserFormComponent getData={setUserData} informToGetData={buttonClick} />
+    </>
+  );
+
+  useEffect(() => {
+    console.log("Wysłane"); //Walidacja
+  }, [buttonClick]);
+
   return (
-    <div className="preQuestionnaireView">
-      <h3 className="preQuestionnaireView__header">Ankieta wstępna</h3>
-      <div className="preQuestionnaireView__leftTop">
-        <PreQuestionnaireUserInfo/>
-      </div>
-      <div className="preQuestionnaireView__leftBottom">
-        avatar
-        <div className="tempAvatar"></div>
-      </div>
-      <div className="preQuestionnaireView__mid">
-        Kategorie
-        <div className="testCategory "></div>
-      </div>
-      <div className="preQuestionnaireView__right">
-      Skille
-      <div className="testCategory "></div>
-      </div>
-      <div className="preQuestionnaireView__bottom">
-      <ButtonComponent
-        size="small"
-        name="Zapisz"
-        // click={() => submitLogin()}
-      />
-      </div>
-    </div>
+    <TemplateOne
+      header="Ankieta wstępna"
+      leftTop={preQuestionnaireUserInfo}
+      leftBottom={<div className="tempAvatar"></div>}
+      mid={<div className="testCategory"></div>}
+      right={<div className="testCategory"></div>}
+      buttonClick={() => setButtonClick(true)}
+    />
   );
 };
 

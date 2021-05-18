@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fab, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faHeart,
   faComment,
@@ -10,7 +10,8 @@ import {
   faSwimmer,
   faPlus,
   faUser,
-  faCog
+  faCog,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -24,5 +25,8 @@ library.add(
   faSwimmer,
   faPlus,
   faUser,
-  faCog
+  faCog,
+  faTrash
+  // faGithub,
+  // faLinkedin
 );

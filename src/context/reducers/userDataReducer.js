@@ -1,6 +1,8 @@
 export const userActionType = {
   addAd: "ADD-AD",
   editAd: "EDIT-AD",
+  editUser: "EDIT-USER-DATA",
+  editUserLinks: "EDIT-USER-LINKS",
   deleteAd: "DELETE-AD",
 };
 
@@ -17,6 +19,24 @@ const userDataReducer = (state, action) => {
           }
           return item;
         }),
+      };
+    case userActionType.editUser:
+      return {
+        ...state,
+        avatarSrc: action.payload.newUserData.avatarSrc,
+        avatarAlt: action.payload.newUserData.avatarAlt,
+        name: action.payload.newUserData.name,
+        surname: action.payload.newUserData.surname,
+        nick: action.payload.newUserData.nick,
+        email: action.payload.newUserData.email,
+        location: action.payload.newUserData.location,
+        description: action.payload.newUserData.description,
+        links: action.payload.links,
+      };
+    case userActionType.editUserLinks:
+      return {
+        ...state,
+        links: action.payload.links,
       };
     case userActionType.deleteAd:
       return {

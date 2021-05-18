@@ -4,13 +4,14 @@ import "./TemplateOne.scss";
 
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 
-const TemplateOne = ({ header, leftTop, leftBottom, mid, right, buttonClick }) => {
+const TemplateOne = ({ header, leftTop, leftBottom, midOne, midTwo, right, buttonClick }) => {
   return (
     <div className="templateOne">
       <h3 className="templateOne__header">{header}</h3>
       <div className="templateOne__leftTop">{leftTop}</div>
       <div className="templateOne__leftBottom">{leftBottom}</div>
-      <div className="templateOne__mid">{mid}</div>
+      <div className="templateOne__midOne">{midOne}</div>
+      <div className="templateTwo__midTwo">{midTwo}</div>
       <div className="templateOne__right">{right}</div>
       <div className="templateOne__bottom">
         <ButtonComponent

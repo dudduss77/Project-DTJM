@@ -1,0 +1,34 @@
+.imageDisplayComponent{
+  //height: 200px;
+  width: 100%;
+  height: 230px;
+  padding-top: 10px;
+
+&__img{
+  object-fit: cover;
+  margin-top: 10px;
+  //position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  z-index: 1;
+  padding-bottom: 10px;
+}
+
+  &__deleteButton{
+    //font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 10px;
+    z-index: 3;
+    border:none;
+    background-color: rgba(0, 0, 0, 0);
+  
+  }
+
+  /*&__deleteButton :focus{
+    color: red;
+    border: solid;
+    
+  }*/
+}

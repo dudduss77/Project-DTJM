@@ -11,6 +11,7 @@ import {
   faPlus,
   faUser,
   faCog,
+  faImage,
   faTimes,
   faPaperPlane,
   faChevronLeft
@@ -28,6 +29,7 @@ library.add(
   faPlus,
   faUser,
   faCog,
+  faImage,
   faTimes,
   faPaperPlane, 
   faChevronLeft

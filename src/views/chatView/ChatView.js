@@ -3,11 +3,11 @@ import React, {useContext, useState, useEffect, useRef} from 'react'
 import './ChatView.scss'
 import {globalContext} from '../../context/globalStore'
 import InputComponent from '../../components/inputComponent/InputComponent'
-
+import { parseDateTimeToString } from './../../helpers/helpers'
 
 const ChatView = () => {
 
-const {setChatVisibility, messages, setMessages} = useContext(globalContext);
+const { setChatVisibility, messages, setMessages } = useContext(globalContext);
 
 const wrapperRef = useRef();
 const refMessageBox = useRef();
@@ -38,7 +38,7 @@ const mappMess = () => messages.map((item, index) =>(
             </div>
 
             <div className="chatView__wrapper__list__item--body">
-              <span>{item.name} <h5> 09.04.2021</h5></span>
+              <span>{item.name} <h5> {parseDateTimeToString(new Date(item.content[item.content.length-1].time))}</h5></span>
               <p>
                 {item.content[item.content.length-1].value.slice(0,31)}
 
@@ -59,6 +59,10 @@ const mappContent = (ind) => messages[ind].content.map((item, index) =>(
   <div className="chatView__wrapper__content__messageBox__values__mess">
         {item.value}
   </div>
+
+  <div className="chatView__wrapper__content__messageBox__values__date">
+  {parseDateTimeToString(new Date(item.time))}
+  </div>    
 </div>
 
 ))
@@ -82,10 +86,11 @@ const handlerSend = () => {
     const payload = {
       value: inputMessage,
       fromYou: true,
-      time: 1
+      time: (new Date()).getTime()
   
     }
-  
+
+    console.log(payload)
     setMessages({type: "SEND", id: actualIndex,  payload});
   
     setInputMessage("")

@@ -30,6 +30,7 @@ const SelectTestComponent = () => {
   const [mappedCategory, setMappedCategory] = useState(mappCategory());
 
   const [inputText, setInputText] = useState("");
+  const [rst, setRst] = useState(true);
 
 
 
@@ -67,10 +68,13 @@ const SelectTestComponent = () => {
       <SelectComponent 
         data={mappedCategory} 
         Change={setInputText} 
-        placeholder="Wybierz Kategorie"/>
+        placeholder="Wybierz Kategorie"
+        reset={rst}
+       />
 
 
         <button type="submit">Submit without formik</button>
+        <input type="button" onClick={() => setRst(prev => !prev)} value="reset"></input>
       </form>
 
 

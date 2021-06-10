@@ -1,19 +1,31 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router'
+import * as AuthService from './../../services/authService';
+
 import { globalContext } from '../../context/globalStore'
 import './HeaderComponent.scss'
 
 
 const HeaderComponent = () => {
   let history = useHistory();
-  const {userData : {logged}, setAppData, setChatVisibility} = useContext(globalContext);
+  const {userData : {logged}, setUserData, setAppData, setChatVisibility} = useContext(globalContext);
   
   const handlerClickMessage = () => setChatVisibility(true);
 
   const handlerClickUserProfile = () => history.push('/profil');
 
   const handlerClickAdd = () => history.push('/add-ad');
+
+  const handlerClickLogOut = () => AuthService.logOut(
+                                                      () => {
+                                                        console.log("wylogowano pomyślnie");
+                                                        setUserData({ type: "LOG-OUT"});
+                                                      },
+                                                      (err) => {
+                                                        console.log(err)
+                                                      }
+                                                     );
 
   const handlerClickLogIn = () =>{
     setAppData({type: "SHOW_POPUP"})
@@ -38,6 +50,11 @@ const HeaderComponent = () => {
           <div className="headerComponent__menu__item" onClick={handlerClickAdd}>
             <FontAwesomeIcon icon="plus" />
           </div>
+
+          <div className="headerComponent__menu__item" onClick={handlerClickLogOut}>
+            <FontAwesomeIcon icon="power-off" />
+          </div>
+
         </div>
 
         :

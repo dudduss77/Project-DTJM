@@ -10,6 +10,7 @@ import ButtonComponent from "../buttonComponent/ButtonComponent";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
 import { globalContext } from "../../context/globalStore";
 
+
 const LoginComponent = () => {
 
   const { userData, setUserData } = useContext(globalContext);

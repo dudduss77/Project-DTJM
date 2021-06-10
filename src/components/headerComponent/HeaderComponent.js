@@ -18,13 +18,8 @@ const HeaderComponent = () => {
   const handlerClickAdd = () => history.push('/add-ad');
 
   const handlerClickLogOut = () => AuthService.logOut(
-                                                      () => {
-                                                        console.log("wylogowano pomyślnie");
-                                                        setUserData({ type: "LOG-OUT"});
-                                                      },
-                                                      (err) => {
-                                                        console.log(err)
-                                                      }
+                                                      () => setUserData({ type: "LOG-OUT"}),
+                                                      err => console.log(err)
                                                      );
 
   const handlerClickLogIn = () =>{

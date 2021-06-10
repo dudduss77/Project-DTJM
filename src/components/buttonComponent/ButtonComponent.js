@@ -6,6 +6,7 @@ const ButtonComponent = ({ click, size = "auto", name, bgColor = 'default' }) =>
     <button
       onClick={click}
       className={`buttonComponent buttonComponent--${size} buttonComponent--${bgColor}`}
+      type="button"
     >
       {name}
     </button>

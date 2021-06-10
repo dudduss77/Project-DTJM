@@ -1,9 +1,4 @@
-import { useContext } from 'react';
-import { globalContext } from '../context/globalStore.js';
 import firebase from './db.js';
-
-
-//   console.log(firebase);
 
 
 
@@ -66,8 +61,19 @@ const logOut = async (success, err) => {
 }
 
 
+const observeUserLoginState = (whenTrue, whenFalse) => {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) whenTrue(user);
+        else whenFalse();
+      });
+
+
+}
+
+
 export {
     createUser,
     authUser,
-    logOut
+    logOut, 
+    observeUserLoginState
 }

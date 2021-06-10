@@ -3,6 +3,9 @@ import "./LayoutView.scss";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import {NotificationContainer} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 import { routes } from "../../routes";
 
 import {globalContext} from '../../context/globalStore'
@@ -27,6 +30,8 @@ const LayoutView = () => {
       </Router>
       {appData.showPopup && (<PopupComponent/>)}
       {chatVisibility && logged && (<ChatView/>)}
+
+      <NotificationContainer/>
     </div>
   );
 };

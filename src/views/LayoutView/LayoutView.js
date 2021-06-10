@@ -13,6 +13,7 @@ import {globalContext} from '../../context/globalStore'
 import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 import PopupComponent from '../../components/popupComponent/PopupComponent'
 import ChatView from "../chatView/ChatView";
+import PrivateRoute from "../../privateRouter/privateRoute";
 
 const LayoutView = () => {
   const {appData, chatVisibility, userData : { logged }} = useContext(globalContext)
@@ -23,6 +24,9 @@ const LayoutView = () => {
         <div className="layoutView__content">
           <Switch>
             {routes.map((route, i) => (
+              route.private ?
+              <PrivateRoute exact key={i} {...route} />
+              :
               <Route exact key={i} {...route} />
             ))}
           </Switch>

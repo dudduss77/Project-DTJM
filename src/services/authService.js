@@ -54,7 +54,20 @@ const authUser = async (email, pass, success = ()=>{}, err = (e)=>{}) => {
 }
 
 
+const logOut = async (success, err) => {
+    try {
+        await firebase.auth().signOut();
+        success();
+        
+    } catch(err) {
+        err();
+    }
+    
+}
+
+
 export {
     createUser,
-    authUser
+    authUser,
+    logOut
 }

@@ -1,4 +1,4 @@
-import { useReducer, createContext, useState} from 'react';
+import { useReducer, createContext, useState, useEffect} from 'react';
 
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
@@ -6,137 +6,151 @@ import appReducer from './reducers/appReducer';
 import LoginComponent from '../components/loginComponent/LoginComponent';
 import messageReducer from './reducers/messageReducer';
 
+import * as CategoryService from './../services/categoryService';
+
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
 // In this store we will have common data like catgory...
 
 const GlobalProvider = ({children}) => {
+
+
+
+    useEffect(() => {
+        CategoryService.fetchDataRealTime((payload) => {
+            console.log('wykonuje sie');
+            console.log(payload)
+            setCategory({ type: 'FETCH', payload});
+        });
+
+    }, [])
+
     const [category, setCategory] = useReducer(categoryReducer, [
-        {
-            id: 1,
-            name: "Muzyka",
-            icon: ['fas', 'music']
-        },
-        {
-            id: 1,
-            name: "Elektronika",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Sport",
-            icon: ['fas', 'swimmer']
-        },
-        {
-            id: 1,
-            name: "Inne",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Hobby",
-            icon: ['fas', 'baseball-ball']
-        },
-        {
-            id: 1,
-            name: "Muzyka",
-            icon: ['fas', 'music']
-        },
-        {
-            id: 1,
-            name: "Elektronika",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Sport",
-            icon: ['fas', 'swimmer']
-        },
-        {
-            id: 1,
-            name: "Inne",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Hobby",
-            icon: ['fas', 'baseball-ball']
-        },
-        {
-            id: 1,
-            name: "Muzyka",
-            icon: ['fas', 'music']
-        },
-        {
-            id: 1,
-            name: "Elektronika",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Sport",
-            icon: ['fas', 'swimmer']
-        },
-        {
-            id: 1,
-            name: "Inne",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Hobby",
-            icon: ['fas', 'baseball-ball']
-        },
-        {
-            id: 1,
-            name: "Muzyka",
-            icon: ['fas', 'music']
-        },
-        {
-            id: 1,
-            name: "Elektronika",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Sport",
-            icon: ['fas', 'swimmer']
-        },
-        {
-            id: 1,
-            name: "Inne",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Hobby",
-            icon: ['fas', 'baseball-ball']
-        },
-        {
-            id: 1,
-            name: "Muzyka",
-            icon: ['fas', 'music']
-        },
-        {
-            id: 1,
-            name: "Elektronika",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Sport",
-            icon: ['fas', 'swimmer']
-        },
-        {
-            id: 1,
-            name: "Inne",
-            icon: ['fas', 'plug']
-        },
-        {
-            id: 1,
-            name: "Hobby",
-            icon: ['fas', 'baseball-ball']
-        },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
         
     ]);
 

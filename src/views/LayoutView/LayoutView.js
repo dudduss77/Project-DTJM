@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext, useEffect } from "react";
 import "./LayoutView.scss";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,6 +10,8 @@ import { routes } from "../../routes";
 
 import {globalContext} from '../../context/globalStore'
 import * as AuthService from './../../services/authService.js';
+import * as UserService from './../../services/userService';
+import * as CategoryService from './../../services/categoryService';
 
 import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 import PopupComponent from '../../components/popupComponent/PopupComponent'
@@ -19,13 +21,52 @@ import PrivateRoute from "../../privateRouter/privateRoute";
 const LayoutView = () => {
   const {appData, chatVisibility, userData : { logged }, setUserData} = useContext(globalContext);
 
+
+  useEffect(() => {
+
   // there we can get data for context
   AuthService.observeUserLoginState(user => {
     setUserData({type: "LOG-IN"});
+    // console.log("konsol")
+    // console.log(UserService.getUserID());
+    // console.log("konsol2")
+
+
+    // UserService.resetUserData_production_mode();
+
+
+  //   const categoryTab = [{
+  //     name: "Muzyka",
+  //     icon: ['fas', 'music']
+  // },
+  // {
+  //     name: "Elektronika",
+  //     icon: ['fas', 'plug']
+  // },
+  // {
+  //     name: "Sport",
+  //     icon: ['fas', 'swimmer']
+  // },
+  // {
+  //     name: "Inne",
+  //     icon: ['fas', 'plug']
+  // },
+  // {
+  //     name: "Hobby",
+  //     icon: ['fas', 'baseball-ball']
+  // }]
+
+  // categoryTab.forEach(item => {
+  //     CategoryService.addCategory(item);
+  // })
+
+
+
   },
   () => {
     setUserData({type: "LOG-OUT"});
   });
+  }, [])
 
 
 

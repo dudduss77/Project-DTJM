@@ -13,6 +13,10 @@ const categoryReducer = (state, action) => {
             //todo
         break;
 
+        case 'FETCH':
+            return action.payload
+        break;
+
     
         default:
             throw new Error('Please type a valid action type')

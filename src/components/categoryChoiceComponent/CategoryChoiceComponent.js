@@ -25,7 +25,7 @@ const CategoryChoiceComponent = ({click}) => {
 
   const [categoryMapped, setcategoryMapped] = useState(mappCategory);
 
-  useEffect(() => setcategoryMapped(mappCategory), [limit])
+  useEffect(() => setcategoryMapped(mappCategory), [limit, category])
 
   return (
     <div className="categoryChoiceComponent" >

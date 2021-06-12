@@ -69,10 +69,10 @@ const mappContent = (ind) => messages[ind].content.map((item, index) =>(
 
 
 
-const [mappedMessages, setMappedMessages] = useState(mappMess());
+const [mappedMessages, setMappedMessages] = useState([]);
 
 const [actualIndex, setActualIndex] = useState(0);
-const [mappedContnent, setMappedContent] = useState(mappContent(0));
+const [mappedContnent, setMappedContent] = useState([]);
 
 
 const [inputMessage, setInputMessage] = useState("");
@@ -91,7 +91,7 @@ const handlerSend = () => {
     }
 
     console.log(payload)
-    setMessages({type: "SEND", id: actualIndex,  payload});
+    setMessages({type: "SEND", id: messages[actualIndex].id,  payload});
   
     setInputMessage("")
     setResetInput(prev => !prev);
@@ -101,13 +101,17 @@ const handlerSend = () => {
 const handlerEnterDown = ({code}) => (code=="Enter") ? handlerSend() : "";
 
 useEffect(() => {
-  setMappedContent(mappContent(actualIndex));
+  if(messages.length) {
+    setMappedContent(mappContent(actualIndex));
+    setMappedMessages(mappMess());  
+  }
   
-}, [resetInput, actualIndex])
+}, [resetInput, actualIndex, messages])
 
 useEffect(() => {
   refMessageBox.current.scrollTop = refMessageBox.current.scrollHeight
 }, [mappedContnent])
+
 
 
   return (
@@ -139,8 +143,8 @@ useEffect(() => {
 
         <div className="chatView__wrapper__content">
           <div className="chatView__wrapper__content__header">
-            <img src={messages[actualIndex].avatarSrc} />
-            <span>{messages[actualIndex].name}</span>
+            <img src={messages.length && messages[actualIndex].avatarSrc} />
+            <span>{messages.length && messages[actualIndex].name}</span>
           </div>
 
           <div 

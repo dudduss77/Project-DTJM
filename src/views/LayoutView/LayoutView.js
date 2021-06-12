@@ -13,6 +13,7 @@ import * as AuthService from './../../services/authService.js';
 import * as UserService from './../../services/userService';
 import * as CategoryService from './../../services/categoryService';
 
+
 import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 import PopupComponent from '../../components/popupComponent/PopupComponent'
 import ChatView from "../chatView/ChatView";
@@ -59,7 +60,7 @@ const LayoutView = () => {
   // categoryTab.forEach(item => {
   //     CategoryService.addCategory(item);
   // })
-
+  
 
 
   },

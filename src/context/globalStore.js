@@ -8,6 +8,7 @@ import messageReducer from './reducers/messageReducer';
 
 import * as CategoryService from './../services/categoryService';
 import * as UserService from './../services/userService';
+import * as MessageService from './../services/messageService';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -28,74 +29,74 @@ const GlobalProvider = ({children}) => {
     const [userData, setUserData] = useReducer(userDataReducer, {})
 
     const [messages, setMessages] = useReducer(messageReducer, [
-        {
-            id: 2,
-            name: "Tomasz Żukwowski",
-            avatarSrc: "/assets/profil.png",
-            content: [
-                {
-                    fromYou: false,
-                    value: "Cześć co u ciebie słychać?",
-                    time: 1620404348271
-                }, 
-                {
-                    fromYou: true,
-                    value: "A nic, testuje sobie chat",
-                    time: 1620404555793
-                }, 
-                {
-                    fromYou: false,
-                    value: "Robisz chat ? Fajnie.",
-                    time: 1620404665220
-                }, 
-                {
-                    fromYou: false,
-                    value: "Ma jakieś ciekawe funkcje?",
-                    time: 1620404665221
-                }, 
-                {
-                    fromYou: true,
-                    value: "Nie interesuj się",
-                    time: 1620404348271
-                }, 
+        // {
+        //     id: 2,
+        //     name: "Tomasz Żukwowski",
+        //     avatarSrc: "/assets/profil.png",
+        //     content: [
+        //         {
+        //             fromYou: false,
+        //             value: "Cześć co u ciebie słychać?",
+        //             time: 1620404348271
+        //         }, 
+        //         {
+        //             fromYou: true,
+        //             value: "A nic, testuje sobie chat",
+        //             time: 1620404555793
+        //         }, 
+        //         {
+        //             fromYou: false,
+        //             value: "Robisz chat ? Fajnie.",
+        //             time: 1620404665220
+        //         }, 
+        //         {
+        //             fromYou: false,
+        //             value: "Ma jakieś ciekawe funkcje?",
+        //             time: 1620404665221
+        //         }, 
+        //         {
+        //             fromYou: true,
+        //             value: "Nie interesuj się",
+        //             time: 1620404348271
+        //         }, 
 
-                {
-                    fromYou: true,
-                    value: "To tajne",
-                    time: 1620404348271
-                }, 
+        //         {
+        //             fromYou: true,
+        //             value: "To tajne",
+        //             time: 1620404348271
+        //         }, 
 
-            ]
-        },
+        //     ]
+        // },
 
-        {
-            id: 3,
-            name: "Amciek Destroyer",
-            avatarSrc: "/assets/profil.png",
-            content: [
-                {
-                    fromYou: false,
-                    value: "Cześć, masz może pożyczyć kłodę?",
-                    time: 1620404348271
-                }, 
-                {
-                    fromYou: true,
-                    value: "co ?",
-                    time: 1620404555793
-                }, 
-                {
-                    fromYou: false,
-                    value: "nie to nie",
-                    time: 1620404348271
-                }, 
-                {
-                    fromYou: false,
-                    value: "...",
-                    time: 1620404348271
-                }, 
+        // {
+        //     id: 3,
+        //     name: "Amciek Destroyer",
+        //     avatarSrc: "/assets/profil.png",
+        //     content: [
+        //         {
+        //             fromYou: false,
+        //             value: "Cześć, masz może pożyczyć kłodę?",
+        //             time: 1620404348271
+        //         }, 
+        //         {
+        //             fromYou: true,
+        //             value: "co ?",
+        //             time: 1620404555793
+        //         }, 
+        //         {
+        //             fromYou: false,
+        //             value: "nie to nie",
+        //             time: 1620404348271
+        //         }, 
+        //         {
+        //             fromYou: false,
+        //             value: "...",
+        //             time: 1620404348271
+        //         }, 
 
-            ]
-        },
+        //     ]
+        // },
 
     ])
 
@@ -289,34 +290,33 @@ const GlobalProvider = ({children}) => {
     ]
 
     const getCategoryNameByIdFromContext = (id) => {
-        for(let i = 0; i<category.length; i++) 
-            {
-                // debugger
+        for(let i = 0; i<category.length; i++)
                 if(category[i].id == id.trim()) return category[i].name; 
-                
-            } 
         return false;
     }
 
     useEffect(() => {
         if(userData.category) {
             const payload = userData.category.map(item => {
-                // debugger
                 item.name = getCategoryNameByIdFromContext(item.id);
                 return item;
             });    
             console.log(payload)
             setUserData({ type: "FETCH_CATEGORY", payload})
         }
-        
-
-
-    }, [category]);
+    }, [category, userData]);
 
     useEffect(() => {
-        if(userData.logged) 
-            UserService.fetchDataRealTime((payload) => setUserData({ type: 'FETCH', payload}));
+        if(userData.logged) {
+           UserService.fetchDataRealTime((payload) => setUserData({ type: 'FETCH', payload}));
+           MessageService.fetchDataRealTime((payload) => setMessages({ type: "FETCH", payload})) 
+        }
+            
     }, [userData.logged]);
+
+    useEffect(() => {
+        console.log(messages)
+    }, [messages])
 
     useEffect(() => {
         console.log(userData)

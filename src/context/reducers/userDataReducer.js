@@ -6,7 +6,8 @@ export const userActionType = {
   deleteAd: "DELETE-AD",
   logIn: "LOG-IN",
   logOut: "LOG-OUT",
-  fetch: "FETCH"
+  fetch: "FETCH",
+  fetch_category: "FETCH_CATEGORY"
 };
 
 const userDataReducer = (state, action) => {
@@ -41,6 +42,10 @@ const userDataReducer = (state, action) => {
 
     case userActionType.fetch:
         return { ...state, ...action.payload }
+
+    case userActionType.fetch_category:
+        state.category = action.payload
+        return state;
 
     default:
       throw new Error("Please type a valid action type");

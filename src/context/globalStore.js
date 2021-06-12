@@ -19,10 +19,8 @@ const GlobalProvider = ({children}) => {
 
     useEffect(() => {
         // fetch data from server
-        CategoryService.fetchDataRealTime((payload) => setCategory({ type: 'FETCH', payload}));
-
+        CategoryService.fetchDataRealTime((payload) => setCategory({ type: 'FETCH', payload}));    
     }, [])
-
 
 
     const [category, setCategory] = useReducer(categoryReducer, []);
@@ -290,15 +288,39 @@ const GlobalProvider = ({children}) => {
         },
     ]
 
+    const getCategoryNameByIdFromContext = (id) => {
+        for(let i = 0; i<category.length; i++) 
+            {
+                // debugger
+                if(category[i].id == id.trim()) return category[i].name; 
+                
+            } 
+        return false;
+    }
 
     useEffect(() => {
-        console.log(userData);
-    }, [userData]);
+        if(userData.category) {
+            const payload = userData.category.map(item => {
+                // debugger
+                item.name = getCategoryNameByIdFromContext(item.id);
+                return item;
+            });    
+            console.log(payload)
+            setUserData({ type: "FETCH_CATEGORY", payload})
+        }
+        
+
+
+    }, [category]);
 
     useEffect(() => {
         if(userData.logged) 
             UserService.fetchDataRealTime((payload) => setUserData({ type: 'FETCH', payload}));
     }, [userData.logged]);
+
+    useEffect(() => {
+        console.log(userData)
+    }, [userData.category]);
 
     return (
         <globalContext.Provider value={

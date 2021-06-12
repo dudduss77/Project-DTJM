@@ -141,7 +141,7 @@ const GlobalProvider = ({children}) => {
     ]);
 
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: false,
+        logged: true,
         userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
@@ -329,7 +329,7 @@ const GlobalProvider = ({children}) => {
                 }, 
                 {
                     fromYou: true,
-                    value: "co ty ćpiesz?",
+                    value: "co ?",
                     time: 1620404555793
                 }, 
                 {

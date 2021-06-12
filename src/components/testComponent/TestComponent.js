@@ -32,21 +32,21 @@ const TestComponent = () => {
     <div className="testComponent">
     
      <WraperBlock />
-      <ButtonTest/>
+      {/* <ButtonTest/> */}
        {/* <AdBlockTest/> */}
-      <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
-      <CategoryTailTestComponent />
-      <CategoryChoiceTestComponent/>
-      <HeaderTest/>
-      <ObsPanelTest/>
-      <PersonItemTest/>
+      {/* <AdBlockWrapperComponent header="Proponowane ogłoszenia"/> */}
+      {/* <CategoryTailTestComponent /> */}
+      {/* <CategoryChoiceTestComponent/> */}
+      {/* <HeaderTest/> */}
+      {/* <ObsPanelTest/> */}
+      {/* <PersonItemTest/> */}
 
      {/* <UserInfoComponent/> */}
 
       {/* <UserInfoComponent/> */}
-      <PopupTestComponent/>
-      <SearchMainPageTestComponent/>
-      <SelectTestComponent/>
+      {/* <PopupTestComponent/> */}
+      {/* <SearchMainPageTestComponent/> */}
+      {/* <SelectTestComponent/> */}
     </div>
   )
 }

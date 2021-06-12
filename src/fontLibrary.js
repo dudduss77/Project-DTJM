@@ -14,7 +14,8 @@ import {
   faTrash,
   faTimes,
   faPaperPlane,
-  faChevronLeft
+  faChevronLeft,
+ 
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -32,5 +33,6 @@ library.add(
   faTrash,
   faTimes,
   faPaperPlane, 
-  faChevronLeft
+  faChevronLeft,
+  
 );

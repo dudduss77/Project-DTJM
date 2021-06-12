@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ElementOfListToWraper from "../elementOfListToWraper/ElementOfListToWraper";
+import "./ListComponentToWraper.scss";
 
 const ListComponentToWraper = ({ elements, onDelete }) => {
   const mapItems = (props) =>
     elements.map((element) => (
-      <li key={element}>
+      <li className = "Lista__li" key={element}>
         {element}
         <FontAwesomeIcon
-          className="trash"
-          icon="trash"
+          className="times"
+          icon="times"
           onClick={() => onDelete(element)}
         />
       </li>
@@ -22,8 +22,8 @@ const ListComponentToWraper = ({ elements, onDelete }) => {
   }, [elements]);
 
   return (
-    <div>
-      <ul>{listItems}</ul>
+    <div className = "Lista">
+      <ul className = "Lista__ul">{listItems}</ul>
     </div>
   );
 };

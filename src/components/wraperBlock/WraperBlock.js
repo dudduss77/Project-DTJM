@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { globalContext } from "../../context/globalStore";
 import ListComponentToWraper from "../listCompomentToWraper/ListComponentToWraper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./WraperBlock.scss";
+
 
 export const WraperBlock = () => {
   const { category } = useContext(globalContext);
@@ -21,7 +23,7 @@ export const WraperBlock = () => {
 
   const handlerOnKeyDown = (e) => {
     if (e.code == "Enter" && categoryText != "" && !categoryTab.includes(categoryText)) {
-      setCategoryTab((prev) => [...prev, categoryText]);
+      setCategoryTab((prev) => [...prev, categoryText]);   
     }
   };
   useEffect(() => {
@@ -34,14 +36,15 @@ export const WraperBlock = () => {
     console.log(key);
   };
   return (
-    <div>
+    <div className = "wraperBox">
       <SelectComponent
+        className = "wraperBox__select"
         data={mappedCategory}
         Change={handlerCitiesChange}
         placeholder="Wybierz kategorie"
         onKeyDown={handlerOnKeyDown}
       />
-      <h3>Wybrane kategorie</h3>
+      <h3 className = "wraperBox__header">Wybrane kategorie:</h3>
 
       <div>
         <ListComponentToWraper

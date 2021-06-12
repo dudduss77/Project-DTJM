@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from "@testing-library/dom";
 import {useEffect, useState} from "react";
 import "./SelectComponent.scss";
 
@@ -12,7 +13,8 @@ const SelectComponent = ({
   formik, 
   value = "", 
   name,
-  message = ""
+  message = "",
+  onKeyDown
 }) => {
 
 
@@ -76,6 +78,7 @@ const SelectComponent = ({
         name={name}
         id={htmlFor}
         placeholder={placeholder}
+        onKeyDown = {onKeyDown}
         autoComplete="off"
       />
       

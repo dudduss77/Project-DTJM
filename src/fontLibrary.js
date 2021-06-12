@@ -12,10 +12,10 @@ import {
   faUser,
   faCog,
   faTrash,
-  faImage,
   faTimes,
   faPaperPlane,
   faChevronLeft,
+  faImage,
   faPowerOff
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -32,11 +32,12 @@ library.add(
   faUser,
   faCog,
   faTrash,
-  // faGithub,
-  // faLinkedin
-  faImage,
   faTimes,
   faPaperPlane, 
   faChevronLeft,
+  
+  // faGithub,
+  // faLinkedin
+  faImage, 
   faPowerOff
 );

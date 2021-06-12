@@ -1,13 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "../../globalStyle/globalStyle.scss";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import * as AuthService from './../../services/authService.js';
+import { NotificationManager } from 'react-notifications';
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
+import { globalContext } from "../../context/globalStore";
+
 
 const LoginComponent = () => {
+
+  const { userData, setUserData } = useContext(globalContext);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -17,8 +24,19 @@ const LoginComponent = () => {
       email: Yup.string().email("Zły format email").required("Pole wymagane"),
       password: Yup.string().required("Pole wymagane"),
     }),
-    onSubmit: (values) => {
-      console.log("Czy idzie submit");
+    onSubmit: ({ email, password }) => {  
+      AuthService.authUser(
+                          email, 
+                          password,
+                          () => {
+                            setUserData({ type: "LOG-IN" })
+                            NotificationManager.success('Zalogowano poprawnie')
+                          
+                          },
+                          err => {NotificationManager.error(err)}
+      );
+
+
     },
   });
 

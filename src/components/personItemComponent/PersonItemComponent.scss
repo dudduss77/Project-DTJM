@@ -4,14 +4,14 @@
 .personItemComponent{
   box-sizing: border-box;
   display: flex;
-  // align-items: center;
-  font-size: 21px;
-  line-height: 60px;
+  font-size: 16px;
+  line-height: 40px;
   color: $mainColor4;
+  font-weight: bold;
   
   & img {
     margin-right: 10px;
-    width: 60px;
+    width: 40px;
     border-radius: 60%;
   }
 }

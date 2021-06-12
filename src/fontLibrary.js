@@ -11,7 +11,12 @@ import {
   faPlus,
   faUser,
   faCog,
-  faTrash
+  faTrash,
+  faImage,
+  faTimes,
+  faPaperPlane,
+  faChevronLeft,
+  faPowerOff
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -26,7 +31,12 @@ library.add(
   faPlus,
   faUser,
   faCog,
-  faTrash
+  faTrash,
   // faGithub,
   // faLinkedin
+  faImage,
+  faTimes,
+  faPaperPlane, 
+  faChevronLeft,
+  faPowerOff
 );

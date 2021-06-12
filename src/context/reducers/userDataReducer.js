@@ -4,12 +4,23 @@ export const userActionType = {
   editUser: "EDIT-USER-DATA",
   editUserLinks: "EDIT-USER-LINKS",
   deleteAd: "DELETE-AD",
+  logIn: "LOG-IN",
+  logOut: "LOG-OUT"
 };
 
 const userDataReducer = (state, action) => {
   switch (action.type) {
+    case userActionType.logIn:
+      return { ...state, logged: true };
+    
+    case userActionType.logOut:
+      return { ...state, logged: false };
+
+    
+
     case userActionType.addAd:
       return { ...state, ad: [...state.ad, action.payload] };
+
     case userActionType.editAd:
       return {
         ...state,
@@ -39,11 +50,13 @@ const userDataReducer = (state, action) => {
         ...state,
         links: action.payload.links,
       };
+
     case userActionType.deleteAd:
       return {
         ...state,
         ad: state.ad.filter((item) => item.id !== action.payload.id),
       };
+
     default:
       throw new Error("Please type a valid action type");
       break;

@@ -1,0 +1,13 @@
+.imageWrapperComponent{
+  display:inline-block;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: hsl(0, 0%, 89%);
+  
+  &__h1{
+    margin: 5px;
+    padding-bottom: 5px;
+  }
+}

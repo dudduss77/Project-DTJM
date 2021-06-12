@@ -7,8 +7,8 @@ const getUserID = () => firebase.auth().currentUser.uid;
 const resetUserData_production_mode = async () => {
     try {
         const docRef = await db.collection(USERS).doc(getUserID()).set({
-        logged: 0,
-        userId: 1,
+        // logged: 0,
+        // userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
         name: "Jan",
@@ -17,30 +17,6 @@ const resetUserData_production_mode = async () => {
         email: "jankowalski@gmail.com",
         location: "Wałbrzych",
         description: "Testowy opis",
-        ad: [
-            // {
-            //     id: 1,
-            //     path: "/ad-settings",
-            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-            //     imgAlt: "Testowe ogłoszenie",
-            //     header: "Testowe ogłoszenie",
-            //     category: "Test",
-            //     desc: "Coś tam sobie zrobię",
-            //     location: ""
-            // },
-            // {
-            //     id: 2,
-            //     path: "/ad-settings",
-            //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-            //     imgAlt: "Testowe ogłoszenie",
-            //     header: "Szukam Tomka",
-            //     category: "Wpierdziel",
-            //     desc: "Tomek gdzie jesteś?",
-            //     location: ""
-            // },
-            
-
-        ],
         peopleObs: [
             {
                 id: 1,
@@ -54,76 +30,7 @@ const resetUserData_production_mode = async () => {
                 imgUrl: "/assets/profil.PNG"
               },
         ],
-        skills: [
-            {
-                id: 1,
-                name: "JS"
-            },
-            {
-                id: 2,
-                name: "C++"
-            },
-            {
-                id: 3,
-                name: "JS"
-            },
-            {
-                id: 4,
-                name: "C++"
-            },
-            {
-                id: 5,
-                name: "JS"
-            },
-            {
-                id: 6,
-                name: "C++"
-            },
-            {
-                id: 7,
-                name: "C++"
-            },
-            {
-                id: 8,
-                name: "JS"
-            },
-            {
-                id: 9,
-                name: "C++"
-            },
-            {
-                id: 10,
-                name: "C++"
-            },
-            {
-                id: 11,
-                name: "C++"
-            },
-            {
-                id: 12,
-                name: "JS"
-            },
-            {
-                id: 13,
-                name: "C++"
-            },
-            {
-                id: 14,
-                name: "C++"
-            },
-            {
-                id: 15,
-                name: "C++"
-            },
-            {
-                id: 16,
-                name: "JS"
-            },
-            {
-                id: 17,
-                name: "C++"
-            },
-        ],
+        skills: [],
         category: [
             {
                 id: 1,
@@ -150,7 +57,18 @@ const resetUserData_production_mode = async () => {
 }
 
 
+const fetchDataRealTime = (onChange) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .onSnapshot((querySnapshot) => {
+        // console.log("users")
+        // console.log(querySnapshot.data())
+        onChange({ ...querySnapshot.data(), userId: getUserID()});
+    });
+}
+
 export {
     getUserID,
-    resetUserData_production_mode
+    resetUserData_production_mode,
+    fetchDataRealTime
 }

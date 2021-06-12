@@ -1,9 +1,12 @@
+import { getUserID } from "../../services/userService";
+
 export const userActionType = {
   addAd: "ADD-AD",
   editAd: "EDIT-AD",
   deleteAd: "DELETE-AD",
   logIn: "LOG-IN",
-  logOut: "LOG-OUT"
+  logOut: "LOG-OUT",
+  fetch: "FETCH"
 };
 
 const userDataReducer = (state, action) => {
@@ -35,6 +38,9 @@ const userDataReducer = (state, action) => {
         ...state,
         ad: state.ad.filter((item) => item.id !== action.payload.id),
       };
+
+    case userActionType.fetch:
+        return { ...state, ...action.payload }
 
     default:
       throw new Error("Please type a valid action type");

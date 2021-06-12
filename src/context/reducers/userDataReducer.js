@@ -21,16 +21,17 @@ const userDataReducer = (state, action) => {
         }),
       };
     case userActionType.editUser:
+      console.log(action.payload);
       return {
         ...state,
-        avatarSrc: action.payload.newUserData.avatarSrc,
-        avatarAlt: action.payload.newUserData.avatarAlt,
-        name: action.payload.newUserData.name,
-        surname: action.payload.newUserData.surname,
-        nick: action.payload.newUserData.nick,
-        email: action.payload.newUserData.email,
-        location: action.payload.newUserData.location,
-        description: action.payload.newUserData.description,
+        avatarSrc: action.payload.avatarSrc,
+        avatarAlt: action.payload.avatarAlt,
+        name: action.payload.name,
+        surname: action.payload.surname,
+        nick: action.payload.nick,
+        email: action.payload.email,
+        location: action.payload.location,
+        description: action.payload.description,
         links: action.payload.links,
       };
     case userActionType.editUserLinks:

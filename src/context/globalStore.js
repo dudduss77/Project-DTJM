@@ -267,12 +267,12 @@ const GlobalProvider = ({children}) => {
             },
         ], 
         links: [
-            {
-                name: "Github",
-                path: "https://github.com/dudduss77",
-                icon: 'github',
-                title: null,
-            }
+            // {
+            //     name: "Github",
+            //     path: "https://github.com/dudduss77",
+            //     icon: 'github',
+            //     title: null,
+            // }
         ]
     })
 

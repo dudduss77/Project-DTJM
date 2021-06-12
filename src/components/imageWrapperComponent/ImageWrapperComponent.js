@@ -18,7 +18,7 @@ const ImageWrapperComponent = () => {
 
   return (
     <div className="imageWrapperComponent">
-      <h1 className="imageWrapperComponent__h1">Avatar</h1>
+      <h3 className="imageWrapperComponent__h3">Avatar</h3>
       <ImageUploadComponent change={handleChange} />
 
       <ImageDisplayComponent srcUrl={imageURL} click={deleteImage} />

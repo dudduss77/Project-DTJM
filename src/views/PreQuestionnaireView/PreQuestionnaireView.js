@@ -6,6 +6,8 @@ import UserFormComponent from "../../components/userFormComponent/UserFormCompon
 import AddLinks from "../../components/reusable/addLinks/AddLinks";
 import LinkDisplayComponent from "../../components/reusable/linkDisplayComponent/LinkDisplayComponent";
 
+import ImageWrapperComponent from "../../components/imageWrapperComponent/ImageWrapperComponent";
+
 import TemplateOne from "../../templatesComponents/TemplateOne/TemplateOne";
 
 import { globalContext } from "../../context/globalStore";
@@ -30,6 +32,23 @@ const PreQuestionnaireView = () => {
       <UserFormComponent getData={setNewUserData} informToGetData={buttonClick} />
     </>
   );
+
+  const leftBottom = (
+    <>
+      <ImageWrapperComponent/>
+    </>
+  )
+
+  const midOne = (
+    <>
+    </>
+  )
+
+  const midTwo = (
+    <>
+
+    </>
+  )
 
   const right = (
     <>
@@ -75,7 +94,7 @@ const PreQuestionnaireView = () => {
     <TemplateOne
       header="Ankieta wstępna"
       leftTop={leftTop}
-      leftBottom={<div className="tempAvatar"></div>}
+      leftBottom={leftBottom}
       midOne={<div className="testCategory"></div>}
       midTwo={<div className="testCategory"></div>}
       right={right}

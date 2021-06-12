@@ -1,14 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { NotificationManager } from 'react-notifications';
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
 
+
+import * as AuthService from './../../services/authService.js';
+
 const passRegex = /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
 
 const RegisterComponent = () => {
+
+  const registerSuccess = val => NotificationManager.success('Rejestracja przebiegła pomyślnie');
+  const registerErrorApi = err => NotificationManager.error(err);
+
+
   const formik = useFormik({
     initialValues: {
       emailRegister: "",
@@ -26,8 +35,8 @@ const RegisterComponent = () => {
         .oneOf([Yup.ref("passwordRegister"), null], "Różne hasła")
         .required("Pole wymagane"),
     }),
-    onSubmit: (values) => {
-      console.log("Czy idzie submit");
+    onSubmit: ({ emailRegister, passwordRegister }) => {
+      AuthService.createUser(emailRegister, passwordRegister, registerSuccess, registerErrorApi)
     },
   });
 
@@ -77,11 +86,15 @@ const RegisterComponent = () => {
         }
       />
       <div className="emptyRwdDiv"></div>
+
       <ButtonComponent
         size="small"
         name="Zarejestruj"
         click={() => formik.handleSubmit()}
       />
+
+
+
     </>
   );
 };

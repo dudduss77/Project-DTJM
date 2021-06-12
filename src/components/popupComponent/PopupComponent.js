@@ -7,11 +7,12 @@ import ChooseButton from "../chooseButton/ChooseButton";
 import PassResetComponent from "../passResetComponent/PassResetComponent";
 
 import { useWindowSize } from "../../hook/windowSize";
-
 import { globalContext } from "../../context/globalStore";
 
+
+
 const PopupComponent = () => {
-  const { setAppData } = useContext(globalContext);
+  const { userData : { logged }, setAppData } = useContext(globalContext);
 
   const windowSize = useWindowSize();
   const [mobile, setMobile] = useState(false);
@@ -22,6 +23,10 @@ const PopupComponent = () => {
     if (windowSize.width < 800) setMobile(true);
     else setMobile(false);
   }, [windowSize.width]);
+
+  useEffect(() => {
+    if(logged) setAppData({ type: "CLOSE_POPUP" });
+  }, [logged])
 
   const switchRender = (type) => {
     switch (type) {

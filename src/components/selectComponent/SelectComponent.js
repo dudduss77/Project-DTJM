@@ -8,6 +8,7 @@ const SelectComponent = ({
   size="small", 
   placeholder = "Select Option", 
   htmlFor, 
+  reset,
   className, 
   formik, 
   value = "", 
@@ -56,6 +57,8 @@ const SelectComponent = ({
     setMappedItems(mappItems(inputTxt)) 
   
   }, [inputTxt])
+
+  useEffect(() => setInputTxt(""), [reset])
 
 
   const [mappedItems, setMappedItems] = useState(mappItems());

@@ -10,11 +10,12 @@ import AdView from './views/AdView/AdView'
 export const routes = [
   {
     path: "/",
-    component: HomePageView
+    component: HomePageView, 
   },
   {
     path: "/profil",
-    component: UserProfileView
+    component: UserProfileView,
+    private: true
   },
   {
     path: "/test",
@@ -26,19 +27,23 @@ export const routes = [
   },
   {
     path: "/pre-questionnaire",
-    component: PreQuestionnaireView
+    component: PreQuestionnaireView,
+    private: true
   },
   {
     path: "/add-ad",
-    component: AddAdView
+    component: AddAdView,
+    private: true
   },
   {
     path: "/user-settings",
-    component: UserSettingsView
+    component: UserSettingsView,
+    private: true
   },
   {
     path: "/ad-settings/:id",
-    component: AdSettingsView
+    component: AdSettingsView,
+    private: true
   },
   {
     path: "/ad/:id",
@@ -46,6 +51,7 @@ export const routes = [
   },
   {
     path: "/my-ad/:id",
-    component: () => <AdView userAd={true}/>
+    component: () => <AdView userAd={true}/>,
+    private: true
   },
 ]

@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fab, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faHeart,
   faComment,
@@ -15,7 +15,8 @@ import {
   faTimes,
   faPaperPlane,
   faChevronLeft,
- 
+  faImage,
+  faPowerOff
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -35,4 +36,8 @@ library.add(
   faPaperPlane, 
   faChevronLeft,
   
+  // faGithub,
+  // faLinkedin
+  faImage, 
+  faPowerOff
 );

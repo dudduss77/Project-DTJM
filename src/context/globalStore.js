@@ -141,7 +141,7 @@ const GlobalProvider = ({children}) => {
     ]);
 
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: true,
+        logged: 0,
         userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
@@ -269,10 +269,12 @@ const GlobalProvider = ({children}) => {
             },
         ], 
         links: [
-            {
-                id: 1,
-                name: "github.com"
-            }
+            // {
+            //     name: "Github",
+            //     path: "https://github.com/dudduss77",
+            //     icon: 'github',
+            //     title: null,
+            // }
         ]
     })
 

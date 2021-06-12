@@ -1,0 +1,23 @@
+.imageUploadComponent{
+  &__uploadButton{
+    display: none;
+  }
+
+  &__labelUpload{
+    line-height: 20px;
+    font-size: 20px;
+    padding: 2px 50px;
+    
+    background-color: white;
+    color: gray;
+    border-top-left-radius: 10% 90%;
+    border-bottom-right-radius: 10% 90%;
+    border-top-right-radius: 10% 90%;
+    border-bottom-left-radius: 10% 90%;
+  }
+
+  &__fileIcon{
+    color: black;
+  }
+
+}

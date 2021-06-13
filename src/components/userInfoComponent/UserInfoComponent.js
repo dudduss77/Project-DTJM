@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserInfoComponent.scss";
 
+
 import UserDataComponent from "../userDataComponent/UserDataComponent";
 import DescriptionComponent from "../descriptionComponent/DescriptionComponent";
 import AvatarComponent from "../avatarComponent/AvatarComponent";

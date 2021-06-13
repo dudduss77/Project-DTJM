@@ -141,6 +141,39 @@ const GlobalProvider = ({children}) => {
         
     ]);
 
+    const allUser = [
+        {
+            userId: 2,
+            avatarSrc: "/assets/profil.png",
+            avatarAlt: "Avatar",
+            name: "Duddus",
+            surname: "Duddusiowy",
+            nick: "duddus",
+            email: "dudd@gmail.com",
+            location: "Wałbrzych",
+            description: "Testowy opis",
+            ad: [],
+            skills: [],
+            category: [],
+            links: []
+        },
+        {
+            userId: 3,
+            avatarSrc: "/assets/profil.png",
+            avatarAlt: "Avatar",
+            name: "dw",
+            surname: "w",
+            nick: "duddus",
+            email: "dudd@gmail.com",
+            location: "Wałbrzych",
+            description: "Testowy opis",
+            ad: [],
+            skills: [],
+            category: [],
+            links: []
+        }
+    ]
+
     const [skills, setSkills] = useReducer(skillsReducer ,[
         {
             id: 1,
@@ -185,17 +218,20 @@ const GlobalProvider = ({children}) => {
 
         ],
         peopleObs: [
-            {
-                id: 1,
-                name: "Tomasz Żukwowski",
-                imgUrl: "/assets/profil.PNG"
-              },
+            // {
+            //     id: 1,
+            //     name: "Tomasz Żukwowski",
+            //     imgUrl: "/assets/profil.PNG"
+            //   },
       
-              {
-                id: 2,
-                name: "Damina Karbowiak",
-                imgUrl: "/assets/profil.PNG"
-              },
+            //   {
+            //     id: 2,
+            //     name: "Damina Karbowiak",
+            //     imgUrl: "/assets/profil.PNG"
+            //   },
+            {
+                obsUserId: 2
+            }
         ],
         skills: [
             {
@@ -563,7 +599,8 @@ const GlobalProvider = ({children}) => {
                 chatVisibility, 
                 setChatVisibility,
                 skills,
-                setSkills
+                setSkills,
+                allUser
             }
         }>
             {children}

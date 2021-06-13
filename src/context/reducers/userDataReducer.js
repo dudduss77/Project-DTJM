@@ -40,10 +40,11 @@ const userDataReducer = (state, action) => {
         name: action.payload.name,
         surname: action.payload.surname,
         nick: action.payload.nick,
-        email: action.payload.email,
         location: action.payload.location,
         description: action.payload.description,
         links: action.payload.links,
+        category: action.payload.category,
+        skills: action.payload.skills
       };
     case userActionType.editUserLinks:
       return {

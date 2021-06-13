@@ -1,4 +1,5 @@
-import { getUserID } from "../../services/userService";
+// import { getUserID } from "../../services/userService";
+// import * as UserService from "../../services/userService";
 
 export const userActionType = {
   addAd: "ADD-AD",
@@ -7,7 +8,11 @@ export const userActionType = {
   logIn: "LOG-IN",
   logOut: "LOG-OUT",
   fetch: "FETCH",
-  fetch_category: "FETCH_CATEGORY"
+  fetch_category: "FETCH_CATEGORY",
+  // update: "UPDATE",
+  // addCategory: "ADD_CATEGORY",
+  // addSkill: "ADD_SKILL",
+  // addLink: "ADD_LINK",
 };
 
 const userDataReducer = (state, action) => {
@@ -46,6 +51,22 @@ const userDataReducer = (state, action) => {
     case userActionType.fetch_category:
         state.category = action.payload
         return state;
+
+    // case userActionType.update:
+    //   UserService.update(payload)
+    //   return state;
+
+    // case userActionType.addCategory:
+    //   UserService.addCategory(payload)
+    //   return state;
+
+    // case userActionType.addSkill:
+    //   UserService.addSkill(payload)
+    //   return state;
+
+    // case userActionType.addLink:
+    //   UserService.addLink(payload)
+    //   return state;
 
     default:
       throw new Error("Please type a valid action type");

@@ -1,8 +1,11 @@
-import firebase,  { db } from './db.js';
+import firebaseAuth,  { db } from './db.js';
+import firebase from 'firebase/app'
+
 
 const USERS = 'users';
+const user = () => firebase.auth().currentUser;
 
-const getUserID = () => firebase.auth().currentUser.uid;
+const getUserID = () => user().uid;
 
 const resetUserData_production_mode = async () => {
     try {
@@ -61,14 +64,174 @@ const fetchDataRealTime = (onChange) => {
     db.collection(USERS)
     .doc(getUserID())
     .onSnapshot((querySnapshot) => {
-        // console.log("users")
-        // console.log(querySnapshot.data())
         onChange({ ...querySnapshot.data(), userId: getUserID()});
     });
 }
+// { fields to update }
+const update = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update(payload)
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+// { id: "uid"}
+const addSkill = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        skills: firebase.firestore.FieldValue.arrayUnion(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+// { id: "uid"}
+const addCategory = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        category: firebase.firestore.FieldValue.arrayUnion(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+// { id: "uid", name: "link"}
+const addLink = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        links: firebase.firestore.FieldValue.arrayUnion(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+
+// { id: "uid"}
+const removeSkill = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        skills: firebase.firestore.FieldValue.arrayRemove(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+// { id: "uid"}
+const removeCategory = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        category: firebase.firestore.FieldValue.arrayRemove(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+// { id: "uid", name: "link"}
+const removeLink = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        links: firebase.firestore.FieldValue.arrayRemove(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+const changeEmail = (email, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        email
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+
+    user().updateEmail(email).then(() => {
+        success()
+      }).catch((error) => {
+        console.log(err);
+        err(err)
+      });
+
+}
+
+
+const changePassword = (pass, success = () => {}, err = () => {}) => {
+
+    user().updatePassword(pass).then(() => {
+        success()
+      }).catch((error) => {
+        console.log(err);
+        err(err)
+      });
+
+}
+
+const deleteUser = ( success = () => {}, err = () => {}) => {
+    user().delete().then(() => {
+        success()
+      }).catch((error) => {
+        err(error)
+      });
+}
+
+
 
 export {
     getUserID,
     resetUserData_production_mode,
-    fetchDataRealTime
+    fetchDataRealTime,
+    update,
+    addCategory,
+    addLink,
+    addSkill,
+    removeLink,
+    removeSkill,
+    removeCategory,
+    changeEmail,
+    changePassword,
+    deleteUser
 }

@@ -3,9 +3,14 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import * as AuthService from './../../services/authService'
+
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
+import { NotificationManager } from "react-notifications";
 
+const registerSuccess = val => NotificationManager.success('Link do resetowania hasła został wysłany na podany adres email');
+const registerErrorApi = err => NotificationManager.error(err);
 
 const PassResetComponent = () => {
   const formik = useFormik({
@@ -17,8 +22,9 @@ const PassResetComponent = () => {
         .email("Zły format email")
         .required("Pole wymagane"),
     }),
-    onSubmit: (values) => {
-      console.log("Czy idzie submit");
+  onSubmit: async ({emailResetPass}) => {
+        AuthService.sendPasswordResetEmail(emailResetPass, registerSuccess,() => registerErrorApi("Nieprawidłowy adres email"));
+
     },
   });
 

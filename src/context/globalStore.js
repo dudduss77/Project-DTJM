@@ -306,6 +306,29 @@ const GlobalProvider = ({children}) => {
         }
     }, [category, userData]);
 
+
+    useEffect(() => {
+        if(userData.logged) {
+            // UserService.update({
+            //     description: "testowy opis"
+            // });
+
+            // UserService.removeCategory({
+            //     id: "O9mxjftWUIBWok4H3rmf"
+            // });
+
+            // UserService.removeLink({
+            //     id: 2,
+            //     name: "facebook.com"
+            // })
+
+            // UserService.removeSkill({
+            //     id: 10,
+            //     name: "dodane z api"
+            // })
+        }
+    },[userData])
+
     useEffect(() => {
         if(userData.logged) {
            UserService.fetchDataRealTime((payload) => setUserData({ type: 'FETCH', payload}));

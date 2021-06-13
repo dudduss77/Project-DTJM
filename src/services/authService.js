@@ -1,10 +1,24 @@
-import firebase from './db.js';
+import firebase, { db } from './db.js';
 
 
 
 const createUser = async (email, pass, success = ()=>{}, err = (e)=>{}) => {
     try {
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+        const data = await db.collection("users").doc(userCredential.user.uid).set({
+            email,
+            avatarAlt: "Avatar",
+            avatarSrc: "/assets/profil.png",
+            ad: [],
+            category: [],
+            description: "Brak opisu",
+            links: [],
+            peopleObs: [],
+            skills: []
+        })
+
+        console.log(data);
+
         success(userCredential);
     } catch(error) {
 
@@ -70,6 +84,18 @@ const observeUserLoginState = (whenTrue, whenFalse) => {
 
 }
 
+const sendPasswordResetEmail = (email, success = ()=>{}, err = (e)=>{}) => {
+    firebase.auth().sendPasswordResetEmail(email)
+  .then(() => {
+    success()
+  })
+  .catch((error) => {
+    err(error)
+  });
+}
+
+// const checkEmailExist = async (email) => await firebase.auth().ge
+
 
 
 
@@ -77,5 +103,7 @@ export {
     createUser,
     authUser,
     logOut, 
-    observeUserLoginState
+    observeUserLoginState,
+    sendPasswordResetEmail,
+    // checkEmailExist
 }

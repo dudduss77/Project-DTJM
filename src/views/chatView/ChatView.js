@@ -137,7 +137,9 @@ useEffect(() => {
       </div>
       <div className="chatView__wrapper" ref={wrapperRef}>
         <div className="chatView__wrapper__list">
-          
+          { !messages.length ? (<div className="chatView__wrapper__list__noMessages">
+            Nie masz żadnych konwersacji 
+          </div>) : ""}
         {mappedMessages}
         </div>
 

@@ -16,18 +16,18 @@ const addCategory = async (payload) => {
 }
 
 
-const getAllCategories = async (payload) => {
-    try {
-        const docRef = await db.collection(CATEGORIES).add(payload);
-        console.log(docRef);
-        return docRef.id;
+// const getAllCategories = async (payload) => {
+//     try {
+//         const docRef = await db.collection(CATEGORIES).add(payload);
+//         console.log(docRef);
+//         return docRef.id;
 
-    } catch(err) {
-        console.log(err)
-        return err;
-    }
+//     } catch(err) {
+//         console.log(err)
+//         return err;
+//     }
     
-}
+// }
 
 
 const fetchDataRealTime = (onChange) => {
@@ -51,6 +51,6 @@ const fetchDataRealTime = (onChange) => {
 
 export {
     addCategory,
-    getAllCategories,
+    // getAllCategories,
     fetchDataRealTime
 }

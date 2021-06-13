@@ -6,7 +6,6 @@ import DescriptionComponent from "../../components/descriptionComponent/Descript
 import ListViewComponent from "../../components/listViewComponent/ListViewComponent";
 import LinkDisplayComponent from "../../components/reusable/linkDisplayComponent/LinkDisplayComponent";
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
@@ -30,9 +29,6 @@ const AdView = ({ userAd = false }) => {
   console.log("data", data);
   return (
     <div className="adView">
-      {/* <h3>{data.header}</h3>
-      <h3>{data.desc}</h3>
-      {userAd && <FontAwesomeIcon onClick={() => history.push(`/ad-settings/${id}`)} icon="cog" />} */}
       <div className="adView__left">
         <AdvertismentHeaderComponent
           settingsClick={() => history.push(`/ad-settings/${id}`)}
@@ -41,19 +37,13 @@ const AdView = ({ userAd = false }) => {
           img_src={data.imgSrc}
           user={true}
         />
-        <ListViewComponent 
-          header="Kategorie"
-          list={data.category}
-        />
-        <ListViewComponent 
-          header="Skills"
-          list={data.skills}
-        />
+        <ListViewComponent header="Kategorie" list={data.category} />
+        <ListViewComponent header="Skills" list={data.skills} />
 
-      <LinkDisplayComponent data={data.links}/>
+        <LinkDisplayComponent data={data.links} />
       </div>
       <div className="adView__right">
-        <DescriptionComponent header="Opis" content={data.desc}/>
+        <DescriptionComponent header="Opis" content={data.desc} />
       </div>
     </div>
   );

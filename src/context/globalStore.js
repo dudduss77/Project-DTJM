@@ -9,6 +9,8 @@ import messageReducer from './reducers/messageReducer';
 import * as CategoryService from './../services/categoryService';
 import * as UserService from './../services/userService';
 import * as MessageService from './../services/messageService';
+import * as SkillService from './../services/skillService';
+import skillsReducer from './reducers/skillsReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -21,12 +23,15 @@ const GlobalProvider = ({children}) => {
     useEffect(() => {
         // fetch data from server
         CategoryService.fetchDataRealTime((payload) => setCategory({ type: 'FETCH', payload}));    
+        SkillService.fetchDataRealTime((payload) => setSkills({ type: 'FETCH', payload}))
     }, [])
 
 
     const [category, setCategory] = useReducer(categoryReducer, []);
 
     const [userData, setUserData] = useReducer(userDataReducer, {})
+
+    const [skills, setSkills] = useReducer(skillsReducer, []);
 
     const [messages, setMessages] = useReducer(messageReducer, [
         // {
@@ -295,6 +300,12 @@ const GlobalProvider = ({children}) => {
         return false;
     }
 
+    const getSkillNameByIdFromContext = (id) => {
+        for(let i = 0; i<skills.length; i++)
+                if(skills[i].id == id.trim()) return skills[i].name; 
+        return false;
+    }
+
     useEffect(() => {
         if(userData.category) {
             const payload = userData.category.map(item => {
@@ -306,28 +317,38 @@ const GlobalProvider = ({children}) => {
         }
     }, [category, userData]);
 
-
     useEffect(() => {
-        if(userData.logged) {
-            // UserService.update({
-            //     description: "testowy opis"
-            // });
-
-            // UserService.removeCategory({
-            //     id: "O9mxjftWUIBWok4H3rmf"
-            // });
-
-            // UserService.removeLink({
-            //     id: 2,
-            //     name: "facebook.com"
-            // })
-
-            // UserService.removeSkill({
-            //     id: 10,
-            //     name: "dodane z api"
-            // })
+        if(userData.skills) {
+            const payload = userData.skills.map(item => {
+                item.name = getSkillNameByIdFromContext(item.id);
+                return item;
+            });    
+            console.log(payload)
+            setUserData({ type: "FETCH_SKILLS", payload})
         }
-    },[userData])
+    }, [skills, userData]);
+
+    // useEffect(() => {
+    //     if(userData.logged) {
+    //         // UserService.update({
+    //         //     description: "testowy opis"
+    //         // });
+
+    //         // UserService.removeCategory({
+    //         //     id: "O9mxjftWUIBWok4H3rmf"
+    //         // });
+
+    //         // UserService.removeLink({
+    //         //     id: 2,
+    //         //     name: "facebook.com"
+    //         // })
+
+    //         // UserService.removeSkill({
+    //         //     id: 10,
+    //         //     name: "dodane z api"
+    //         // })
+    //     }
+    // },[userData])
 
     useEffect(() => {
         if(userData.logged) {
@@ -337,13 +358,17 @@ const GlobalProvider = ({children}) => {
             
     }, [userData.logged]);
 
-    useEffect(() => {
-        console.log(messages)
-    }, [messages])
+    // useEffect(() => {
+    //     console.log(messages)
+    // }, [messages])
+
+    // useEffect(() => {
+    //     console.log(userData)
+    // }, [userData.category]);
 
     useEffect(() => {
         console.log(userData)
-    }, [userData.category]);
+    }, [userData])
 
     return (
         <globalContext.Provider value={
@@ -358,7 +383,9 @@ const GlobalProvider = ({children}) => {
                 messages,
                 setMessages,
                 chatVisibility, 
-                setChatVisibility
+                setChatVisibility,
+                skills,
+                setSkills
             }
         }>
             {children}

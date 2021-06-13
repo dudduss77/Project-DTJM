@@ -9,6 +9,7 @@ export const userActionType = {
   logOut: "LOG-OUT",
   fetch: "FETCH",
   fetch_category: "FETCH_CATEGORY",
+  fetch_skills: "FETCH_SKILLS",
   // update: "UPDATE",
   // addCategory: "ADD_CATEGORY",
   // addSkill: "ADD_SKILL",
@@ -50,6 +51,10 @@ const userDataReducer = (state, action) => {
 
     case userActionType.fetch_category:
         state.category = action.payload
+        return state;
+
+    case userActionType.fetch_skills:
+        state.skills = action.payload
         return state;
 
     // case userActionType.update:

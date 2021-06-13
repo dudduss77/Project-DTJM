@@ -50,4 +50,5 @@ const getSkillId = async name => {
 export {
     fetchDataRealTime,
     add,
+    getSkillId
 }

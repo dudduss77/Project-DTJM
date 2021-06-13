@@ -132,7 +132,7 @@ const PreQuestionnaireView = () => {
 
       setUserData({type: userActionType.editUser, payload: userData})
 
-      // history.push('/')
+      history.push('/')
       setButtonClick(false);
     } else setButtonClick(false);
   };

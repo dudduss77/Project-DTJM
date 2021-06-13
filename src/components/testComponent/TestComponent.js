@@ -31,7 +31,7 @@ const TestComponent = () => {
   return (
     <div className="testComponent">
     
-     <WraperBlock />
+     {/* <WraperBlock /> */}
       {/* <ButtonTest/> */}
        {/* <AdBlockTest/> */}
       {/* <AdBlockWrapperComponent header="Proponowane ogłoszenia"/> */}
@@ -46,7 +46,7 @@ const TestComponent = () => {
       {/* <UserInfoComponent/> */}
       {/* <PopupTestComponent/> */}
       {/* <SearchMainPageTestComponent/> */}
-      {/* <SelectTestComponent/> */}
+      <SelectTestComponent/>
     </div>
   )
 }

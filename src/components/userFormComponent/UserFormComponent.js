@@ -63,6 +63,7 @@ const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
 
   useEffect(() => {
     if (informToGetData) formik.handleSubmit();
+    // formik.handleSubmit();
   }, [informToGetData]);
   return (
     <>

@@ -11,7 +11,7 @@ const TemplateOne = ({ header, leftTop, leftBottom, midOne, midTwo, right, butto
       <div className="templateOne__leftTop">{leftTop}</div>
       <div className="templateOne__leftBottom">{leftBottom}</div>
       <div className="templateOne__midOne">{midOne}</div>
-      <div className="templateTwo__midTwo">{midTwo}</div>
+      <div className="templateOne__midTwo">{midTwo}</div>
       <div className="templateOne__right">{right}</div>
       <div className="templateOne__bottom">
         <ButtonComponent

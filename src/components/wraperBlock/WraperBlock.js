@@ -7,10 +7,10 @@ import ListComponentToWraper from "../listCompomentToWraper/ListComponentToWrape
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./WraperBlock.scss";
 
-
-export const WraperBlock = () => {
+export const WraperBlock = ({selectedHeader, inputData, getData, informToGetData}) => {
   const { category } = useContext(globalContext);
   const mappCategory = () => category.map((item) => item.name);
+  // const mappCategory = () => category.map((item) => item.name);
   const [mappedCategory, setMappedCategory] = useState(mappCategory());
 
   const [categoryText, setCategoryText] = useState("");
@@ -22,13 +22,22 @@ export const WraperBlock = () => {
   const [categoryTab, setCategoryTab] = useState([]);
 
   const handlerOnKeyDown = (e) => {
-    if (e.code == "Enter" && categoryText != "" && !categoryTab.includes(categoryText)) {
-      setCategoryTab((prev) => [...prev, categoryText]);   
+    if (
+      e.code == "Enter" &&
+      categoryText != "" &&
+      !categoryTab.includes(categoryText)
+    ) {
+      setCategoryTab((prev) => [...prev, categoryText]);
     }
   };
   useEffect(() => {
     setCategoryText("");
   }, [categoryTab]);
+
+  // useEffect(() => {
+  //   let categories = categoryTab.map((item, index) => ({id: index, name: item}))
+  //   getData(categories)
+  // }, [informToGetData, categoryTab])
 
   //Delete
   const deleteElement = (key) => {
@@ -36,15 +45,15 @@ export const WraperBlock = () => {
     console.log(key);
   };
   return (
-    <div className = "wraperBox">
+    <div className="wraperBox">
       <SelectComponent
-        className = "wraperBox__select"
+        className="wraperBox__select"
         data={mappedCategory}
         Change={handlerCitiesChange}
         placeholder="Wybierz kategorie"
         onKeyDown={handlerOnKeyDown}
       />
-      <h3 className = "wraperBox__header">Wybrane kategorie:</h3>
+      <h4 className="wraperBox__header">{selectedHeader}</h4>
 
       <div>
         <ListComponentToWraper

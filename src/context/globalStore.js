@@ -3,6 +3,7 @@ import { useReducer, createContext, useState} from 'react';
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
 import appReducer from './reducers/appReducer';
+import skillsReducer from './reducers/skillsReducer';
 import LoginComponent from '../components/loginComponent/LoginComponent';
 import messageReducer from './reducers/messageReducer';
 
@@ -140,8 +141,16 @@ const GlobalProvider = ({children}) => {
         
     ]);
 
+    const [skills, setSkills] = useReducer(skillsReducer ,[
+        {
+            id: 1,
+            name: "JavaScript",
+            // icon: ['fas', 'music']
+        }
+    ])  
+
     const [userData, setUserData] = useReducer(userDataReducer, {
-        logged: 0,
+        logged: 1,
         userId: 1,
         avatarSrc: "/assets/profil.png",
         avatarAlt: "Avatar",
@@ -552,7 +561,9 @@ const GlobalProvider = ({children}) => {
                 messages,
                 setMessages,
                 chatVisibility, 
-                setChatVisibility
+                setChatVisibility,
+                skills,
+                setSkills
             }
         }>
             {children}

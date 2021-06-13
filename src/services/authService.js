@@ -90,7 +90,18 @@ const sendPasswordResetEmail = (email, success = ()=>{}, err = (e)=>{}) => {
     success()
   })
   .catch((error) => {
-    err(error)
+
+    switch(error.code) {
+        case "auth/too-many-requests":
+            err("Zbyt wiele zapytań z tego urządzenia. Spróbuj ponownie później");
+        break;
+        case "auth/user-not-found":
+            err("Podany Adres email nie istnieje!");
+        break;
+        default:
+            err(error.message)
+        break;
+    }
   });
 }
 

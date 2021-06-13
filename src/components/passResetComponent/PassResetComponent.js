@@ -23,7 +23,7 @@ const PassResetComponent = () => {
         .required("Pole wymagane"),
     }),
   onSubmit: async ({emailResetPass}) => {
-        AuthService.sendPasswordResetEmail(emailResetPass, registerSuccess,() => registerErrorApi("Nieprawidłowy adres email"));
+        AuthService.sendPasswordResetEmail(emailResetPass, registerSuccess,err => registerErrorApi(err));
 
     },
   });

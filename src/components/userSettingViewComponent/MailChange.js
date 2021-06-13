@@ -15,6 +15,7 @@ const MailChange = () => {
       newMail: Yup.string().email("Zły format email").required("Pole wymagane")
     }),
     onSubmit: (values) => {
+      //API
       console.log("Czy idzie submit");
     },
   });

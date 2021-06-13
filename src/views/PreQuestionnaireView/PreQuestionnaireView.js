@@ -7,7 +7,6 @@ import AddLinks from "../../components/reusable/addLinks/AddLinks";
 import LinkDisplayComponent from "../../components/reusable/linkDisplayComponent/LinkDisplayComponent";
 
 import ImageWrapperComponent from "../../components/imageWrapperComponent/ImageWrapperComponent";
-import WraperBlock from "../../components/wraperBlock/WraperBlock";
 import AddItemComponent from "../../components/addItemComponent/AddItemComponent";
 import ItemDisplayComponent from "../../components/itemDisplayComponent/ItemDisplayComponent";
 

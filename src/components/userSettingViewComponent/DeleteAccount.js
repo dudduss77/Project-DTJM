@@ -5,7 +5,7 @@ import ButtonComponent from "../buttonComponent/ButtonComponent";
 const DeleteAccount = () => {
 
   const submitDeleteAccount = () => {
-
+    //API
   }
 
   return (

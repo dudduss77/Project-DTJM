@@ -18,7 +18,7 @@ const renderBlock = (start, end, data = [], userView) => {
       imgSrc={item.imgSrc}
       imgAlt={item.imgAlt}
       header={item.header}
-      category={item.category}
+      category={item.category.length !== 0 ? item.category[0].name : "Brak"}
     />
   ));
 };

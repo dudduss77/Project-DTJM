@@ -1,9 +1,10 @@
 import './PersonItemComponent.scss'
+import { useHistory } from "react-router";
 
-
-const PersonItemComponent = ({name, imgUrl}) => {
+const PersonItemComponent = ({name, imgUrl, id}) => {
+  let history = useHistory();
   return (
-    <div className="personItemComponent">
+    <div onClick={() => {history.push(`/profil/${id}`)}} className="personItemComponent">
         <div className="personItem__img">
           <img src={imgUrl}/>
         </div>

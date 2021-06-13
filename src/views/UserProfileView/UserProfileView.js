@@ -13,27 +13,15 @@ import { globalContext } from "../../context/globalStore";
 
 const UserProfileView = () => {
   let { id } = useParams();
-  const { userData } = useContext(globalContext);
+  const { userData, allUser } = useContext(globalContext);
   const [selectedUserData, setSelectedUserData] = useState({});
 
   useEffect(() => {
     if (id === undefined) setSelectedUserData(userData);
-    else
-      setSelectedUserData({
-        avatarSrc: "/assets/profil.png",
-        avatarAlt: "Avatar",
-        name: "Testowy z API",
-        nick: "API",
-        email: "api@api.pl",
-        location: "Firebase",
-        description:
-          "Tutaj trzeba pobrać dane z bazy odnośnie konkretnego użytkownika",
-        ad: [],
-        peopleObs: [],
-        skills: [],
-        category: [],
-        links: [],
-      }); //Call api to get user data witch id params
+    else {
+      //API
+      setSelectedUserData(allUser.find(item => item.userId === parseInt(id)))
+    }
   }, [id, userData]);
 
   console.log("wybrany", selectedUserData);
@@ -58,7 +46,7 @@ const UserProfileView = () => {
       </div>
       <AdBlockWrapperComponent
         userView={true}
-        header="Moje ogłoszenia"
+        header={!id ? "Moje ogłoszenia" : "Ogłoszenia"}
         data={selectedUserData.ad}
       />
     </div>

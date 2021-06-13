@@ -3,6 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { NotificationManager } from 'react-notifications';
+import { useHistory } from "react-router-dom";
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
@@ -13,7 +14,7 @@ import * as AuthService from './../../services/authService.js';
 const passRegex = /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
 
 const RegisterComponent = () => {
-
+  let history = useHistory();
   const registerSuccess = val => NotificationManager.success('Rejestracja przebiegła pomyślnie');
   const registerErrorApi = err => NotificationManager.error(err);
 
@@ -37,6 +38,7 @@ const RegisterComponent = () => {
     }),
     onSubmit: ({ emailRegister, passwordRegister }) => {
       AuthService.createUser(emailRegister, passwordRegister, registerSuccess, registerErrorApi)
+      history.push("/pre-questionnaire");
     },
   });
 

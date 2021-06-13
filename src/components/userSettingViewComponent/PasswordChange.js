@@ -25,6 +25,7 @@ const PasswordChange = () => {
         .required("Pole wymagane"),
     }),
     onSubmit: (values) => {
+      //API
       console.log("Czy idzie submit");
     },
   });

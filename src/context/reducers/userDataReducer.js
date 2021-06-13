@@ -5,7 +5,8 @@ export const userActionType = {
   editUserLinks: "EDIT-USER-LINKS",
   deleteAd: "DELETE-AD",
   logIn: "LOG-IN",
-  logOut: "LOG-OUT"
+  logOut: "LOG-OUT",
+  addToObs: "ADD-TO-OBS"
 };
 
 const userDataReducer = (state, action) => {
@@ -57,6 +58,12 @@ const userDataReducer = (state, action) => {
         ...state,
         ad: state.ad.filter((item) => item.id !== action.payload.id),
       };
+
+    case userActionType.addToObs:
+      return {
+        ...state,
+        peopleObs: [...state.peopleObs, action.payload]
+      }
 
     default:
       throw new Error("Please type a valid action type");

@@ -424,184 +424,198 @@ const GlobalProvider = ({children}) => {
     const testAd = [
         {
             id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Test",
+            header: "Test",
+            desc: "Testowy Opis",
+            location: "",
+            category: [],
+            skills: [],
+            links: [],
         },
         {
             id: 2,
-            path: "/tempPath1",
+            userId: 2,
             imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
+            imgAlt: "Testew",
+            header: "Testew",
+            desc: "Testowy Opis",
+            location: "",
+            category: [],
+            skills: [],
+            links: [],
         },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
-        {
-            id: 1,
-            path: "/tempPath",
-            imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            imgAlt: "Księżyc",
-            header: "Projekt księżyc",
-            category: "Kosmos",
-            desc: "Lecimy w kosmos",
-            location: ""
-        },
-        {
-            id: 2,
-            path: "/tempPath1",
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Party",
-            header: "Projekt X",
-            category: "Impreza",
-            desc: "Jazda jazda",
-            location: ""
-        },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
     ]
 
     const getCategoryNameByIdFromContext = (id) => {

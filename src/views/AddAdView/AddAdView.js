@@ -108,6 +108,7 @@ const AddAdView = () => {
       let skillObjectArray = skillsData.map((item, index) => ({id: index, name: item}));
       let ad = {
         id: parseInt(userData.userId.toString() + moment.now().toString()),
+        userId: userData.userId,
         imgSrc: adImage,
         imgAlt: adData.adName,
         header: adData.adName,

@@ -9,7 +9,6 @@ export const userActionType = {
   deleteAd: "DELETE-AD",
   logIn: "LOG-IN",
   logOut: "LOG-OUT",
-<<<<<<< HEAD
   fetch: "FETCH",
   fetch_category: "FETCH_CATEGORY",
   fetch_skills: "FETCH_SKILLS",
@@ -17,9 +16,7 @@ export const userActionType = {
   // addCategory: "ADD_CATEGORY",
   // addSkill: "ADD_SKILL",
   // addLink: "ADD_LINK",
-=======
   addToObs: "ADD-TO-OBS"
->>>>>>> develop
 };
 
 const userDataReducer = (state, action) => {
@@ -72,7 +69,6 @@ const userDataReducer = (state, action) => {
         ad: state.ad.filter((item) => item.id !== action.payload.id),
       };
 
-<<<<<<< HEAD
     case userActionType.fetch:
         return { ...state, ...action.payload }
 
@@ -99,13 +95,11 @@ const userDataReducer = (state, action) => {
     // case userActionType.addLink:
     //   UserService.addLink(payload)
     //   return state;
-=======
     case userActionType.addToObs:
       return {
         ...state,
         peopleObs: [...state.peopleObs, action.payload]
       }
->>>>>>> develop
 
     default:
       throw new Error("Please type a valid action type");

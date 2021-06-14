@@ -11,7 +11,6 @@ import * as CategoryService from './../services/categoryService';
 import * as UserService from './../services/userService';
 import * as MessageService from './../services/messageService';
 import * as SkillService from './../services/skillService';
-import skillsReducer from './reducers/skillsReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.

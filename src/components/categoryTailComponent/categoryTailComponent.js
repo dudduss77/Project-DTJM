@@ -1,25 +1,24 @@
 import "./categoryTailComponent.scss";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router";
 
-
-
-const CategoryTailComponent = ({title, id = null, icon, className=""}) => {
+const CategoryTailComponent = ({ title, id = null, icon, className = "" }) => {
   let history = useHistory();
 
-  const handlerOnClick = () => history.push("/categories/" + id);
+  const handlerOnClick = () =>
+    history.push("/search", {
+      category: title,
+    });
   return (
-    <div className={`categoryTailComponent ${className}`} >
-        <div 
-        className="categoryTailComponent__icon" 
-        onClick={handlerOnClick}
-        >
-          <FontAwesomeIcon icon={icon} />
-        </div>
-        <div className="categoryTailComponent__title">
-          {title}
-        </div>
+    <div
+      onClick={handlerOnClick}
+      className={`categoryTailComponent ${className}`}
+    >
+      <div className="categoryTailComponent__icon">
+        <FontAwesomeIcon icon={icon} />
+      </div>
+      <div className="categoryTailComponent__title">{title}</div>
     </div>
   );
 };

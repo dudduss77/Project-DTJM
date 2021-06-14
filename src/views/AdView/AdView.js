@@ -30,7 +30,7 @@ const AdView = ({ userAd = false }) => {
 
   const owner = () => {
     let temp = allUser.find(({userId}) => userId === data.userId)
-    if(temp) return <PersonItemComponent name={temp.name} imgUrl={temp.avatarSrc}/>
+    if(temp) return <PersonItemComponent name={temp.name} imgUrl={temp.avatarSrc} id={temp.userId}/>
   }
 
   return (

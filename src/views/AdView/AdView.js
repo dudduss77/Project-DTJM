@@ -5,6 +5,8 @@ import AdvertismentHeaderComponent from "../../components/advertismentHeaderComp
 import DescriptionComponent from "../../components/descriptionComponent/DescriptionComponent";
 import ListViewComponent from "../../components/listViewComponent/ListViewComponent";
 import LinkDisplayComponent from "../../components/reusable/linkDisplayComponent/LinkDisplayComponent";
+import PersonItemComponent from "../../components/personItemComponent/PersonItemComponent";
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router";
@@ -15,7 +17,7 @@ import { globalContext } from "../../context/globalStore";
 const AdView = ({ userAd = false }) => {
   let { id } = useParams();
   let history = useHistory();
-  const { userData, testAd } = useContext(globalContext);
+  const { userData, testAd, allUser } = useContext(globalContext);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -26,7 +28,11 @@ const AdView = ({ userAd = false }) => {
     }
   }, []);
 
-  console.log("data", data);
+  const owner = () => {
+    let temp = allUser.find(({userId}) => userId === data.userId)
+    if(temp) return <PersonItemComponent name={temp.name} imgUrl={temp.avatarSrc}/>
+  }
+
   return (
     <div className="adView">
       <div className="adView__left">
@@ -35,8 +41,18 @@ const AdView = ({ userAd = false }) => {
           header={data.header}
           localization={data.location}
           img_src={data.imgSrc}
-          user={true}
+          user={!id ? true : false}
         />
+
+        {id ? (
+          <>
+          <h3>Założyciel</h3>
+          {owner()}
+          </>
+        )
+        :
+        ""}
+        
         <ListViewComponent header="Kategorie" list={data.category} />
         <ListViewComponent header="Skills" list={data.skills} />
 

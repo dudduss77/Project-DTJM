@@ -23,7 +23,7 @@ const renderBlock = (start, end, data = [], userView) => {
   ));
 };
 
-const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
+const AdBlockWrapperComponent = ({ header, data, userView = false, obsData = false }) => {
   const { testAd } = useContext(globalContext);
   const { width } = useWindowSize();
 
@@ -33,7 +33,7 @@ const AdBlockWrapperComponent = ({ header, data, userView = false }) => {
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
-    if (userView) setSelectedData(data);
+    if (userView || obsData) setSelectedData(data);
     else setSelectedData(testAd);
   }, [data, testAd]);
 

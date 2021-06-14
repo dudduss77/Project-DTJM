@@ -6,6 +6,7 @@ import AddAdView from './views/AddAdView/AddAdView'
 import UserSettingsView from './views/UserSettingsView/UserSettingsView'
 import AdSettingsView from './views/AdSettingsView/AdSettingsView'
 import AdView from './views/AdView/AdView'
+import SearchView from './views/SearchView/SearchView'
 
 export const routes = [
   {
@@ -53,5 +54,9 @@ export const routes = [
     path: "/my-ad/:id",
     component: () => <AdView userAd={true}/>,
     private: true
+  },
+  {
+    path: "/search",
+    component: SearchView
   },
 ]

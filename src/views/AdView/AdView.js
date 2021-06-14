@@ -40,8 +40,12 @@ const AdView = ({ userAd = false }) => {
 
   const owner = () => {
     let temp = allUser.find(({userId}) => userId === data.userId)
+<<<<<<< HEAD
     // debugger
     if(temp) return <PersonItemComponent id={temp.userId} name={temp.name + " " + temp.surname} imgUrl={temp.avatarSrc}/>
+=======
+    if(temp) return <PersonItemComponent name={temp.name} imgUrl={temp.avatarSrc} id={temp.userId}/>
+>>>>>>> endfrontend
   }
 
   return (testAd && testAd.length && allUser && allUser.length && data) ? (

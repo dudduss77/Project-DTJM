@@ -13,21 +13,6 @@ const HomePageView = () => {
   } = useContext(globalContext);
   const [obsAd, setObsAd] = useState([]);
 
-  // useEffect(() => {
-  //   let temp = [];
-
-  //   testAd.forEach(element => {
-  //     adObs.forEach(item => {
-  //       if(element.id === item.obsAdId) {
-  //         temp.push(element);
-  //       }
-  //     })
-  //   });
-
-  //   if(temp.length !== 0) setObsAd(temp);
-
-  // }, [adObs])
-
   const retObsAd = () => {
     let temp = [];
     testAd.forEach((element) => {

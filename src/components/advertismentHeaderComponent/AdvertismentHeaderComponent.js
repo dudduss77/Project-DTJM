@@ -38,7 +38,7 @@ export const AdvertismentHeaderComponent = ({
               icon="cog"
             />
           ) : (
-            <FontAwesomeIcon onClick={() => addToObs()} className="btn" icon="heart" />
+            <FontAwesomeIcon onClick={() => addToObs()} className="headerComponent2__btn" icon="heart" />
           )}
         </div>
       </div>

@@ -4,6 +4,10 @@
 .headerComponent2{
   max-width: 300px;
 
+  &__btn:hover {
+    cursor: pointer;
+  }
+
 &__title{
   display: flex;
   padding: 10px;

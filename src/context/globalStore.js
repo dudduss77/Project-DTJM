@@ -426,7 +426,151 @@ const GlobalProvider = ({children}) => {
         showPopup: false
     })
 
+<<<<<<< HEAD
     const  [testAd, setAd] = useReducer(adReducer, [
+=======
+    const testAd = [
+        {
+            id: 1,
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Test",
+            header: "Test",
+            desc: "Testowy Opis",
+            location: "Brzeg Dolny",
+            category: [
+                {
+                    id: 1,
+                    name: "Muzyka"
+                },
+            ],
+            skills: [],
+            links: [],
+        },
+        {
+            id: 2,
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Testew",
+            header: "Testew",
+            desc: "Testowy Opis",
+            location: "Brzeg Dolny",
+            category: [],
+            skills: [],
+            links: [],
+        },
+        {
+            id: 3,
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Test",
+            header: "Kamien",
+            desc: "Testowy Opis",
+            location: "Brzeg Dolny",
+            category: [
+                {
+                    id: 1,
+                    name: "Muzyka"
+                },
+            ],
+            skills: [],
+            links: [],
+        },
+        {
+            id: 4,
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Testew",
+            header: "Debilizm",
+            desc: "Teeken",
+            location: "Poznań",
+            category: [],
+            skills: [],
+            links: [],
+        },
+        {
+            id: 5,
+            userId: 2,
+            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            imgAlt: "Testew",
+            header: "daw",
+            desc: "Teeken",
+            location: "Kraków",
+            category: [],
+            skills: [],
+            links: [],
+        },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+        // {
+        //     id: 1,
+        //     path: "/tempPath",
+        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        //     imgAlt: "Księżyc",
+        //     header: "Projekt księżyc",
+        //     category: "Kosmos",
+        //     desc: "Lecimy w kosmos",
+        //     location: ""
+        // },
+        // {
+        //     id: 2,
+        //     path: "/tempPath1",
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Party",
+        //     header: "Projekt X",
+        //     category: "Impreza",
+        //     desc: "Jazda jazda",
+        //     location: ""
+        // },
+>>>>>>> endfrontend
         // {
         //     id: 1,
         //     userId: 2,

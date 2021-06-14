@@ -2,14 +2,16 @@ import firebase,  { db } from './db.js';
 
 const AD = 'ad';
 
-const add = async (payload) => {
+const add = async (payload, success = () => {}, error = () => {}) => {
     try {
         const docRef = await db.collection(AD).add(payload);
         console.log(docRef);
+        success(docRef.id)
         return docRef.id;
 
     } catch(err) {
         console.log(err)
+        error(err)
         return err;
     }
     

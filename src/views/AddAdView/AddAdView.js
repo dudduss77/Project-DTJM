@@ -12,7 +12,10 @@ import AddItemComponent from "../../components/addItemComponent/AddItemComponent
 import ItemDisplayComponent from "../../components/itemDisplayComponent/ItemDisplayComponent";
 
 import { globalContext } from "../../context/globalStore";
-import { userActionType } from "../../context/reducers/userDataReducer";
+// import { userActionType } from "../../context/reducers/userDataReducer";
+import * as AdService from './../../services/adService.js'
+import { NotificationManager } from "react-notifications";
+import { useHistory } from "react-router";
 
 const AddAdView = () => {
   const { userData, setUserData, category, links, skills } =
@@ -23,6 +26,8 @@ const AddAdView = () => {
   const [skillsData, setSkillsData] = useState([]);
   const [linksData, setLinksData] = useState([]);
   const [buttonClick, setButtonClick] = useState(false);
+
+  const history = useHistory();
 
   const deleteLinks = (id) => {
     setLinksData(linksData.filter((item) => item.path !== id));
@@ -104,10 +109,10 @@ const AddAdView = () => {
   const submitNewAd = () => {
     console.log(adData);
     if (adData) {
-      let categoryObjectArray = categoryData.map((item, index) => ({id: index, name: item}));
-      let skillObjectArray = skillsData.map((item, index) => ({id: index, name: item}));
+      let categoryObjectArray = categoryData.map((item, index) => ({id: (category.find(it => item == it.name)).id }));
+      let skillObjectArray = skillsData.map((item, index) => ({id: (skills.find(it => item == it.name)).id }));
       let ad = {
-        id: parseInt(userData.userId.toString() + moment.now().toString()),
+        // id: parseInt(userData.userId.toString() + moment.now().toString()),
         userId: userData.userId,
         imgSrc: adImage,
         imgAlt: adData.adName,
@@ -118,8 +123,15 @@ const AddAdView = () => {
         skills: skillObjectArray,
         links: linksData,
       };
+      console.log("klikam")
+      console.log(ad);
+      console.log("koniec klika");
 
-      setUserData({ type: userActionType.addAd, payload: ad });
+      AdService.add(ad, (doc_id) => {
+        NotificationManager.success("Dodano nowe ogłoszenie");
+        setTimeout(function(){ history.push("/ad/" + doc_id) }, 3000);
+      })
+      // setUserData({ type: userActionType.addAd, payload: ad });
       setButtonClick(false);
       setAdData(null);
     } else setButtonClick(false);

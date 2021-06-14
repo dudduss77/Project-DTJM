@@ -10,7 +10,10 @@ import messageReducer from './reducers/messageReducer';
 import * as CategoryService from './../services/categoryService';
 import * as UserService from './../services/userService';
 import * as MessageService from './../services/messageService';
+import * as AdService from './../services/adService';
 import * as SkillService from './../services/skillService';
+import adReducer from './reducers/adReducer';
+import allUsersReducer from './reducers/allUsersReducer';
 
 export const globalContext = createContext();
 // this data store is for general purpose for all components.
@@ -24,6 +27,8 @@ const GlobalProvider = ({children}) => {
         // fetch data from server
         CategoryService.fetchDataRealTime((payload) => setCategory({ type: 'FETCH', payload}));    
         SkillService.fetchDataRealTime((payload) => setSkills({ type: 'FETCH', payload}))
+        AdService.fetchDataRealTime((payload) => setAd({ type: 'FETCH', payload}))
+        UserService.fetchAllUsersRealTime((payload) => setAllUser({ type: 'FETCH', payload}), (err) => console.log(err))
     }, [])
 
 
@@ -161,38 +166,38 @@ const GlobalProvider = ({children}) => {
         
     // ]);
 
-    const allUser = [
-        {
-            userId: 2,
-            avatarSrc: "/assets/profil.png",
-            avatarAlt: "Avatar",
-            name: "Duddus",
-            surname: "Duddusiowy",
-            nick: "duddus",
-            email: "dudd@gmail.com",
-            location: "Wałbrzych",
-            description: "Testowy opis",
-            ad: [],
-            skills: [],
-            category: [],
-            links: []
-        },
-        {
-            userId: 3,
-            avatarSrc: "/assets/profil.png",
-            avatarAlt: "Avatar",
-            name: "dw",
-            surname: "w",
-            nick: "duddus",
-            email: "dudd@gmail.com",
-            location: "Wałbrzych",
-            description: "Testowy opis",
-            ad: [],
-            skills: [],
-            category: [],
-            links: []
-        }
-    ]
+    const [allUser, setAllUser] = useReducer(allUsersReducer, [
+        // {
+        //     userId: 2,
+        //     avatarSrc: "/assets/profil.png",
+        //     avatarAlt: "Avatar",
+        //     name: "Duddus",
+        //     surname: "Duddusiowy",
+        //     nick: "duddus",
+        //     email: "dudd@gmail.com",
+        //     location: "Wałbrzych",
+        //     description: "Testowy opis",
+        //     ad: [],
+        //     skills: [],
+        //     category: [],
+        //     links: []
+        // },
+        // {
+        //     userId: 3,
+        //     avatarSrc: "/assets/profil.png",
+        //     avatarAlt: "Avatar",
+        //     name: "dw",
+        //     surname: "w",
+        //     nick: "duddus",
+        //     email: "dudd@gmail.com",
+        //     location: "Wałbrzych",
+        //     description: "Testowy opis",
+        //     ad: [],
+        //     skills: [],
+        //     category: [],
+        //     links: []
+        // }
+    ])
 
     // const [skills, setSkills] = useReducer(skillsReducer ,[
     //     {
@@ -421,202 +426,34 @@ const GlobalProvider = ({children}) => {
         showPopup: false
     })
 
-    const testAd = [
-        {
-            id: 1,
-            userId: 2,
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Test",
-            header: "Test",
-            desc: "Testowy Opis",
-            location: "",
-            category: [],
-            skills: [],
-            links: [],
-        },
-        {
-            id: 2,
-            userId: 2,
-            imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            imgAlt: "Testew",
-            header: "Testew",
-            desc: "Testowy Opis",
-            location: "",
-            category: [],
-            skills: [],
-            links: [],
-        },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
+    const  [testAd, setAd] = useReducer(adReducer, [
         // {
         //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
+        //     userId: 2,
+        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        //     imgAlt: "Test",
+        //     header: "Test",
+        //     desc: "Testowy Opis",
+        //     location: "",
+        //     category: [],
+        //     skills: [],
+        //     links: [],
         // },
         // {
         //     id: 2,
-        //     path: "/tempPath1",
+        //     userId: 2,
         //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
+        //     imgAlt: "Testew",
+        //     header: "Testew",
+        //     desc: "Testowy Opis",
+        //     location: "",
+        //     category: [],
+        //     skills: [],
+        //     links: [],
         // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
-        // {
-        //     id: 1,
-        //     path: "/tempPath",
-        //     imgSrc: "https://images.pexels.com/photos/821718/pexels-photo-821718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        //     imgAlt: "Księżyc",
-        //     header: "Projekt księżyc",
-        //     category: "Kosmos",
-        //     desc: "Lecimy w kosmos",
-        //     location: ""
-        // },
-        // {
-        //     id: 2,
-        //     path: "/tempPath1",
-        //     imgSrc: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        //     imgAlt: "Party",
-        //     header: "Projekt X",
-        //     category: "Impreza",
-        //     desc: "Jazda jazda",
-        //     location: ""
-        // },
+
     ]
+    );
 
     const getCategoryNameByIdFromContext = (id) => {
         for(let i = 0; i<category.length; i++)
@@ -630,16 +467,51 @@ const GlobalProvider = ({children}) => {
         return false;
     }
 
+
+
     useEffect(() => {
-        if(userData.category) {
-            const payload = userData.category.map(item => {
-                item.name = getCategoryNameByIdFromContext(item.id);
-                return item;
-            });    
-            console.log(payload)
-            setUserData({ type: "FETCH_CATEGORY", payload})
+        console.log("useEffect")
+        // debugger;
+        const isUndefined = allUser.find((item) => {
+            const toReturn =  (item.skills.find(it => it.name == undefined));
+            return toReturn != undefined;
+        });
+
+
+        if(allUser.length>0 && skills && isUndefined) {
+            const payload = [];
+            allUser.forEach(it => {
+               payload.push(it.skills.map(item => {
+                    item.name = getSkillNameByIdFromContext(item.id);
+                    return item;
+                }));            
+            })
+
+            setAllUser({ type: "FETCH_SKILLS", payload})
         }
-    }, [category, userData]);
+    }, [skills, allUser]);
+
+    useEffect(() => {
+        console.log("useEffect")
+        // debugger;
+        const isUndefined = allUser.find((item) => {
+            const toReturn =  (item.category.find(it => it.name == undefined));
+            return toReturn != undefined;
+        });
+
+
+        if(allUser.length>0 && category && isUndefined) {
+            const payload = [];
+            allUser.forEach(it => {
+               payload.push(it.category.map(item => {
+                    item.name = getCategoryNameByIdFromContext(item.id);
+                    return item;
+                }));            
+            })
+
+            setAllUser({ type: "FETCH_CATEGORY", payload})
+        }
+    }, [category, allUser]);
 
     useEffect(() => {
         if(userData.skills) {
@@ -647,10 +519,21 @@ const GlobalProvider = ({children}) => {
                 item.name = getSkillNameByIdFromContext(item.id);
                 return item;
             });    
-            console.log(payload)
+            // console.log(payload)
             setUserData({ type: "FETCH_SKILLS", payload})
         }
     }, [skills, userData]);
+
+    useEffect(() => {
+        if(userData.category) {
+            const payload = userData.category.map(item => {
+                item.name = getCategoryNameByIdFromContext(item.id);
+                return item;
+            });    
+            // console.log(payload)
+            setUserData({ type: "FETCH_CATEGORY", payload})
+        }
+    }, [category, userData]);
 
     // useEffect(() => {
     //     if(userData.logged) {
@@ -690,9 +573,13 @@ const GlobalProvider = ({children}) => {
     //     console.log(userData)
     // }, [userData.category]);
 
-    useEffect(() => {
-        console.log(userData)
-    }, [userData])
+    // useEffect(() => {
+    //     console.log(testAd)
+    // }, [testAd])
+
+    // useEffect(() => {
+    //     console.log(allUser)
+    // }, [allUser])
 
     return (
         <globalContext.Provider value={

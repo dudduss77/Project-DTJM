@@ -30,7 +30,6 @@ const HomePageView = () => {
 
   const retObsAd = () => {
     let temp = [];
-
     testAd.forEach((element) => {
        adObs.forEach((item) => {
         if (element.id === item.obsAdId) {
@@ -38,8 +37,9 @@ const HomePageView = () => {
         }
       });
     });
-
-    console.log(temp);
+    // console.log(testAd);
+    // console.log(adObs);
+    // console.log(temp);
 
     if (temp.length !== 0)
       return (
@@ -54,7 +54,7 @@ const HomePageView = () => {
   return (
     <div className="homePageView">
       <SearchMainPageComponent />
-      {logged ? retObsAd() : ""}
+      {logged && adObs ? retObsAd() : ""}
       <CategoryChoiceComponent />
       <AdBlockWrapperComponent header="Ogłoszenia" />
     </div>

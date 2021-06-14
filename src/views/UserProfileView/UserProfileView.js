@@ -13,24 +13,30 @@ import { globalContext } from "../../context/globalStore";
 
 const UserProfileView = () => {
   let { id } = useParams();
-  const { userData, allUser } = useContext(globalContext);
+  const { userData, allUser, testAd } = useContext(globalContext);
   const [selectedUserData, setSelectedUserData] = useState({});
 
   useEffect(() => {
-    if (id === undefined) setSelectedUserData(userData);
+    if (id === undefined || id === userData.userId) setSelectedUserData(userData);
     else {
       //API
-      setSelectedUserData(allUser.find(item => item.userId === parseInt(id)))
+      setSelectedUserData(allUser.find(item => item.userId === id))
     }
   }, [id, userData]);
 
+  useEffect(() => {
+    console.log("selectedUserData");
+    console.log(selectedUserData);
+    console.log(testAd);
+  })
   console.log("wybrany", selectedUserData);
 
-  return (
+
+  return selectedUserData ? (
     <div className="userProfileView">
       <UserInfoComponent
         userData={selectedUserData}
-        editMode={!id ? true : false}
+        editMode={!id || id === userData.userId ? true : false}
       />
       <div className="userProfileView__listWrapper">
         <ListViewComponent header="Skills" list={selectedUserData.skills} />
@@ -47,10 +53,10 @@ const UserProfileView = () => {
       <AdBlockWrapperComponent
         userView={true}
         header={!id ? "Moje ogłoszenia" : "Ogłoszenia"}
-        data={selectedUserData.ad}
+        data={testAd.filter(item => item.userId === selectedUserData.userId)}
       />
     </div>
-  );
+  ) : "Wczytywanie";
 };
 
 export default UserProfileView;

@@ -219,6 +219,23 @@ const deleteUser = ( success = () => {}, err = () => {}) => {
 }
 
 
+const fetchAllUsersRealTime = (onChange) => {
+    db.collection(USERS)
+    .onSnapshot((querySnapshot) => {
+        var data = [];
+        querySnapshot.forEach((doc) => {
+            data.push({
+                userId: doc.id,
+                ...(doc.data())
+            });
+        });
+        onChange(data);
+    });
+}
+
+
+
+
 
 export {
     getUserID,
@@ -233,5 +250,6 @@ export {
     removeCategory,
     changeEmail,
     changePassword,
-    deleteUser
+    deleteUser,
+    fetchAllUsersRealTime
 }

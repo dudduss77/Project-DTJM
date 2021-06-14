@@ -21,19 +21,30 @@ const AdView = ({ userAd = false }) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    if (userAd) {
-      setData(userData.ad.find((item) => item.id === parseInt(id)));
-    } else {
-      setData(testAd.find((item) => item.id === parseInt(id)));
+    // debugger
+    if(testAd && testAd.length && allUser && allUser.length) {
+      if (userAd) {
+        // setData(userData.ad.find((item) => item.id === id));
+        setData(testAd.find((item) => item.id === id));
+      } else {
+        setData(testAd.find((item) => item.id === id));
+      }
     }
-  }, []);
+    console.log("useEff")
+    console.log(userAd)
+    console.log(userData)
+    console.log(testAd)
+    console.log(allUser)
+    console.log(data)
+  }, [userAd, testAd, allUser]);
 
   const owner = () => {
     let temp = allUser.find(({userId}) => userId === data.userId)
-    if(temp) return <PersonItemComponent name={temp.name} imgUrl={temp.avatarSrc}/>
+    // debugger
+    if(temp) return <PersonItemComponent id={temp.userId} name={temp.name + " " + temp.surname} imgUrl={temp.avatarSrc}/>
   }
 
-  return (
+  return (testAd && testAd.length && allUser && allUser.length && data) ? (
     <div className="adView">
       <div className="adView__left">
         <AdvertismentHeaderComponent
@@ -41,7 +52,7 @@ const AdView = ({ userAd = false }) => {
           header={data.header}
           localization={data.location}
           img_src={data.imgSrc}
-          user={!id ? true : false}
+          user={!id || data.userId === userData.userId ? true : false}
         />
 
         {id ? (
@@ -62,7 +73,7 @@ const AdView = ({ userAd = false }) => {
         <DescriptionComponent header="Opis" content={data.desc} />
       </div>
     </div>
-  );
+  ) : "Wczytywanie";
 };
 
 export default AdView;

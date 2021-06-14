@@ -10,17 +10,17 @@ import { globalContext } from "../../context/globalStore";
 
 const renderBlock = (start, end, data = [], userView) => {
   let temp = data.slice(start, end);
-
-  return temp.map((item) => (
+  // console.log(temp);
+  return temp.map((item) => {  return (
     <AdBlockComponent
       key={item.id}
       path={userView ? `/my-ad/${item.id}` : `/ad/${item.id}`}
       imgSrc={item.imgSrc}
       imgAlt={item.imgAlt}
       header={item.header}
-      category={item.category.length !== 0 ? item.category[0].name : "Brak"}
+      category={item.category != undefined && item.category.length !== 0 ? item.category[0].name : "Brak"}
     />
-  ));
+  )});
 };
 
 const AdBlockWrapperComponent = ({ header, data, userView = false, obsData = false }) => {

@@ -1,0 +1,17 @@
+
+@import '../../variables.scss';
+
+.wraperBox{
+  max-width: 300px;
+
+&__header {
+  // font-weight: bold;
+  // border-bottom: 1px solid $mainColor8;
+  padding: 10px 0;
+  text-align: center;
+}
+
+&__select{
+  width: 300px;
+}
+}

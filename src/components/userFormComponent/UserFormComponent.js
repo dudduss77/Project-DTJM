@@ -40,11 +40,11 @@ const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
     onSubmit: (values) => {
       console.log("Czy idzie submit");
       getData({
-        userName: values.userName,
-        userSurname: values.userSurname,
-        userNick: values.userNick,
-        userLocation: values.userLocation,
-        userDesc: values.userDesc,
+        name: values.userName,
+        surname: values.userSurname,
+        nick: values.userNick,
+        location: values.userLocation,
+        desc: values.userDesc,
       });
     },
   });
@@ -63,6 +63,7 @@ const UserFormComponent = ({ getData, informToGetData, settings = false }) => {
 
   useEffect(() => {
     if (informToGetData) formik.handleSubmit();
+    // formik.handleSubmit();
   }, [informToGetData]);
   return (
     <>

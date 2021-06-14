@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from "@testing-library/dom";
 import {useEffect, useState} from "react";
 import "./SelectComponent.scss";
 
@@ -12,7 +13,9 @@ const SelectComponent = ({
   formik, 
   value = "", 
   name,
-  message = ""
+  message = "",
+  onKeyDown,
+  submitFormOnItemClick = false
 }) => {
 
 
@@ -34,9 +37,13 @@ const SelectComponent = ({
 
   const handlerOnClickInput = (e) => setVisibility(true);
   const handlerOnClickItem = (e) => {
-    if(formik) formik.setValues(prevValues => ({ ...prevValues, [name]: e.target.innerText })); 
-
-    setInputTxt(e.target.innerText); setVisibility(false); 
+    if(formik) {
+      formik.setValues(prevValues => ({ ...prevValues, [name]: e.target.innerText }));
+      if(submitFormOnItemClick) {
+        formik.handleSubmit();
+        setInputTxt("")
+      }  
+    } else setInputTxt(e.target.innerText); setVisibility(false); 
 
   }
   const handlerOnMouseLeave = (e) => setVisibility(false);
@@ -58,9 +65,12 @@ const SelectComponent = ({
 
   useEffect(() => setInputTxt(""), [reset])
 
+  useEffect(() => {
+    setMappedItems(mappItems(inputTxt)) 
+  }, [data])
+
 
   const [mappedItems, setMappedItems] = useState(mappItems());
-
   return (
     <div
       className={`selectComponent selectComponent--${size} ${className}`}
@@ -76,6 +86,7 @@ const SelectComponent = ({
         name={name}
         id={htmlFor}
         placeholder={placeholder}
+        onKeyDown = {onKeyDown}
         autoComplete="off"
       />
       

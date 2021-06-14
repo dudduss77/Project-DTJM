@@ -3,6 +3,7 @@ import { useReducer, createContext, useState, useEffect} from 'react';
 import categoryReducer from './reducers/categoryReducer';
 import userDataReducer from './reducers/userDataReducer';
 import appReducer from './reducers/appReducer';
+import skillsReducer from './reducers/skillsReducer';
 import LoginComponent from '../components/loginComponent/LoginComponent';
 import messageReducer from './reducers/messageReducer';
 
@@ -32,6 +33,316 @@ const GlobalProvider = ({children}) => {
     const [userData, setUserData] = useReducer(userDataReducer, {})
 
     const [skills, setSkills] = useReducer(skillsReducer, []);
+    // const [category, setCategory] = useReducer(categoryReducer, [
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Muzyka",
+    //         icon: ['fas', 'music']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Elektronika",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Sport",
+    //         icon: ['fas', 'swimmer']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Inne",
+    //         icon: ['fas', 'plug']
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Hobby",
+    //         icon: ['fas', 'baseball-ball']
+    //     },
+        
+    // ]);
+
+    const allUser = [
+        {
+            userId: 2,
+            avatarSrc: "/assets/profil.png",
+            avatarAlt: "Avatar",
+            name: "Duddus",
+            surname: "Duddusiowy",
+            nick: "duddus",
+            email: "dudd@gmail.com",
+            location: "Wałbrzych",
+            description: "Testowy opis",
+            ad: [],
+            skills: [],
+            category: [],
+            links: []
+        },
+        {
+            userId: 3,
+            avatarSrc: "/assets/profil.png",
+            avatarAlt: "Avatar",
+            name: "dw",
+            surname: "w",
+            nick: "duddus",
+            email: "dudd@gmail.com",
+            location: "Wałbrzych",
+            description: "Testowy opis",
+            ad: [],
+            skills: [],
+            category: [],
+            links: []
+        }
+    ]
+
+    // const [skills, setSkills] = useReducer(skillsReducer ,[
+    //     {
+    //         id: 1,
+    //         name: "JavaScript",
+    //         // icon: ['fas', 'music']
+    //     }
+    // ])  
+
+    // const [userData, setUserData] = useReducer(userDataReducer, {
+    //     logged: 1,
+    //     userId: 1,
+    //     avatarSrc: "/assets/profil.png",
+    //     avatarAlt: "Avatar",
+    //     name: "Jan",
+    //     surname: "Kowalski",
+    //     nick: "Kowal",
+    //     email: "jankowalski@gmail.com",
+    //     location: "Wałbrzych",
+    //     description: "Testowy opis",
+    //     ad: [
+    //         // {
+    //         //     id: 1,
+    //         //     path: "/ad-settings",
+    //         //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+    //         //     imgAlt: "Testowe ogłoszenie",
+    //         //     header: "Testowe ogłoszenie",
+    //         //     category: "Test",
+    //         //     desc: "Coś tam sobie zrobię",
+    //         //     location: ""
+    //         // },
+    //         // {
+    //         //     id: 2,
+    //         //     path: "/ad-settings",
+    //         //     imgSrc: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+    //         //     imgAlt: "Testowe ogłoszenie",
+    //         //     header: "Szukam Tomka",
+    //         //     category: "Wpierdziel",
+    //         //     desc: "Tomek gdzie jesteś?",
+    //         //     location: ""
+    //         // },
+            
+
+    //     ],
+    //     peopleObs: [
+    //         // {
+    //         //     id: 1,
+    //         //     name: "Tomasz Żukwowski",
+    //         //     imgUrl: "/assets/profil.PNG"
+    //         //   },
+      
+    //         //   {
+    //         //     id: 2,
+    //         //     name: "Damina Karbowiak",
+    //         //     imgUrl: "/assets/profil.PNG"
+    //         //   },
+    //         {
+    //             obsUserId: 2
+    //         }
+    //     ],
+    //     skills: [
+    //         {
+    //             id: 1,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 2,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 3,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 4,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 5,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 6,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 7,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 8,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 9,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 10,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 11,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 12,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 13,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 14,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 15,
+    //             name: "C++"
+    //         },
+    //         {
+    //             id: 16,
+    //             name: "JS"
+    //         },
+    //         {
+    //             id: 17,
+    //             name: "C++"
+    //         },
+    //     ],
+    //     category: [
+    //         {
+    //             id: 1,
+    //             name: "IT"
+    //         },
+    //         {
+    //             id: 2,
+    //             name: "Kosmos"
+    //         },
+    //     ], 
+    //     links: [
+    //         // {
+    //         //     name: "Github",
+    //         //     path: "https://github.com/dudduss77",
+    //         //     icon: 'github',
+    //         //     title: null,
+    //         // }
+    //     ]
+    // })
 
     const [messages, setMessages] = useReducer(messageReducer, [
         // {
@@ -385,7 +696,8 @@ const GlobalProvider = ({children}) => {
                 chatVisibility, 
                 setChatVisibility,
                 skills,
-                setSkills
+                setSkills,
+                allUser
             }
         }>
             {children}

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router";
 
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 
@@ -8,6 +9,7 @@ import { userActionType } from "../../context/reducers/userDataReducer";
 
 const DeleteAd = () => {
   let { id } = useParams();
+  let history = useHistory();
   const { setUserData } = useContext(globalContext);
 
   const submitDeleteAd = () => {
@@ -15,6 +17,7 @@ const DeleteAd = () => {
       type: userActionType.deleteAd,
       payload: { id: parseInt(id) },
     });
+    history.push("/profil");
   };
 
   return (

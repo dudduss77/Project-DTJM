@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./UserDataComponent.scss";
 import "../../globalStyle/globalStyle.scss";
 
 import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
+import { globalContext } from "../../context/globalStore";
+import {userActionType} from '../../context/reducers/userDataReducer'
 
 const UserDataComponent = ({
   avatar,
@@ -14,14 +17,26 @@ const UserDataComponent = ({
   location,
   editMode = false,
 }) => {
+  const { setUserData, userData } = useContext(globalContext);
+  let { id } = useParams();
   let history = useHistory();
+
+  const addToObs = () => {
+    let temp = {
+      obsUserId: parseInt(id)
+    }
+
+    if(!userData.peopleObs.some(({obsUserId}) => obsUserId === parseInt(id)))
+      setUserData({type: userActionType.addToObs, payload: temp})
+  }
+
   return (
     <div className="userDataComponent">
       {avatar}
       <div className="userDataComponent__icons">
         {!editMode && (
           <>
-            <FontAwesomeIcon className="darkIcon" icon="heart" />
+            <FontAwesomeIcon onClick={() => addToObs()} className="darkIcon" icon="heart" />
             <FontAwesomeIcon className="darkIcon" icon="comment" />
           </>
         )}

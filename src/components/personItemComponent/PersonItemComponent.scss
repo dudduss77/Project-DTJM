@@ -8,6 +8,9 @@
   line-height: 40px;
   color: $mainColor4;
   font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
   
   & img {
     margin-right: 10px;

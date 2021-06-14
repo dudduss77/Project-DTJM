@@ -18,31 +18,37 @@ import PopupTestComponent from '../popupComponent/PopupTestComponent/PopupTestCo
 
 import AdBlockWrapperComponent from '../adBlockWrapperComponent/AdBlockWrapperComponent'
 import SearchMainPageTestComponent from '../searchMainPageComponent/searchMainPageTestComponent/SearchMainPageTestComponent'
+//import AdvertismentHeaderComponent from '../advertismentHeaderComponent/AdvertismentHeaderComponent'
+import WraperBlock from '../wraperBlock/WraperBlock'
+
 
 
 const TestComponent = () => {
 
   const {category, setCategory } = useContext(globalContext);
+  
 
   return (
     <div className="testComponent">
-      <ButtonTest/>
+    
+     {/* <WraperBlock /> */}
+      {/* <ButtonTest/> */}
        {/* <AdBlockTest/> */}
-      <AdBlockWrapperComponent header="Proponowane ogłoszenia"/>
-      <CategoryTailTestComponent />
-      <CategoryChoiceTestComponent/>
-      <HeaderTest/>
-      <ObsPanelTest/>
-      <PersonItemTest/>
+      {/* <AdBlockWrapperComponent header="Proponowane ogłoszenia"/> */}
+      {/* <CategoryTailTestComponent /> */}
+      {/* <CategoryChoiceTestComponent/> */}
+      {/* <HeaderTest/> */}
+      {/* <ObsPanelTest/> */}
+      {/* <PersonItemTest/> */}
 
      {/* <UserInfoComponent/> */}
 
       {/* <UserInfoComponent/> */}
-      <PopupTestComponent/>
-      <SearchMainPageTestComponent/>
+      {/* <PopupTestComponent/> */}
+      {/* <SearchMainPageTestComponent/> */}
       <SelectTestComponent/>
     </div>
   )
 }
 
-export default TestComponent
+export default TestComponent;

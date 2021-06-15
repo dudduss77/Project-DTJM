@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import NewInputComponent from "../newInputComponent/NewInputComponent";
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 
+import * as UserService from './../../services/userService.js'
+import { NotificationManager } from "react-notifications";
+import { globalContext } from "../../context/globalStore";
+
 const passRegex =
   /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
 
 const PasswordChange = () => {
+
+  const { userData } = useContext(globalContext);
   const formik = useFormik({
     initialValues: {
       oldPass: "",
@@ -21,12 +27,15 @@ const PasswordChange = () => {
         .matches(passRegex, "Słabe hasło")
         .required("Pole wymagane"),
       repeatPass: Yup.string()
-        .oneOf([Yup.ref("passwordRegister"), null], "Różne hasła")
+        .oneOf([Yup.ref("newPass"), null], "Różne hasła")
         .required("Pole wymagane"),
     }),
-    onSubmit: (values) => {
+    onSubmit: ({newPass, oldPass}) => {
       //API
-      console.log("Czy idzie submit");
+      // console.log("Czy idzie submit");
+      UserService.changePassword (userData.email, oldPass, newPass, () => {
+        NotificationManager.success("Hasło zostało zmienione");
+      })
     },
   });
 

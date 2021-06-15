@@ -12,8 +12,11 @@ import ImageWrapperComponent from "../../components/imageWrapperComponent/ImageW
 import AddItemComponent from "../../components/addItemComponent/AddItemComponent";
 import ItemDisplayComponent from "../../components/itemDisplayComponent/ItemDisplayComponent";
 
+import * as UserService from "./../../services/userService"
+
 import { globalContext } from "../../context/globalStore";
 import { userActionType } from "../../context/reducers/userDataReducer";
+import { NotificationManager } from "react-notifications";
 
 const UserSettingsView = () => {
   const { userData, setUserData, category, skills } = useContext(globalContext);
@@ -52,15 +55,9 @@ const UserSettingsView = () => {
 
   const submitUserSettings = () => {
     if (newUserData) {
-      let categoryObjectArray = categoryData.map((item, index) => ({
-        id: index,
-        name: item,
-      }));
-      let skillObjectArray = skillsData.map((item, index) => ({
-        id: index,
-        name: item,
-      }));
-      let userData = {
+      let categoryObjectArray =  categoryData.map((item, index) => ({id: (category.find(it => item == it.name)).id }));
+      let skillObjectArray =  skillsData.map((item, index) => ({id: (skills.find(it => item == it.name)).id }));
+      let toUpdate = {
         avatarSrc: userImage,
         avatarAlt: "UserAvatar",
         name: newUserData.name,
@@ -72,8 +69,13 @@ const UserSettingsView = () => {
         category: categoryObjectArray,
         skills: skillObjectArray,
       };
-
-      setUserData({ type: userActionType.editUser, payload: userData });
+      console.log("klikam");
+      console.log(toUpdate);
+      console.log("koncze klikac")
+      UserService.update(toUpdate, () => {
+        NotificationManager.success("Zapisano zmiany");
+      })
+      // setUserData({ type: userActionType.editUser, payload: userData });
       setButtonClick(false);
     } else setButtonClick(false);
   };

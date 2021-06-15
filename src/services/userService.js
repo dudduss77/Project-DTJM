@@ -1,63 +1,15 @@
 import firebaseAuth,  { db } from './db.js';
 import firebase from 'firebase/app'
 
+import * as AuthService from './authService.js';
+
 
 const USERS = 'users';
 const user = () => firebase.auth().currentUser;
 
 const getUserID = () => user().uid;
 
-const resetUserData_production_mode = async () => {
-    try {
-        const docRef = await db.collection(USERS).doc(getUserID()).set({
-        // logged: 0,
-        // userId: 1,
-        avatarSrc: "/assets/profil.png",
-        avatarAlt: "Avatar",
-        name: "Jan",
-        surname: "Kowalski",
-        nick: "Kowal",
-        email: "jankowalski@gmail.com",
-        location: "Wałbrzych",
-        description: "Testowy opis",
-        peopleObs: [
-            {
-                id: 1,
-                name: "Tomasz Żukwowski",
-                imgUrl: "/assets/profil.PNG"
-              },
-      
-              {
-                id: 2,
-                name: "Damina Karbowiak",
-                imgUrl: "/assets/profil.PNG"
-              },
-        ],
-        skills: [],
-        category: [
-            {
-                id: 1,
-                name: "IT"
-            },
-            {
-                id: 2,
-                name: "Kosmos"
-            },
-        ], 
-        links: [
-            {
-                id: 1,
-                name: "github.com"
-            }
-        ]
-    });
-        console.log(docRef);
 
-    } catch(err) {
-        console.log(err)
-    }
-    
-}
 
 
 const fetchDataRealTime = (onChange) => {
@@ -199,14 +151,19 @@ const changeEmail = (email, success = () => {}, err = () => {}) => {
 }
 
 
-const changePassword = (pass, success = () => {}, err = () => {}) => {
-
-    user().updatePassword(pass).then(() => {
+const changePassword = (email, passOld, passNew, success = () => {}, err = () => {}) => {
+AuthService.authUser(email, passOld, () => {
+    user().updatePassword(passNew).then(() => {
         success()
       }).catch((error) => {
         console.log(err);
-        err(err)
+        err(error.messages)
       });
+},
+(err) => {
+    err(err.messages)
+})
+
 
 }
 
@@ -233,13 +190,43 @@ const fetchAllUsersRealTime = (onChange) => {
     });
 }
 
+const addObs = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        peopleObs: firebase.firestore.FieldValue.arrayUnion(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+
+const remObs = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        peopleObs: firebase.firestore.FieldValue.arrayRemove(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
 
 
 
 
 export {
     getUserID,
-    resetUserData_production_mode,
+    // resetUserData_production_mode,
     fetchDataRealTime,
     update,
     addCategory,
@@ -251,5 +238,7 @@ export {
     changeEmail,
     changePassword,
     deleteUser,
-    fetchAllUsersRealTime
+    fetchAllUsersRealTime,
+    addObs,
+    remObs
 }

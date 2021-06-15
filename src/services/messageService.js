@@ -39,6 +39,31 @@ const add = (id, payload, success = () => {}) => {
 }
 
 
+const addNew = (user, payload, success = () => {}, error = () => {}) => {
+    debugger
+    db.collection(MESSAGES)
+    .doc('users')
+    .collection(UserService.getUserID())
+    .doc(user.userId)
+    .set({
+        avatarSrc: user.avatarSrc,
+        content: [payload],
+        name: user.name + " " + user.surname
+    })
+    .then((data) => {
+        debugger
+        success(data)
+    })
+    .catch(err => {
+        debugger
+        console.log(err)
+        error(err)
+    });
+
+
+}
+
+
 
 
 
@@ -46,5 +71,6 @@ const add = (id, payload, success = () => {}) => {
 
 export {
     fetchDataRealTime,
-    add
+    add,
+    addNew
 }

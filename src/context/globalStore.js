@@ -426,6 +426,11 @@ const GlobalProvider = ({children}) => {
         showPopup: false
     })
 
+    const [newMessagePopUp, setNewMessagePopUp] = useState({
+        showPopup: false, 
+        id: ""
+    });
+
     const  [testAd, setAd] = useReducer(adReducer, [
         // {
         //     id: 1,
@@ -642,7 +647,9 @@ const GlobalProvider = ({children}) => {
                 setChatVisibility,
                 skills,
                 setSkills,
-                allUser
+                allUser,
+                newMessagePopUp,
+                setNewMessagePopUp
             }
         }>
             {children}

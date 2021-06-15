@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+
+.NewMessageComponent {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        filter: none;
+        background-color: darkgoldenrod;
+        background-color: $backgroundColor;
+        width: 400px;
+        height: 300px;
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+
+        textarea {
+            width: 250px;
+            height: 150px;
+            font-weight: bold;
+            color: grey;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        &__to {
+            font-weight: bold;
+        }
+
+        &__exit {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-size: 52px;
+            color: lighten($color: #000000, $amount: 10%);
+            cursor: pointer;
+
+        }
+
+
+        
+
+    }
+}

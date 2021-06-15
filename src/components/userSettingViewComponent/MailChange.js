@@ -5,6 +5,9 @@ import * as Yup from "yup";
 import NewInputComponent from "../newInputComponent/NewInputComponent";
 import ButtonComponent from "../buttonComponent/ButtonComponent";
 
+import * as UserService from './../../services/userService.js'
+import { NotificationManager } from "react-notifications";
+
 const MailChange = () => {
 
   const formik = useFormik({
@@ -13,10 +16,14 @@ const MailChange = () => {
     },
     validationSchema: Yup.object().shape({
       newMail: Yup.string().email("Zły format email").required("Pole wymagane")
+      
     }),
-    onSubmit: (values) => {
+    onSubmit: ({ newMail }) => {
       //API
       console.log("Czy idzie submit");
+      UserService.changeEmail(newMail, () => {
+        NotificationManager.success("Email został zmieniony");
+      })
     },
   });
 

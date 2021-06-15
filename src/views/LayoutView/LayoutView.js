@@ -18,9 +18,10 @@ import HeaderComponent from "../../components/headerComponent/HeaderComponent";
 import PopupComponent from '../../components/popupComponent/PopupComponent'
 import ChatView from "../chatView/ChatView";
 import PrivateRoute from "../../privateRouter/privateRoute";
+import NewMessageComponent from "../../components/newMessageComponent/NewMessageComponent";
 
 const LayoutView = () => {
-  const {appData, chatVisibility, userData : { logged }, setUserData} = useContext(globalContext);
+  const {newMessagePopUp, appData, chatVisibility, userData : { logged }, setUserData} = useContext(globalContext);
 
 
   useEffect(() => {
@@ -90,6 +91,7 @@ const LayoutView = () => {
       {chatVisibility && logged && (<ChatView/>)}
 
       <NotificationContainer/>
+      {newMessagePopUp.showPopup && (<NewMessageComponent/>)}
     </div>
   );
 };

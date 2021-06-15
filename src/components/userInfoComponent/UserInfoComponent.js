@@ -23,6 +23,7 @@ const UserInfoComponent = ({editMode, userData}) => {
         email={userData.email}
         location={userData.location}
         editMode={editMode}
+        id={userData.id}
       />
       <DescriptionComponent header="Opis" content={userData.description} />
     </div>

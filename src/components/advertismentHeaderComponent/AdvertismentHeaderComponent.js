@@ -7,6 +7,9 @@ import { useParams } from "react-router-dom";
 import { globalContext } from "../../context/globalStore";
 import {userActionType} from '../../context/reducers/userDataReducer'
 
+import * as UserService from './../../services/userService';
+import NotificationManager from "react-notifications/lib/NotificationManager";
+
 export const AdvertismentHeaderComponent = ({
   header,
   localization,
@@ -17,13 +20,23 @@ export const AdvertismentHeaderComponent = ({
   const { testAd, userData, setUserData } = useContext(globalContext);
   let { id } = useParams();
 
-  const addToObs = () => {
-    let temp = {
-      obsAdId: parseInt(id)
-    }
+  const onSucces = () => NotificationManager.success(" Dodano do obserwowanych");
+  const onSuccesRem = () => NotificationManager.success("Nie obserwujesz już tego ogłoszenia");
 
-    if(!userData.adObs.some(({obsAdId}) => obsAdId === parseInt(id)))
-      setUserData({type: userActionType.addAdToObs, payload: temp})
+const onError = err => {
+    console.log("sukces");
+    console.log(err);
+}
+
+  const addToObs = () => {
+    let payload = {
+      obsAdId: id
+    }
+    
+    if(!userData.adObs.some(({obsAdId}) => obsAdId === id))
+      UserService.addObsAd (payload, onSucces, onError)
+    else
+      UserService.remObsAd(payload, onSuccesRem, onError)
   }
   return (
     <div className="headerComponent2">
@@ -38,7 +51,12 @@ export const AdvertismentHeaderComponent = ({
               icon="cog"
             />
           ) : (
-            <FontAwesomeIcon onClick={() => addToObs()} className="headerComponent2__btn" icon="heart" />
+            <FontAwesomeIcon 
+              onClick={() => addToObs()} 
+              className="headerComponent2__btn" 
+              icon="heart" 
+              style={userData.adObs && (!userData.adObs.some(({obsAdId}) => obsAdId === id)) ? {color: "grey"} : {color: "black"}}
+            />
           )}
         </div>
       </div>

@@ -16,7 +16,9 @@ const createUser = async (email, pass, success = ()=>{}, err = (e)=>{}) => {
             description: "Brak opisu",
             links: [],
             peopleObs: [],
-            skills: []
+            skills: [], 
+            adObs: []
+
         })
 
         console.log(data);

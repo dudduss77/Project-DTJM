@@ -222,6 +222,38 @@ const remObs = (payload, success = () => {}, err = () => {}) => {
 }
 
 
+const addObsAd = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        adObs: firebase.firestore.FieldValue.arrayUnion(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+
+const remObsAd = (payload, success = () => {}, err = () => {}) => {
+    db.collection(USERS)
+    .doc(getUserID())
+    .update({
+        adObs: firebase.firestore.FieldValue.arrayRemove(payload)
+    })
+    .then((data) => {
+        success(data)
+    })
+    .catch(err => {
+        console.log(err);
+        err(err)
+    });
+}
+
+
 
 
 export {
@@ -240,5 +272,7 @@ export {
     deleteUser,
     fetchAllUsersRealTime,
     addObs,
-    remObs
+    remObs,
+    addObsAd,
+    remObsAd
 }

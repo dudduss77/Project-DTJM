@@ -123,9 +123,9 @@ const AddAdView = () => {
         skills: skillObjectArray,
         links: linksData,
       };
-      console.log("klikam")
-      console.log(ad);
-      console.log("koniec klika");
+      // console.log("klikam")
+      // console.log(ad);
+      // console.log("koniec klika");
 
       AdService.add(ad, (doc_id) => {
         NotificationManager.success("Dodano nowe ogłoszenie");

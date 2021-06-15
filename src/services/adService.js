@@ -18,6 +18,20 @@ const add = async (payload, success = () => {}, error = () => {}) => {
 }
 
 
+const update = async (id, payload, success = () => {}, error = () => {}) => {
+    try {
+        const docRef = await db.collection(AD).doc(id).update(payload);
+        success(docRef)
+
+    } catch(err) {
+        console.log(err)
+        error(err)
+        // return err;
+    }
+    
+}
+
+
 
 const fetchDataRealTime = (onChange) => {
     db.collection(AD)
@@ -39,5 +53,6 @@ const fetchDataRealTime = (onChange) => {
 
 export {
     add,
-    fetchDataRealTime
+    fetchDataRealTime, 
+    update
 }

@@ -21,7 +21,7 @@ const mappCities = () => {
 };
 
 const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
-  const { userData } = useContext(globalContext);
+  const { userData, testAd } = useContext(globalContext);
   let { id } = useParams();
   const [cities, setCities] = useState(mappCities());
 
@@ -39,7 +39,7 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
     onSubmit: (values) => {
       console.log("Czy idzie submit");
       getData({
-        id: parseInt(id),
+        id: id,
         adName: values.adname,
         adLocation: values.adLocation,
         adDesc: values.adDesc,
@@ -48,10 +48,11 @@ const AdFormComponent = ({ getData, informToGetData, settings = false }) => {
   });
 
   useEffect(() => {
-    if (settings && userData) {
-      console.log(userData.ad);
-      let [{ header, desc, location }] = userData.ad.filter(
-        (item) => item.id === parseInt(id)
+    if (settings && userData && testAd) {
+      const filteredAd = testAd.filter(item => item.userId === userData.userId)
+      console.log(filteredAd);
+      let [{ header, desc, location }] = filteredAd.filter(
+        (item) => item.id === id
       );
       console.log(header);
       formik.setValues({ adname: header, adLocation: location, adDesc: desc });

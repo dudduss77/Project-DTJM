@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import TemplateTwo from "../../templatesComponents/TemplateTwo/TemplateTwo";
 import AdFormComponent from "../../components/adFormComponent/AdFormComponent";
@@ -15,9 +15,13 @@ import ItemDisplayComponent from "../../components/itemDisplayComponent/ItemDisp
 import { globalContext } from "../../context/globalStore";
 import { userActionType } from "../../context/reducers/userDataReducer";
 
+
+import * as AdService from './../../services/adService'
+import NotificationManager from "react-notifications/lib/NotificationManager";
+
 const AdSettingsView = () => {
   let { id } = useParams();
-  const { userData, setUserData, category, links, skills } =
+  const { userData, setUserData, category, links, skills, testAd } =
     useContext(globalContext);
   const [adData, setAdData] = useState(null);
   const [adImage, setAdImage] = useState(null);
@@ -25,10 +29,13 @@ const AdSettingsView = () => {
   const [skillsData, setSkillsData] = useState([]);
   const [linksData, setLinksData] = useState([]);
   const [buttonClick, setButtonClick] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
-    let temp = userData.ad.find((item) => item.id === parseInt(id));
+    const filteredAd = testAd.filter(item => item.userId === userData.userId)
+    let temp = filteredAd.find((item) => item.id === id);
     console.log(temp);
+    // debugger;
     setCategoryData(temp.category.map((item) => item.name));
     setSkillsData(temp.skills.map((item) => item.name));
     setLinksData(temp.links);
@@ -129,17 +136,13 @@ const AdSettingsView = () => {
     console.log("edit", categoryData);
     console.log("edit", skillsData);
     console.log("edit", linksData);
-    let categoryObjectArray = categoryData.map((item, index) => ({
-      id: index,
-      name: item,
-    }));
-    let skillObjectArray = skillsData.map((item, index) => ({
-      id: index,
-      name: item,
-    }));
+    let categoryObjectArray = categoryData.map((item, index) => ({id: (category.find(it => item == it.name)).id }));
+    let skillObjectArray = skillsData.map((item, index) => ({id: (skills.find(it => item == it.name)).id }));
     if (adData) {
+
+      const adId = adData.id;
+
       let ad = {
-        id: parseInt(adData.id),
         imgSrc: adImage,
         imgAlt: adData.adName,
         header: adData.adName,
@@ -150,16 +153,25 @@ const AdSettingsView = () => {
         links: linksData,
       };
 
-      setUserData({
-        type: userActionType.editAd,
-        payload: { id: parseInt(adData.id), editAd: ad },
-      });
+      AdService.update(adId, ad,() => {
+        NotificationManager.success("Zapisano zmiany");
+        setTimeout(function(){ history.push("/ad/" + adId) }, 2000);
+      }, err => console.log(err));
       setButtonClick(false);
       setAdData(null);
     } else setButtonClick(false);
   };
 
-  return (
+
+  useEffect(() => {
+    // console.log("userData")
+    // console.log(userData)
+    // console.log(category)
+    // console.log(links)
+    // console.log(skills)
+  })
+
+  return (userData && category && skills) ? (
     <TemplateTwo
       header="Edycja ogłoszenia"
       leftTop={adFormComponent}
@@ -170,7 +182,7 @@ const AdSettingsView = () => {
       right={right}
       buttonClick={() => setButtonClick(true)}
     />
-  );
+  ) : "Wczytywanie";
 };
 
 export default AdSettingsView;

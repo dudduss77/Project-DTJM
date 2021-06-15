@@ -32,7 +32,18 @@ const add = (id, payload, success = () => {}) => {
         content: firebase.firestore.FieldValue.arrayUnion(payload)
     })
     .then((data) => {
-        success(data)
+        payload.fromYou = false;
+
+        db.collection(MESSAGES)
+        .doc('users')
+        .collection(id)
+        .doc(UserService.getUserID())
+        .update({
+            content: firebase.firestore.FieldValue.arrayUnion(payload)
+        })
+        .then((data) => {
+            success(data)
+        });
     });
 
 
@@ -40,7 +51,7 @@ const add = (id, payload, success = () => {}) => {
 
 
 const addNew = (user, payload, success = () => {}, error = () => {}) => {
-    debugger
+    // debugger
     db.collection(MESSAGES)
     .doc('users')
     .collection(UserService.getUserID())
@@ -51,11 +62,26 @@ const addNew = (user, payload, success = () => {}, error = () => {}) => {
         name: user.name + " " + user.surname
     })
     .then((data) => {
-        debugger
-        success(data)
+        payload.fromYou = false;
+        db.collection(MESSAGES)
+        .doc('users')
+        .collection(user.userId)
+        .doc(UserService.getUserID())
+        .set({
+            avatarSrc: user.avatarSrc,
+            content: [payload],
+            name: user.name + " " + user.surname
+        })
+        .then((data) => {
+            success(data)
+        })
+        .catch(err => {
+            console.log(err)
+            error(err)
+        });
     })
     .catch(err => {
-        debugger
+        // debugger
         console.log(err)
         error(err)
     });

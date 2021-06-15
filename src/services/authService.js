@@ -7,6 +7,8 @@ const createUser = async (email, pass, success = ()=>{}, err = (e)=>{}) => {
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, pass);
         const data = await db.collection("users").doc(userCredential.user.uid).set({
             email,
+            name: "",
+            surname: "",
             avatarAlt: "Avatar",
             avatarSrc: "/assets/profil.png",
             ad: [],
